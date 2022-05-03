@@ -3,73 +3,7 @@
 @section('content')
 
 
-<nav class="navbar navbar-expand-lg navbar-dark p-3 m-2 shadow border border-3 border-warning bg-white" id="headerNav">
-  <div class="container">
-    <a class="navbar-brand d-block " href="#">
-      <img src="images/logo.png" height="50" />
-    </a>
-    <button class="navbar-toggler text-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon bg-dark"></span>
-    </button>
-    <!-- <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-  Button with data-bs-target
-</button> -->
 
-    <div class=" collapse navbar-collapse " id="navbarNavDropdown">
-      <ul class="navbar-nav px-3 ">
-        <li class="nav-item">
-          <a class="nav-link text-dark  active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-dark " aria-current="page" href="#">Find Resume</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-dark " aria-current="page" href="#">Job Search</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-dark " aria-current="page" href="#">Jobs By Category</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-dark " aria-current="page" href="#">Jobs By Location</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-dark " aria-current="page" href="#">Contact</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-dark" href="#">Career with jobsbloc</a>
-        </li>
-        <li><a href="" class="btn btn-warning p-3  fw-bold"> Login/Register </a></li>
-     
-      </ul>
-    </div>
-  </div>
-</nav>
-
-
-<!-- of canvas -->
-
-<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
-    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body">
-    <div>
-      Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
-    </div>
-    <div class="dropdown mt-3">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
-        Dropdown button
-      </button>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <li><a class="dropdown-item" href="#">Action</a></li>
-        <li><a class="dropdown-item" href="#">Another action</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-      </ul>
-    </div>
-  </div>
-</div>
-<!--  -->
 
 
 
@@ -132,7 +66,7 @@
 
 <div class="container">
 
-    <div class="text-center my-2">
+    <div class="text-center mt-1 mb-5">
         
         <h3 class="fw-bold text-info">Find Free Online Jobs in India</h3>
         <h3 class="fw-bold text-info">How We Can Help You to find new job!</h3>
@@ -144,8 +78,33 @@
 
             <div class="col-3">
 
-                <div class="p-2 bg-info">
-                  <i class="fa fa-4x fa-user-o" aria-hidden="true"></i>
+                <div class="p-2 ">
+                  <i class="fa fa-4x fa-user-o bg-warning p-4" aria-hidden="true" style="border-radius: 35px 55px 35px 55px; "></i>
+                  <p class="fw-bold mt-3">Advertise With Us</p>
+                </div>
+            
+            </div>
+            <div class="col-3">
+
+                <div class="p-2 ">
+                  <i class="fa fa-4x fa-user-o bg-warning p-4" aria-hidden="true" style="border-radius: 35px 55px 35px 55px; "></i>
+                  <p class="fw-bold mt-3">Stuck In Life</p>
+                </div>
+            
+            </div>
+            <div class="col-3">
+
+                <div class="p-2 ">
+                  <i class="fa fa-4x fa-user-o bg-warning p-4" aria-hidden="true" style="border-radius: 35px 55px 35px 55px; "></i>
+                  <p class="fw-bold mt-3">Wallet</p>
+                </div>
+            
+            </div>
+            <div class="col-3">
+
+                <div class="p-2 ">
+                  <i class="fa fa-4x fa-user-o bg-warning p-4" aria-hidden="true" style="border-radius: 35px 55px 35px 55px; "></i>
+                  <p class="fw-bold mt-3">Post Job</p>
                 </div>
             
             </div>
@@ -162,7 +121,7 @@
 
 <!-- alert -->
 
-    <div class="container border border-2 border-warning " style="border-radius: 80px 30px 30px 0px; ">
+    <div class="container border border-2 mt-4 border-warning " style="border-radius: 80px 30px 30px 0px; ">
 
             <div class="row my-5 p-3">
                 <div class="col-12 col-md-6 mb-3"> <h2>Create Your Free Alerts to get Instant Notifications </h2></div>
@@ -185,18 +144,13 @@
 
 <div class="container py-5 my-4 testmonial" >
 
-<div class="text-center  py-3 mb-5 our-clint">
 
-    <h3 class="display-5 text-white ">What Our Clint Says</h3>
-</div>
-
-       <!-- Carousel wrapper -->
 <!-- Carousel wrapper -->
         <div
         id="carouselExampleControls"
         class="carousel slide text-center carousel-dark"
         data-mdb-ride="carousel">
-        <div class="carousel-inner">
+        <div class="carousel-inner p-3">
 
        
                         <div class="carousel-item active">
@@ -204,154 +158,184 @@
 
                                 <div class="row">
                                         
-                                             <div class="col-6 p-4 border">
-                                                    <img
-                                                        class="rounded-circle shadow-1-strong mb-4"
-                                                        src="http://dairy.novaexpress.in/uploads/website/testmonial/1649741461.jpg"
+                                             <div class="col-6 my-auto border">
+                                                      
+                                                  <div class="row ">
+
+                                                        <div class="col-4 d-none d-md-inline my-auto">
+                                                        <img class="shadow-1-strong img-thumbnail" src="http://dairy.novaexpress.in/uploads/website/testmonial/1649741461.jpg"
                                                         alt="avatar"
-                                                        style="width: 150px;"
-                                                    />
-                                                    <div class="row d-flex justify-content-center">
-                                                        <div class="col-lg-8">
-                                                        <h5 class="mb-3">name</h5>
-                                                        <p>name</p>
-                                                        <p class="text-muted">
-                                                            <i class="fas fa-quote-left pe-2"></i>
-                                                            name
-                                                        </p>
-                                                        <a href="#">sdsd</a>
+                                                        style="width: 170px;" />
                                                         </div>
-                                                    </div>
+                                                        <div class="col-6 text-start p-3">
+                                                            <p class="text-warning"><small>Full Time</small> </p>
+                                                            <p class="fw-bold"> <a href="#">Commi 1 </a> </p> 
+                                                            <p class="text-muted"><small >posted 2 days Ago</small></p>
+
+                                                        </div>
+                                                        <div class="col-2  my-auto text-start">
+                                                            <span>   <a href="#"> <i class="fa fa-2x fa-user-o" aria-hidden="true"></i></a>  </span>
+                                                        </div>
+
+                                                  </div>
+
 
                                                 </div>
-                                                <div class="col-6 p-4 border">
-                                                    <img
-                                                        class="rounded-circle shadow-1-strong mb-4"
-                                                        src="http://dairy.novaexpress.in/uploads/website/testmonial/1649741461.jpg"
+                                             <div class="col-6 my-auto border">
+                                                      
+                                                  <div class="row ">
+
+                                                        <div class="col-4 d-none d-md-inline my-auto">
+                                                        <img class="shadow-1-strong img-thumbnail" src="http://dairy.novaexpress.in/uploads/website/testmonial/1649741461.jpg"
                                                         alt="avatar"
-                                                        style="width: 150px;"
-                                                    />
-                                                    <div class="row d-flex justify-content-center">
-                                                        <div class="col-lg-8">
-                                                        <h5 class="mb-3">name</h5>
-                                                        <p>name</p>
-                                                        <p class="text-muted">
-                                                            <i class="fas fa-quote-left pe-2"></i>
-                                                            name
-                                                        </p>
+                                                        style="width: 170px;" />
                                                         </div>
-                                                    </div>
+                                                        <div class="col-6 text-start p-3">
+                                                            <p class="text-warning"><small>Full Time</small> </p>
+                                                            <p class="fw-bold">Commi 1</p> 
+                                                            <p class="text-muted"><small >posted 2 days Ago</small></p>
+
+                                                        </div>
+                                                        <div class="col-2  my-auto text-start">
+                                                            <span>   <i class="fa fa-2x fa-user-o" aria-hidden="true"></i> </span>
+                                                        </div>
+
+                                                  </div>
+
 
                                                 </div>
+
+                                                
                                 </div>
 
 
                         </div>
-                        <div class="carousel-item ">
+                        <div class="carousel-item">
 
 
                                 <div class="row">
                                         
-                                             <div class="col-6 p-4 border">
-                                                    <img
-                                                        class="rounded-circle shadow-1-strong mb-4"
-                                                        src="http://dairy.novaexpress.in/uploads/website/testmonial/1649741461.jpg"
+                                             <div class="col-6 my-auto border">
+                                                      
+                                                  <div class="row ">
+
+                                                        <div class="col-4 d-none d-md-inline my-auto">
+                                                        <img class="shadow-1-strong img-thumbnail" src="http://dairy.novaexpress.in/uploads/website/testmonial/1649741461.jpg"
                                                         alt="avatar"
-                                                        style="width: 150px;"
-                                                    />
-                                                    <div class="row d-flex justify-content-center">
-                                                        <div class="col-lg-8">
-                                                        <h5 class="mb-3">name</h5>
-                                                        <p>name</p>
-                                                        <p class="text-muted">
-                                                            <i class="fas fa-quote-left pe-2"></i>
-                                                            name
-                                                        </p>
+                                                        style="width: 170px;" />
                                                         </div>
-                                                    </div>
+                                                        <div class="col-6 text-start p-3">
+                                                            <p class="text-warning"><small>Full Time</small> </p>
+                                                            <p class="fw-bold">Commi 1</p> 
+                                                            <p class="text-muted"><small >posted 2 days Ago</small></p>
+
+                                                        </div>
+                                                        <div class="col-2  my-auto text-start">
+                                                            <span>   <i class="fa fa-2x fa-user-o" aria-hidden="true"></i> </span>
+                                                        </div>
+
+                                                  </div>
+
 
                                                 </div>
-                                                <div class="col-6 p-4 border">
-                                                    <img
-                                                        class="rounded-circle shadow-1-strong mb-4"
-                                                        src="http://dairy.novaexpress.in/uploads/website/testmonial/1649741461.jpg"
+                                             <div class="col-6 my-auto border">
+                                                      
+                                                  <div class="row ">
+
+                                                        <div class="col-4 d-none d-md-inline my-auto">
+                                                        <img class="shadow-1-strong img-thumbnail" src="http://dairy.novaexpress.in/uploads/website/testmonial/1649741461.jpg"
                                                         alt="avatar"
-                                                        style="width: 150px;"
-                                                    />
-                                                    <div class="row d-flex justify-content-center">
-                                                        <div class="col-lg-8">
-                                                        <h5 class="mb-3">name</h5>
-                                                        <p>name</p>
-                                                        <p class="text-muted">
-                                                            <i class="fas fa-quote-left pe-2"></i>
-                                                            name
-                                                        </p>
+                                                        style="width: 170px;" />
                                                         </div>
-                                                    </div>
+                                                        <div class="col-6 text-start p-3">
+                                                            <p class="text-warning"><small>Full Time</small> </p>
+                                                            <p class="fw-bold">Commi 1</p> 
+                                                            <p class="text-muted"><small >posted 2 days Ago</small></p>
+
+                                                        </div>
+                                                        <div class="col-2  my-auto text-start">
+                                                            <span>   <i class="fa fa-2x fa-user-o" aria-hidden="true"></i> </span>
+                                                        </div>
+
+                                                  </div>
+
 
                                                 </div>
+
+                                                
                                 </div>
 
 
                         </div>
-                        <div class="carousel-item ">
+                        <div class="carousel-item">
 
 
                                 <div class="row">
                                         
-                                             <div class="col-6 border">
-                                                    <img
-                                                        class="rounded-circle shadow-1-strong mb-4"
-                                                        src="http://dairy.novaexpress.in/uploads/website/testmonial/1649741461.jpg"
+                                             <div class="col-6 my-auto border">
+                                                      
+                                                  <div class="row ">
+
+                                                        <div class="col-4 d-none d-md-inline my-auto">
+                                                        <img class="shadow-1-strong img-thumbnail" src="http://dairy.novaexpress.in/uploads/website/testmonial/1649741461.jpg"
                                                         alt="avatar"
-                                                        style="width: 150px;"
-                                                    />
-                                                    <div class="row d-flex justify-content-center">
-                                                        <div class="col-lg-8">
-                                                        <h5 class="mb-3">name</h5>
-                                                        <p>name</p>
-                                                        <p class="text-muted">
-                                                            <i class="fas fa-quote-left pe-2"></i>
-                                                            name
-                                                        </p>
+                                                        style="width: 170px;" />
                                                         </div>
-                                                    </div>
+                                                        <div class="col-6 text-start p-3">
+                                                            <p class="text-warning"><small>Full Time</small> </p>
+                                                            <p class="fw-bold">Commi 1</p> 
+                                                            <p class="text-muted"><small >posted 2 days Ago</small></p>
+
+                                                        </div>
+                                                        <div class="col-2  my-auto text-start">
+                                                            <span>   <i class="fa fa-2x fa-user-o" aria-hidden="true"></i> </span>
+                                                        </div>
+
+                                                  </div>
+
 
                                                 </div>
-                                                <div class="col-6 border">
-                                                    <img
-                                                        class="rounded-circle shadow-1-strong mb-4"
-                                                        src="http://dairy.novaexpress.in/uploads/website/testmonial/1649741461.jpg"
+                                             <div class="col-6 my-auto border">
+                                                      
+                                                  <div class="row ">
+
+                                                        <div class="col-4 d-none d-md-inline my-auto">
+                                                        <img class="shadow-1-strong img-thumbnail" src="http://dairy.novaexpress.in/uploads/website/testmonial/1649741461.jpg"
                                                         alt="avatar"
-                                                        style="width: 150px;"
-                                                    />
-                                                    <div class="row d-flex justify-content-center">
-                                                        <div class="col-lg-8">
-                                                        <h5 class="mb-3">name</h5>
-                                                        <p>name</p>
-                                                        <p class="text-muted">
-                                                            <i class="fas fa-quote-left pe-2"></i>
-                                                            name
-                                                        </p>
+                                                        style="width: 170px;" />
                                                         </div>
-                                                    </div>
+                                                        <div class="col-6 text-start p-3">
+                                                            <p class="text-warning"><small>Full Time</small> </p>
+                                                            <p class="fw-bold">Commi 1</p> 
+                                                            <p class="text-muted"><small >posted 2 days Ago</small></p>
+
+                                                        </div>
+                                                        <div class="col-2  my-auto text-start">
+                                                            <span>   <i class="fa fa-2x fa-user-o" aria-hidden="true"></i> </span>
+                                                        </div>
+
+                                                  </div>
+
 
                                                 </div>
+
+                                                
                                 </div>
 
 
                         </div>
                        
+                       
                            
            
         </div>
 
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <button class="carousel-control-prev prev-btn" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon bg-warning" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <button class="carousel-control-next next-btn" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon bg-warning" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
         </div>
@@ -359,6 +343,144 @@
 
 
 </div>
+
+<!-- testmonial slider  -->
+<div class="container py-5 my-4 testmonial" >
+
+<div class="text-center  py-3 mb-5 our-clint">
+
+    <h3 class="display-6 ">What Our Customers Are Saying</h3>
+</div>
+
+       <!-- Carousel wrapper -->
+<!-- Carousel wrapper -->
+        <div
+        id="carouselExampleControls-2"
+        class="carousel slide text-center carousel-dark"
+        data-mdb-ride="carousel">
+        <div class="carousel-inner">
+
+                        <div class="carousel-item  active">
+                                <img
+                                    class="rounded-circle shadow-1-strong mb-4"
+                                    src="https://jobsbloc.com/wp-content/uploads/2022/02/additti-munshi-120x120.jpg"
+                                    alt="avatar"
+                                    style="width: 150px;"
+                                />
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col-lg-8">
+                                    <h5 class="mb-3">Location</h5>
+                                    <p>Description</p>
+                                    <p class="text-muted"> name </p>
+                                    <span><img src="/images/star.png" alt="" height="25px"></span>
+                                    <span><img src="/images/star.png" alt="" height="25px"></span>
+                                    <span><img src="/images/star.png" alt="" height="25px"></span>
+                                    <span><img src="/images/star.png" alt="" height="25px"></span>
+                                    <span><img src="/images/star.png" alt="" height="25px"></span>
+                                     <p>Designation</p> 
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="carousel-item ">
+                                <img
+                                    class="rounded-circle shadow-1-strong mb-4"
+                                    src="https://jobsbloc.com/wp-content/uploads/2022/02/sushant.jpg"
+                                    alt="avatar"
+                                    style="width: 150px;"
+                                />
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col-lg-8">
+                                    <h5 class="mb-3">Location</h5>
+                                    <p>Description</p>
+                                    <p class="text-muted"> name </p>
+                                    <span><img src="/images/star.png" alt="" height="25px"></span>
+                                    <span><img src="/images/star.png" alt="" height="25px"></span>
+                                    <span><img src="/images/star.png" alt="" height="25px"></span>
+                                    <span><img src="/images/star.png" alt="" height="25px"></span>
+                                    <span><img src="/images/star.png" alt="" height="25px"></span>
+                                     <p>Designation</p> 
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="carousel-item ">
+                                <img
+                                    class="rounded-circle shadow-1-strong mb-4"
+                                    src="https://jobsbloc.com/wp-content/uploads/2022/02/additti-munshi-120x120.jpg"
+                                    alt="avatar"
+                                    style="width: 150px;"
+                                />
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col-lg-8">
+                                    <h5 class="mb-3">Location</h5>
+                                    <p>Description</p>
+                                    <p class="text-muted"> name </p>
+                                    <span><img src="/images/star.png" alt="" height="25px"></span>
+                                    <span><img src="/images/star.png" alt="" height="25px"></span>
+                                    <span><img src="/images/star.png" alt="" height="25px"></span>
+                                    <span><img src="/images/star.png" alt="" height="25px"></span>
+                                    <span><img src="/images/star.png" alt="" height="25px"></span>
+                                     <p>Designation</p> 
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="carousel-item ">
+                                <img
+                                    class="rounded-circle shadow-1-strong mb-4"
+                                    src="https://jobsbloc.com/wp-content/uploads/2022/02/sushant.jpg"
+                                    alt="avatar"
+                                    style="width: 150px;"
+                                />
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col-lg-8">
+                                    <h5 class="mb-3">Location</h5>
+                                    <p>Description</p>
+                                    <p class="text-muted"> name </p>
+                                    <span><img src="/images/star.png" alt="" height="25px"></span>
+                                    <span><img src="/images/star.png" alt="" height="25px"></span>
+                                    <span><img src="/images/star.png" alt="" height="25px"></span>
+                                    <span><img src="/images/star.png" alt="" height="25px"></span>
+                                    <span><img src="/images/star.png" alt="" height="25px"></span>
+                                     <p>Designation</p> 
+                                    </div>
+                                </div>
+                        </div>
+     
+           
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls-2" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon bg-warning" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls-2" data-bs-slide="next">
+            <span class="carousel-control-next-icon bg-warning" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+        </div>
+
+
+          <div class="text-center mt-4">
+            
+              <button type="button" class="btn btn-warning text-white fw-bold py-2 px-3" >View More</button>
+          </div>
+
+</div>
+
+<!-- end testmonial slider  -->
+
+
+<div class="container">
+        <h3 class="text-center text-info">Free Job Posting Sites for Employers in India</h3>
+        
+        <div class="mt-3 mb-5">
+          <p>In the olden days when things or information was not so easily accessible most of the information we got through was print media and most of the procedures like hiring were time consuming even it was difficult to reach out to everyone ,but since things started taking shape online procedures became fast ,convenient and easy because of which we were able to find  online jobs in India  through job finding sites in India as a result the no of online job finding sites started increasing. Now people can search and apply for multiple jobs online as per their preference through job posting websites in India, even companies searching for candidates can choose from huge pool of candidate data through job posting sites online in India.Soon there was no dearth of i.t job websites in India.  We are one of the fastest upcoming job portal to find jobs online India which is searchable through online job website in India and job finding websites in India.</p>
+
+          <p>Jobsbloc provides free job posting for employers in India which makes hiring easy and quick.</p>
+          <p>Here job seekers can search multiple jobs free of cost and apply to as many jobs as they want thus making us approachable by everyone and making us the no.1 free job search site in India. In fact recruiters and H.R team prefer us because we provide free job posting site for employers in India.</p>
+        </div>
+
+        <hr class="fw-bold " style="height:3px;">
+</div>
+ 
 
 
 

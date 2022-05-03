@@ -7,3 +7,16 @@
     background-repeat: no-repeat;
 
 }
+.next-btn{
+
+    position:absolute;
+    top:66%;
+    left: 92.5%;
+   
+}
+.prev-btn{
+
+    position:absolute;
+    top:66%;
+    left: -7.5%;
+}
