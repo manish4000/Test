@@ -25,6 +25,7 @@
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/color-01.css"> -->
 
+
   </head>
   <body>
 
@@ -43,27 +44,30 @@
     <div class=" collapse navbar-collapse " id="navbarNavDropdown">
       <ul class="navbar-nav px-3 ">
         <li class="nav-item">
-          <a class="nav-link text-dark  active" aria-current="page" href="#">Home</a>
+          <a class="nav-link text-dark  active" aria-current="page" href="{{route('home')}}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-dark " aria-current="page" href="#">Find Resume</a>
+          <a class="nav-link text-dark " aria-current="page" href="{{route('candidates')}}">Find Resume</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-dark " aria-current="page" href="#">Job Search</a>
+          <a class="nav-link text-dark " aria-current="page" href="{{route('jobs')}}">Job Search</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-dark " aria-current="page" href="#">Jobs By Category</a>
+          <a class="nav-link text-dark " aria-current="page" href="{{route('job_by_category')}}">Jobs By Category</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-dark " aria-current="page" href="#">Jobs By Location</a>
+          <a class="nav-link text-dark " aria-current="page" href="{{route('job_by_location')}}">Jobs By Location</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-dark " aria-current="page" href="#">Contact</a>
+          <a class="nav-link text-dark " aria-current="page" href="{{route('contact')}}">Contact</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-dark" href="#">Career with jobsbloc</a>
+          <a class="nav-link text-dark" href="{{route('career_with_jabsbloc')}}">Career with jobsbloc</a>
         </li>
-        <li><a href="" class="btn btn-warning p-3  fw-bold"> Login/Register </a></li>
+
+        <li>
+          <a href="{{route('login_register')}}" class="btn btn-warning p-3  fw-bold"> Login/Register </a>
+        </li>
      
       </ul>
     </div>

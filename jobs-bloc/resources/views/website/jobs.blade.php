@@ -33,9 +33,9 @@
                         </ul>
                 </div>
                 <div>
-                            <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none fs-4 d-sm-inline"> Date Posted   </span> </a>
-                        <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
+                            <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none fs-4 d-sm-inline"> Date Posted </span> </a>
+                        <ul class="collapse show nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
                             <li class="w-100">
                             <div class="d-flex justify-content-between mt-2">
                                 <div class="form-check"> <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked> <label class="form-check-label" for="flexCheckChecked"> Tablets </label> </div>
@@ -58,9 +58,9 @@
                         </ul>
                 </div>
                 <div>
-                            <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                            <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
                             <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none fs-4 d-sm-inline"> Date Posted   </span> </a>
-                        <ul class="collapse show nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
+                        <ul class="collapse show nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
                             <li class="w-100">
                             <div class="d-flex justify-content-between mt-2">
                                 <div class="form-check"> <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked> <label class="form-check-label" for="flexCheckChecked"> Tablets </label> </div>
@@ -175,29 +175,22 @@
 
             @for($i=1;$i<=10;$i++)
 
-                                <div class="col-6 border">
-                                <div class="product py-4">
+                                <div class="col-12 border">
+                                    <div class="product">
 
-                                    <div class="text-center"> <img src="https://jobsbloc.com/wp-content/themes/careerup/images/placeholder.png" width="200"> </div>
-                                    <div class="about text-center">
-                                        <h5>Name</h5>
-                                        <span>4t5rtre</span> 
-                                    <div class="d-flex justify-content-between px-4 bg-light py-3">
-                                        <span class="text-danger ">Location</span>
-                                        <span class="text-muted">Brazil</span>
-                                    </div>    
-                                    <div class="d-flex justify-content-between px-4 bg-light py-3">
-                                        <span class="text-danger ">Sector</span>
-                                        <span >
-                                            <a href="#" class="text-decoration-none text-muted"" > Accounting / Finance,</a>
-                                            <a href="#" class="text-decoration-none text-muted""> Automobile,</a>
-                                        </span>
-                                    </div>    
+                                          <div class="row">
+
+                                                <div class="col-3">
+                                                  <img src="https://jobsbloc.com/wp-content/themes/careerup/images/placeholder.png" height="125px"> 
+                                                </div>
+                                                   <div class="col-9 my-auto">
+
+                                                   <h5> <a href="#" class="text-decoration-none text-reset"> Front Office Associate</a>  <span> <i class="fa fa-star" style="color:#ffc107;"></i> </span>  </h5>       
+
+                                                </div>
+                                          </div>           
+                                        
                                     </div>
-                                    <div class=" d-grid mx-4 my-3 ">
-                                        <button type="submit" class="btn btn-warning rounded btn-large  text-white btn-block py-3 fw-bold px-5"> View Profile </button>
-                                    </div>
-                                </div>
                                 </div>
 
              @endfor
