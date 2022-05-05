@@ -54,3 +54,10 @@ Route::get('/terms-conditions', function () {
 Route::get('/privacy-policy', function () {
     return view('website.privacy_policy');
 })->name('privacy_policy');
+
+
+Route::get('/test', function () {
+    return view('website.test');
+});
+
+
