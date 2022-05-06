@@ -8,23 +8,19 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
+   
       <!-- Font Awesome -->
      <script src="https://kit.fontawesome.com/fa6267ab13.js" crossorigin="anonymous"></script>
      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" >
+  
 
     <link href="css/style.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript"></script> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" type="text/css" media="all" />
-    <!--  -->
-    <!-- <link rel="stylesheet" type="text/css" href="assets/css/animate.css">
+  
+    <script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
 
-	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/owl.carousel.min.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/chosen.min.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/color-01.css"> -->
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
   </head>
   <body>
@@ -178,17 +174,9 @@
 
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
-    
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <!--  -->
-    <!-- <script src="assets/js/jquery-1.12.4.minb8ff.js?ver=1.12.4"></script>
-	<script src="assets/js/jquery-ui-1.12.4.minb8ff.js?ver=1.12.4"></script>
-	<script src="assets/js/bootstrap.min.js"></script>
-	<script src="assets/js/chosen.jquery.min.js"></script>
-	<script src="assets/js/owl.carousel.min.js"></script>
-	<script src="assets/js/jquery.countdown.min.js"></script>
-	<script src="assets/js/jquery.sticky.js"></script>
-	<script src="assets/js/functions.js"></script> -->
+    
+   
+  
   </body>
 </html>

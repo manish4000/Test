@@ -60,4 +60,16 @@ Route::get('/test', function () {
     return view('website.test');
 });
 
+Route::get('/candidates/dashboard/', function () {
+    return view('website.candidate.dashboard');
+});
+
+Route::get('/candidates/profile/', function () {
+    return view('website.candidate.profile');
+});
+
+Route::get('/candidates/resume/', function () {
+    return view('website.candidate.resume');
+});
+
 

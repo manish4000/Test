@@ -3,10 +3,6 @@
 @section('content')
 
 
-
-
-
-
 <div class="container-fluid background">
     
     <!-- search section -->
