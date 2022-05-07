@@ -41,7 +41,7 @@
 
         @for($i=1;$i<=12;$i++)        
 
-            <div class="row border mx-2 my-3 py-5">
+            <div class="row  shadow mx-2 my-3 py-5">
                     <div class="col-12 col-md-3 text-md-center mb-3">
                     <h5 class="fw-bold"> Administration jobs </h5> 
                     <span class="text-muted"><small> (10 Jobs)</small> </span>

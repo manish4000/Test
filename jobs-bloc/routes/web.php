@@ -59,7 +59,7 @@ Route::get('/privacy-policy', function () {
 Route::get('/test', function () {
     return view('website.test');
 });
-
+// this is for candidates
 Route::get('/candidates/dashboard/', function () {
     return view('website.candidate.dashboard');
 });
@@ -70,6 +70,56 @@ Route::get('/candidates/profile/', function () {
 
 Route::get('/candidates/resume/', function () {
     return view('website.candidate.resume');
+});
+
+Route::get('/candidates/shortlist-jobs/', function () {
+    return view('website.candidate.shortlist_jobs');
+});
+
+Route::get('/candidates/applied-jobs/', function () {
+    return view('website.candidate.applied_jobs');
+});
+Route::get('/candidates/alert-jobs/', function () {
+    return view('website.candidate.alert_job');
+});
+Route::get('/candidates/change-password/', function () {
+    return view('website.candidate.change_password');
+});
+
+Route::get('/candidates/delete-profile/', function () {
+    return view('website.candidate.delete_profile');
+});
+
+//this is for employer 
+
+Route::get('/employer/dashboard/', function () {
+    return view('website.employer.dashboard');
+});
+
+Route::get('/employer/profile/', function () {
+    return view('website.employer.profile');
+});
+
+Route::get('/employer/resume/', function () {
+    return view('website.employer.resume');
+});
+
+Route::get('/employer/shortlist-jobs/', function () {
+    return view('website.employer.shortlist_jobs');
+});
+
+Route::get('/employer/applied-jobs/', function () {
+    return view('website.employer.applied_jobs');
+});
+Route::get('/employer/alert-jobs/', function () {
+    return view('website.employer.alert_job');
+});
+Route::get('/employer/change-password/', function () {
+    return view('website.employer.change_password');
+});
+
+Route::get('/employer/delete-profile/', function () {
+    return view('website.employer.delete_profile');
 });
 
 

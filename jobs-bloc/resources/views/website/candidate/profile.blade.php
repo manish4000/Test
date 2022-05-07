@@ -71,6 +71,7 @@
                               
                                     </select>
                                 </div>
+                                
                                 <div class="col-md-6">
                                     <label for="inputPassword4" class="form-label">Introduction Video URL</label>
                                     <input type="text" class="form-control p-3" id="">
@@ -111,7 +112,7 @@
                                                             <tr>
                                                                 <td>
                                                                     <label for="inputPassword4" class="form-label">Network</label>                       
-                                                                    <select class="form-select p-2" aria-label="Default select example" name="network[]">
+                                                                    <select class="form-control p-2"  data-live-search="true"  name="network[]" >
                                                                     <option value="1">Show</option>
                                                                     <option value="0">Hide</option>                                
                                                                     </select>

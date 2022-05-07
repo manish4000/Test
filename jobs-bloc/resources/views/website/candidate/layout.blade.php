@@ -3,75 +3,85 @@
   <!-- Sidebar -->
   <nav
        id="sidebar"
-       class="collapse d-lg-block sidebar collapse bg-white"
+       class="collapse d-lg-block sidebar collapse bg-light"
        >
-    <div class="position-sticky">
+    <div class="position-sticky ">
       <div class="list-group list-group-flush mx-3 mt-4">
+
+      <a
+           href="#"
+           class="list-group-item list-group-item-action shadow mb-2 py-3 fw-bold text-center"
+           aria-current="true"
+           >
+          <span> Your name</span>
+        </a>
+
         <a
            href="#"
-           class="list-group-item list-group-item-action py-2 ripple"
+           class="list-group-item list-group-item-action  py-2 ripple"
            aria-current="true"
            >
           <i class="fas fa-tachometer-alt fa-fw me-3 my-3"></i
             ><span>dashboard</span>
         </a>
+        
         <a
            href="#"
-           class="list-group-item list-group-item-action py-2  active"
+           class="list-group-item list-group-item-action  py-2  active"
            >
           <i class="fas fa-user fa-fw me-3 my-3"></i
             ><span>Profile</span>
         </a>
         <a
            href="#"
-           class="list-group-item list-group-item-action py-2 ripple"
+           class="list-group-item list-group-item-action  py-2 ripple"
            ><i class="fas fa-file fa-fw me-3 my-3"></i><span>My Resume</span></a
           >
         <a
            href="#"
-           class="list-group-item list-group-item-action py-2 ripple"
+           class="list-group-item list-group-item-action  py-2 ripple"
            ><i class="fas fa-star-o fa-fw me-3 my-3"></i
           ><span>Applied Jobs</span> </a
           >
         <a
            href="#"
-           class="list-group-item list-group-item-action py-2 ripple"
+           class="list-group-item list-group-item-action  py-2 ripple"
            >
           <i class="fas fa-tag fa-fw me-3 my-3"></i><span>Packages</span>
         </a>
         <a
            href="#"
-           class="list-group-item list-group-item-action py-2 ripple"
+           class="list-group-item list-group-item-action  py-2 ripple"
            ><i class="fas fa-chart-bar fa-fw me-3 my-3"></i><span>Shortlist Jobs</span></a
           >
         <a
            href="#"
-           class="list-group-item list-group-item-action py-2 ripple"
+           class="list-group-item list-group-item-action  py-2 ripple"
            ><i class="fas fa-user-secret fa-fw me-3 my-3"></i
           ><span>Following Employers</span></a
           >
         <a
            href="#"
-           class="list-group-item list-group-item-action py-2 ripple"
+           class="list-group-item list-group-item-action  py-2 ripple"
            ><i class="fas fa-bell-o fa-fw me-3 my-3"></i
           ><span>Alerts Jobs</span></a
           >
         <a
            href="#"
-           class="list-group-item list-group-item-action py-2 ripple"
+           class="list-group-item list-group-item-action  py-2 ripple"
            ><i class="fas fa-comments-o fa-fw me-3 my-3"></i
           ><span>Messages</span></a
           >
         <a
            href="#"
-           class="list-group-item list-group-item-action py-2 ripple"
+           class="list-group-item list-group-item-action  py-2 ripple"
            ><i class="fas fa-unlock-alt fa-fw me-3 my-3"></i><span>Change Password</span></a
           >
-        <a href="#"  class="list-group-item list-group-item-action py-2 ripple">
+        <a href="#"  class="list-group-item list-group-item-action py-2 ripp le">
           <i class="fas fa-sign-out fa-fw me-3 my-3"></i><span>Logout</span>
         </a>
 
-        <a href="#"  class="list-group-item list-group-item-action py-2 ripple">
+        <a href="#"  class="list-group-item list-group-item-action py-2 ripp le">
           <i class="fas fa-trash fa-fw me-3 my-3"></i><span>Delete Profile</span>
         </a>
       </div>
@@ -110,7 +120,7 @@
   </div>
 </main>
 
-
+<!-- 
 <script>
   // Graph
 var ctx = document.getElementById("myChart");
@@ -153,5 +163,5 @@ var myChart = new Chart(ctx, {
     },
   },
 });
-</script>
+</script> -->
 <!--Main layout-->

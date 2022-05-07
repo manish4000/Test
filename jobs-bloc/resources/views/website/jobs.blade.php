@@ -175,7 +175,7 @@
 
             @for($i=1;$i<=10;$i++)
 
-                                <div class="col-12 border">
+                                <div class="col-12 shadow">
                                     <div class="product">
 
                                           <div class="row">

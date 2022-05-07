@@ -22,6 +22,12 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
+
+
+      
+
+
+
   </head>
   <body>
 
@@ -40,7 +46,7 @@
     <div class=" collapse navbar-collapse " id="navbarNavDropdown">
       <ul class="navbar-nav px-3 ">
         <li class="nav-item">
-          <a class="nav-link text-dark  active" aria-current="page" href="{{route('home')}}">Home</a>
+          <a class="nav-link text-dark  active text-decoration-none text-reset" aria-current="page" href="{{route('home')}}">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-dark " aria-current="page" href="{{route('candidates')}}">Find Resume</a>
@@ -73,25 +79,39 @@
 
 <!-- of canvas -->
 
-<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+<div class="offcanvas offcanvas-start bg-dark" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
   <div class="offcanvas-header">
     <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
-  <div class="offcanvas-body">
-    <div>
-      Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
-    </div>
-    <div class="dropdown mt-3">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
-        Dropdown button
-      </button>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <li><a class="dropdown-item" href="#">Action</a></li>
-        <li><a class="dropdown-item" href="#">Another action</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-      </ul>
-    </div>
+  <div class="offcanvas-body text-white">
+        <ul class="navbar-nav">
+                <li class="nav-item py-1">
+                  <a class="nav-link active text-decoration-none text-reset" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item py-1">
+                  <a class="nav-link active text-decoration-none text-reset" aria-current="page" href="#"> Find Resume</a>
+                </li>
+                <li class="nav-item py-1">
+                  <a class="nav-link active text-decoration-none text-reset" aria-current="page" href="#">Job Search</a>
+                </li>
+                <li class="nav-item py-1">
+                  <a class="nav-link active text-decoration-none text-reset" aria-current="page" href="#">Jobs By Category</a>
+                </li>
+                <li class="nav-item py-1">
+                  <a class="nav-link active text-decoration-none text-reset" aria-current="page" href="#">Jobs By Location</a>
+                </li>
+                <li class="nav-item py-1">
+                  <a class="nav-link active text-decoration-none text-reset" aria-current="page" href="#">Contact</a>
+                </li>
+                <li class="nav-item py-1">
+                  <a class="nav-link active text-decoration-none text-reset" aria-current="page" href="#">Career with jobsbloc</a>
+                </li>
+                <li class="nav-item py-1">
+                  <a class="nav-link active text-decoration-none text-reset" aria-current="page" href="#">wallet</a>
+                </li>
+              </ul>
+   
   </div>
 </div>
 <!--  -->

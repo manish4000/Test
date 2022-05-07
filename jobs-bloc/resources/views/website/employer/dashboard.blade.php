@@ -6,7 +6,7 @@
 
         <div class="row">
             <div class="col-3">
-              @include('website.candidate.layout')
+              @include('website.employer.layout')
             </div>
 
             <div class="col-9  py-4 px-3">
