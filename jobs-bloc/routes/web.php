@@ -100,13 +100,17 @@ Route::get('/employer/profile/', function () {
     return view('website.employer.profile');
 });
 
+Route::get('/employer/shortlist-candidates/', function () {
+    return view('website.employer.shortlist_candidates');
+});
+
+
+
 Route::get('/employer/resume/', function () {
     return view('website.employer.resume');
 });
 
-Route::get('/employer/shortlist-jobs/', function () {
-    return view('website.employer.shortlist_jobs');
-});
+
 
 Route::get('/employer/applied-jobs/', function () {
     return view('website.employer.applied_jobs');
@@ -120,6 +124,17 @@ Route::get('/employer/change-password/', function () {
 
 Route::get('/employer/delete-profile/', function () {
     return view('website.employer.delete_profile');
+});
+
+Route::get('/employer/my-jobs/', function () {
+    return view('website.employer.my_jobs');
+});
+
+Route::get('/employer/cart/', function () {
+    return view('website.employer.cart');
+});
+Route::get('/employer/check-out/', function () {
+    return view('website.employer.checkout');
 });
 
 

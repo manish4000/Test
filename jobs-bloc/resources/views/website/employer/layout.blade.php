@@ -47,6 +47,12 @@
            href="#"
            class="list-group-item list-group-item-action  py-2 ripple"
            >
+           <i class="fa fa-search-plus me-3 my-3" aria-hidden="true"></i><span>Shortlist Candidates</span>
+        </a>
+        <a
+           href="#"
+           class="list-group-item list-group-item-action  py-2 ripple"
+           >
           <i class="fas fa-tag fa-fw me-3 my-3"></i><span>Packages</span>
         </a>
         <a

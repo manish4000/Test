@@ -19,7 +19,7 @@
                         <h4 class="my-4">Edit Profile</h4>
                     <form class="row g-3">
                                 <div class="col-md-6">
-                                    <label for="inputPassword4" class="form-label">Featured Image</label>
+                                    <label for="inputPassword4" class="form-label">Logo Image</label>
                                     <input type="file" class="form-control p-3" id="inputfile4">
                                 </div>
                                 <div class="col-md-6">
