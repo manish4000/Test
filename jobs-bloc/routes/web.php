@@ -133,8 +133,16 @@ Route::get('/employer/my-jobs/', function () {
 Route::get('/employer/cart/', function () {
     return view('website.employer.cart');
 });
+
 Route::get('/employer/check-out/', function () {
     return view('website.employer.checkout');
+});
+
+Route::get('/employer/submit-job/', function () {
+    return view('website.employer.submit_job');
+});
+Route::get('/employer/submit-job-form/', function () {
+    return view('website.employer.submit_job_form');
 });
 
 

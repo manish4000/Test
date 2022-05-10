@@ -13,10 +13,11 @@
 
                     <h5>Applications statistics</h5>           
 
-                    <div class="row g-0 py-2 ">
+                    <!-- <div class="row g-0 py-2 ">
 
                         @for($i=1;$i<=4;$i++)
-                            <div class="col-3">
+
+                            <div class="col-3 border ">
                                 <div class="row">
                                     <div class="col-4 my-auto my-5 ">
                                             <div class="p-2 ">
@@ -38,8 +39,90 @@
                             </div>
 
                         @endfor
-                    </div>
+                    </div> -->
+                    <div class="container my-5 py-5">
 
+
+                                    <!--Section: Block Content-->
+                                    <section>
+
+                                    <!--Grid row-->
+                                    <div class="row">
+
+                                        <!--Grid column-->
+                                        <div class="col-lg-3 col-md-12 mb-4">
+
+                                        <div class="media blue lighten-2  z-depth-1 rounded">
+                                            <i class="far fa-money-bill-alt fa-3x blue z-depth-1 p-4 rounded-left "></i>
+                                            <div class="media-body">
+                                            <p class="text-uppercase mt-2 mb-1 ml-3"><small>sales</small></p>
+                                            <p class="font-weight-bold mb-1 ml-3">23 000$</p>
+
+
+                                            </div>
+                                        </div>
+
+
+                                        </div>
+                                        <!--Grid column-->
+
+                                        <!--Grid column-->
+                                        <div class="col-lg-3 col-md-6 mb-4">
+
+                                        <div class="media deep-purple lighten-2  z-depth-1 rounded">
+                                            <i class="fas fa-chart-bar fa-3x deep-purple z-depth-1 p-4 rounded-left "></i>
+                                            <div class="media-body">
+                                            <p class="text-uppercase mt-2 mb-1 ml-3"><small>Traffic</small></p>
+                                            <p class="font-weight-bold mb-1 ml-3">323 540</p>
+                                        
+
+                                            </div>
+                                        </div>
+
+
+                                        </div>
+                                        <!--Grid column-->
+
+                                        <!--Grid column-->
+                                        <div class="col-lg-3 col-md-6 mb-4">
+
+                                        <div class="media pink lighten-2  z-depth-1 rounded">
+                                            <i class="fas fa-download fa-3x pink z-depth-1 p-4 rounded-left "></i>
+                                            <div class="media-body">
+                                            <p class="text-uppercase mt-2 mb-1 ml-3"><small>downloads</small></p>
+                                            <p class="font-weight-bold mb-1 ml-3">13 540</p>
+                                        
+
+                                            </div>
+                                        </div>
+
+
+                                        </div>
+                                        <!--Grid column-->
+
+                                        <!--Grid column-->
+                                        <div class="col-lg-3 col-md-6 mb-4">
+
+                                        <div class="media pink lighten-2  z-depth-1 rounded">
+                                            <i class="fas fa-download fa-3x pink z-depth-1 p-4 rounded-left "></i>
+                                            <div class="media-body">
+                                            <p class="text-uppercase mt-2 mb-1 ml-3"><small>downloads</small></p>
+                                            <p class="font-weight-bold mb-1 ml-3">13 540</p>
+                                            </div>
+                                        </div>
+
+
+                                        </div>
+                                        <!--Grid column-->
+
+                                    </div>
+                                    <!--Grid row-->
+
+                                    </section>
+                                    <!--Section: Blocks Content-->
+
+
+</div>
 
                     <div >
                         <h5 class="mt-4">Jobs Applied Recently</h5>
