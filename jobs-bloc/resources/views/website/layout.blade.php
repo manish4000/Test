@@ -76,6 +76,9 @@
   </div>
 </nav>
 
+<div class="d-block d-lg-none text-center px-5 border border-warning  py-3 m-2">
+  <a href="{{route('login_register')}}" class="btn btn-warning px-5 py-3  fw-bold"> Login/Register </a>
+</div>
 
 <!-- of canvas -->
 

@@ -40,7 +40,7 @@
                                         <p class="text-center">Login Your Account</p>
 
 
-                                <form id="contact_us_create" name="contact-form" action="" method="POST" class="p-3">
+                                <form id="contact_us_create" name="contact-form" action="route('')" method="POST" id="user_create" class="p-3">
                                         @csrf
                                         <!--Grid row-->
                                         <div class="row mb-3">
@@ -48,8 +48,8 @@
                                             <div class="col-md-12">
                                                 <div class="md-form mb-0">
                                                 
-                                                    <input type="text" id="email" name="username" class="form-control p-2" >
-                                                    <span class="text-danger error-text email_error "></span>
+                                                    <input type="text" id="email" name="email_username" class="form-control p-2" >
+                                                    <span class="text-danger error-text email_username_error "></span>
                                                     
                                                 </div>
                                             </div>
@@ -62,8 +62,8 @@
                                             <div class="col-md-12">
                                                 <div class="md-form mb-0">
                                             
-                                                    <input type="text" id="subject" name="subject" class="form-control p-2">
-                                                    <span class="text-danger error-text subject_error "></span>
+                                                    <input type="text" name="password" class="form-control p-2">
+                                                    <span class="text-danger error-text password_error "></span>
                                                     
                                                 </div>
                                             </div>
@@ -86,9 +86,7 @@
                                             <div class="col-md-12 pt-3">
 
                                                 <div class="md-form d-grid text-center">
-
-                                                <input type="submit" id="subject" name="subject" class="btn btn-outline-warning  py-3" value="Login" >
-                                            
+                                                <input type="submit"  class="btn btn-outline-warning  py-3" value="Login" >
                                                 </div>
 
                                             </div>
@@ -110,35 +108,42 @@
                                         <p class="text-center">Choose your Account Type</p>
 
                                 
-                                <div class="row px-3">
-
-                                    <div class="col-6">
-                                              <div class="md-form d-grid text-center">
-                                                    <button  id="candidate"  class="single btn text-white btn-warning  py-2" target="1" > Candidate  </button>
-                                               </div>
-                                    </div>
-                                    <div class="col-6">
-                                              <div class="md-form d-grid text-center">
-                                              <button   id="employer"  class="single btn btn-warning text-white  py-2" target="2" > Employer  </button>
-                                               </div>
-                                    </div>
-                                    
-
-                                </div>
 
 
                                 <div id="div1" class="target">
 
-                                    <form id="contact_us_create" name="contact-form" action="" method="POST" class="p-3">
+                                    <form id="contact_us_create" name="contact-form" action="{{route('register')}}" method="POST" class="p-3">
                                             @csrf
                                             <!--Grid row-->
+
                                             <div class="row mb-3">
+
+                                            <div class="row mb-3">
+
+                                                        <div class="col-6">
+                                                                <div class="md-form d-grid text-center">
+                                                                <input type="radio"  name="role"  autocomplete="off" value="candidate">
+                                                                    <label class="btn btn-warning" for="role">Candidate</label>
+                                                                </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                                <div class="md-form d-grid text-center">
+                                                                <input type="radio"  name="role"  autocomplete="off" value="employer">
+                                                                    <label class="btn btn-warning" for="role">Employer</label>
+                                                                </div>
+                                                        </div>
+
+
+                                            </div>
+
+
+
                                                 <!--Grid column-->
                                                 <div class="col-md-12">
                                                     <div class="md-form mb-0">
                                                     
                                                         <input type="text" id="email" name="username" placeholder="Username*" class="form-control p-2">
-                                                        <span class="text-danger error-text email_error "></span>
+                                                        <span class="text-danger error-text username_error "></span>
                                                         
                                                     </div>
                                                 </div>
@@ -150,7 +155,7 @@
                                                 <!--Grid column-->
                                                 <div class="col-md-12">
                                                     <div class="md-form mb-0">
-                                                        <input type="text" id="email" name="username" placeholder="Email*" class="form-control p-2">
+                                                        <input type="text" id="email" name="email" placeholder="Email*" class="form-control p-2">
                                                         <span class="text-danger error-text email_error "></span>
                                                         
                                                     </div>
@@ -161,8 +166,8 @@
                                                 <!--Grid column-->
                                                 <div class="col-md-12">
                                                     <div class="md-form mb-0">
-                                                        <input type="password" id="email" name="username" placeholder="Password*" class="form-control p-2">
-                                                        <span class="text-danger error-text email_error "></span>
+                                                        <input type="password" id="password" name="password" placeholder="Password*" class="form-control p-2">
+                                                        <span class="text-danger error-text password_error "></span>
                                                         
                                                     </div>
                                                 </div>   
@@ -172,8 +177,8 @@
                                                 <!--Grid column-->
                                                 <div class="col-md-12">
                                                     <div class="md-form mb-0">
-                                                        <input type="password" id="email" name="username" placeholder="Confirm Password*" class="form-control p-2">
-                                                        <span class="text-danger error-text email_error "></span>
+                                                        <input type="password"  name="confirm_password" placeholder="Confirm Password*" class="form-control p-2">
+                                                        <span class="text-danger error-text confirm_password_error "></span>
                                                         
                                                     </div>
                                                 </div>   
@@ -185,29 +190,30 @@
                                                     <div class="md-form mb-0">
                                                 
                                                         <input type="text" id="subject" name="phone" class="form-control p-2" placeholder="Phone">
-                                                        <span class="text-danger error-text subject_error "></span>
+                                                        <span class="text-danger error-text phone_error "></span>
                                                         
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
                                                 <div class="col-md-12">
-                                                <select class="form-select" aria-label="Default select example">
+                                                <select class="form-select" name="job_category_id" aria-label="Default select example">
                                                     <option selected>Select Category</option>
                                                     <option value="1">One</option>
                                                     <option value="2">Two</option>
                                                     <option value="3">Three</option>
                                                 </select>
+                                                <span class="text-danger error-text job_category_id_error "></span>
                                                 </div>
                                             </div>
                                             <!--Grid row-->                   
                                             <div class="row">
                                                 <!--Grid column-->
                                                 <div class="col-md-12">
-    
                                                     <div class="mb-1 form-check">
-                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                    <input type="checkbox" class="form-check-input" name="terms" id="exampleCheck1">
                                                     <label class="form-check-label" for="exampleCheck1">You accept our Terms and Conditions and Privacy Policy</label>
+                                                    <span class="text-danger error-text terms_error "></span>
                                                     </div>
                                                 </div>
             
@@ -219,7 +225,7 @@
     
                                                     <div class="md-form d-grid text-center">
     
-                                                    <input type="submit" id="subject" name="subject" class="btn btn-dark  py-3" value="Register Now" >
+                                                    <input type="submit" class="btn btn-dark  py-3" value="Register Now" >
                                                 
                                                     </div>
     
@@ -307,15 +313,76 @@
 
   </div>
 
+
+
+
+
+
 <script>
 
-    $("#candidate").click(function(){
-
-        $("#div2").hide();
-        $("#div1").show();
-
-    });
+ 
     
+    $(document).ready( function(){
+      
+      $("#user_create").on('submit',function(e){
+
+          e.preventDefault();
+
+          $.ajax({
+
+                 url:$(this).attr('action'),
+             
+                 method:$(this).attr('method'),
+                 data:new FormData(this),
+                 processData:false,
+                 dataType:'json',
+                 contentType:false,
+                 beforeSend:function(){
+
+                      $(document).find('span.error-text').text('')
+                 },
+                 success:function(data){
+
+                  console.log(data);
+
+                      if(data.status == 401){
+                          $.each(data.error,function(prefix,val){
+                              $('span.'+prefix+'_error').text(val[0]);
+                          });
+
+                      }else if(data.status == 500){
+
+                        Swal.fire(
+                                    'Oops...',
+                                     data.message,
+                                    'error'
+                            );
+                      }else if(data.status == 200){
+
+       
+
+                        $('#user_create')[0].reset();
+
+                        Swal.fire(
+                                        'Good job!',
+                                        data.message,
+                                        'success'
+                            ); 
+
+                      window.location = "" 
+                            
+                      }
+
+                 } 
+
+          });
+
+      });
+  });
+
+
+
+
 
 </script>
 

@@ -146,3 +146,23 @@ Route::get('/employer/submit-job-form/', function () {
 });
 
 
+//route for admin
+
+
+//====================================guset admin ==============================================
+
+Route::group(['prefix' => 'admin','middleware'=> ['guest','preventBackHistory'] ,'namespace' => 'App\Http\Controllers\Admin'],function(){
+    Route::get('/',function (){  return view('admin.auth.login');})->name('login_view');
+    // Route::post('/login','Auth\LoginController@login')->name('admin.login');
+ });
+
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
