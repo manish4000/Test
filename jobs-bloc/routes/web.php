@@ -151,9 +151,44 @@ Route::get('/employer/submit-job-form/', function () {
 
 //====================================guset admin ==============================================
 
-Route::group(['prefix' => 'admin','middleware'=> ['guest','preventBackHistory'] ,'namespace' => 'App\Http\Controllers\Admin'],function(){
+Route::group(['prefix' => 'admin','middleware'=> ['guest','preventBackHistory','autoTrim'] ,'namespace' => 'App\Http\Controllers\Admin'],function(){
     Route::get('/',function (){  return view('admin.auth.login');})->name('login_view');
-    // Route::post('/login','Auth\LoginController@login')->name('admin.login');
+    Route::post('/login','Auth\LoginController@login')->name('admin.login');
+ });
+
+
+ Route::group(['prefix' => 'admin','as'=>'admin.' ,'middleware'=> ['auth','isAdmin','preventBackHistory'] ,'namespace' => 'App\Http\Controllers\Admin'],function(){
+    
+              Route::get('/logout','Auth\LoginController@logout')->name('logout');
+
+              Route::get('/dashboard','DashboardController@dashboardData')->name('dashboard');
+
+
+              Route::group(['prefix' => 'settings','as'=>'settings.' ,'middleware'=> ['autoTrim'],'namespace' => 'Settings' ],function(){
+
+                Route::get('/social','SocialController@index')->name('social.index'); 
+                Route::post('/social','ContactController@store')->name('social.store');  
+
+                Route::get('/contact','ContactController@index')->name('contact.index'); 
+
+                Route::post('/contact','ContactController@store')->name('contact.store'); 
+
+              //this is for testmonials              
+              
+                Route::group(['prefix' => 'testimonial','as'=>'testimonial.'],function(){
+        
+                    Route::get('/','TestimonialController@index')->name('index');
+                    Route::Post('/store','TestimonialController@store')->name('store');
+        
+                    Route::get('/edit/{id}','TestimonialController@edit')->name('edit');
+                    Route::post('/update/','TestimonialController@update')->name('update');
+                    Route::delete('/delete/{id}','TestimonialController@destroy')->name('delete');
+                    Route::get('/status/{id}','TestimonialController@changeStatus')->name('status');
+        
+                });
+        });
+
+
  });
 
 
