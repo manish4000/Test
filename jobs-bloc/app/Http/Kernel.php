@@ -65,5 +65,8 @@ class Kernel extends HttpKernel
         'isAdmin' => \App\Http\Middleware\isAdminMiddleware::class,
         'preventBackHistory'=> \App\Http\Middleware\PreventBackHistory::class,
         'autoTrim' => \App\Http\Middleware\BeforeAutoTrimmer::class,
+
+        'candidate' => \App\Http\Middleware\Candidate::class,
+        'employer' => \App\Http\Middleware\Employer::class
     ];
 }

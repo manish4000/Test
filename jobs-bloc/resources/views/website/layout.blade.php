@@ -63,13 +63,47 @@
         <li class="nav-item">
           <a class="nav-link text-dark " aria-current="page" href="{{route('contact')}}">Contact</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link text-dark" href="{{route('career_with_jabsbloc')}}">Career with jobsbloc</a>
-        </li>
+     
 
-        <li>
-          <a href="{{route('login_register')}}" class="btn btn-warning p-3  fw-bold"> Login/Register </a>
-        </li>
+        @if(Route::has('login'))
+            @auth 
+                @if(Auth::user()->role == "candidate")
+                <li class="nav-item dropdown">
+                  <a class="nav-link  dropdown-toggle text-dark" href="#" data-bs-toggle="dropdown">
+                     <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-1.webp" alt="avatar"
+                  class="img-fluid rounded-circle me-3" width="50">
+                   {{Auth::user()->name}} </a>
+                    <ul class="dropdown-menu">
+                   <li><a class="dropdown-item" href="#"><i class="fas fa-tachometer-alt fa-fw"></i>  Dashboard</a></li>
+                   <li><a class="dropdown-item" href="#"><i class="fas fa-user fa-fw"></i> Profile</a></li>
+                   <li><a class="dropdown-item" href="#"><i class="fas fa-file fa-fw"></i> My Resume</a></li>
+                   <li><a class="dropdown-item" href="#"><i class="fas fa-star-o fa-fw"></i> Applied Jobs</a></li>
+                   <li><a class="dropdown-item" href="#"><i class="fas fa-tag fa-fw fa-fw"></i> Packages</a></li>
+                   <li><a class="dropdown-item" href="#"><i class="fas fa-chart-bar fa-fw"></i> Shortlist Jobs</a></li>
+                   <li><a class="dropdown-item" href="#"><i class="fas fa-user-secret fa-fw"></i> Following Employers</a></li>
+                   <li><a class="dropdown-item" href="#"><i class="fas fa-bell-o fa-fw"></i> Alerts Jobs</a></li>
+                   <li><a class="dropdown-item" href="#"><i class="fas fa-comments-o fa-fw"></i> Messages</a></li>
+                   <li><a class="dropdown-item" href="#"><i class="fas fa-unlock-alt fa-fw"></i> Change Password</a></li>
+                   <li><a class="dropdown-item" href="{{route('logout')}}"><i class="fas fa-sign-out fa-fw"></i> Logout</a></li>
+                   <li><a class="dropdown-item" href="#"><i class="fas fa-trash fa-fw"></i> Delete Profile</a></li>
+                    
+                    
+                    </ul>
+                </li>
+                @else    
+                  
+                @endif
+            @else
+            <li>
+            <a href="{{route('register')}}" class="btn btn-warning p-3  fw-bold"> Login/Register </a>
+           </li>
+
+            @endif
+            
+        @endif
+
+        
+        
      
       </ul>
     </div>
@@ -199,7 +233,40 @@
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     
-   
+<script>
+  document.addEventListener("DOMContentLoaded", function(){
+// make it as accordion for smaller screens
+if (window.innerWidth > 992) {
+
+	document.querySelectorAll('.navbar .nav-item').forEach(function(everyitem){
+
+		everyitem.addEventListener('mouseover', function(e){
+
+			let el_link = this.querySelector('a[data-bs-toggle]');
+
+			if(el_link != null){
+				let nextEl = el_link.nextElementSibling;
+				el_link.classList.add('show');
+				nextEl.classList.add('show');
+			}
+
+		});
+		everyitem.addEventListener('mouseleave', function(e){
+			let el_link = this.querySelector('a[data-bs-toggle]');
+
+			if(el_link != null){
+				let nextEl = el_link.nextElementSibling;
+				el_link.classList.remove('show');
+				nextEl.classList.remove('show');
+			}
+
+		})
+	});
+
+}
+// end if innerWidth
+}); 
+</script>   
   
   </body>
 </html>

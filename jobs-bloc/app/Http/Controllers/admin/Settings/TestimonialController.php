@@ -26,6 +26,8 @@ class TestimonialController extends Controller
             'name' => "required",
             'description' => 'required', 
             'is_active' => 'required',
+            'star' => 'required',
+            'location' => 'required',
             'image' => "required|image|mimes:png,jpg,jpeg|max:1024",            
         ]);
 
@@ -42,6 +44,8 @@ class TestimonialController extends Controller
                         $testimonial_model->description =   $request->input('description');
                         $testimonial_model->is_active =     $request->input('is_active');
                         $testimonial_model->designation =     $request->input('designation');
+                        $testimonial_model->location =     $request->input('location');
+                        $testimonial_model->star =     $request->input('star');
                       
                        
 
@@ -126,6 +130,8 @@ class TestimonialController extends Controller
             'name' => "required",
             'description' => 'required', 
             'is_active' => 'required',
+            'star' => 'required',
+            'location' => 'required',
             'image' => 'sometimes|image|mimes:png,jpg,jpeg|max:1024',
                     
         ]);
@@ -146,6 +152,8 @@ class TestimonialController extends Controller
                         $testimonial->is_active = $request->is_active;
                
                         $testimonial->designation = $request->designation;
+                        $testimonial->location = $request->location;
+                        $testimonial->star = $request->star;
 
                         if($request->hasFile('image')){
                                  

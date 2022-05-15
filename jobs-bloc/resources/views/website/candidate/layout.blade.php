@@ -1,10 +1,7 @@
 <!--Main Navigation-->
 <header>
   <!-- Sidebar -->
-  <nav
-       id="sidebar"
-       class="collapse d-lg-block sidebar collapse bg-light"
-       >
+  <nav>
     <div class="position-sticky ">
       <div class="list-group list-group-flush mx-3 mt-4">
 
@@ -77,10 +74,10 @@
            class="list-group-item list-group-item-action  py-2 ripple"
            ><i class="fas fa-unlock-alt fa-fw me-3 my-3"></i><span>Change Password</span></a
           >
-        <a href="#"  class="list-group-item list-group-item-action py-2 ripp le">
+        <a href="{{route('logout')}}"  class="list-group-item list-group-item-action py-2 ripp le">
           <i class="fas fa-sign-out fa-fw me-3 my-3"></i><span>Logout</span>
         </a>
-
+    
         <a href="#"  class="list-group-item list-group-item-action py-2 ripp le">
           <i class="fas fa-trash fa-fw me-3 my-3"></i><span>Delete Profile</span>
         </a>
@@ -90,10 +87,10 @@
   <!-- Sidebar -->
 
   <!-- Navbar -->
-  <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white" >
-    <!-- Container wrapper -->
+  <!-- <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white" >
+  
     <div class="container-fluid">
-      <!-- Toggle button -->
+    
       <button
               class="navbar-toggler"
               type="button"
@@ -107,18 +104,18 @@
       </button>
 
     </div>
-    <!-- Container wrapper -->
-  </nav>
+ 
+  </nav> -->
   <!-- Navbar -->
 </header>
 <!--Main Navigation-->
 
 <!--Main layout-->
-<main style="margin-top: 58px">
+<!-- <main style="margin-top: 58px">
   <div class="container pt-4">
 
   </div>
-</main>
+</main> -->
 
 <!-- 
 <script>

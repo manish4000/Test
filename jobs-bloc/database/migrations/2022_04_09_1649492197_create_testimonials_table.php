@@ -14,6 +14,8 @@ class CreateTestimonialsTable extends Migration
 		$table->string('image');
 		$table->string('name');
 		$table->string('designation');
+		$table->string('location');
+		$table->tinyInteger('star');
 		$table->boolean('is_active');
 		$table->timestamp('created_at')->nullable();
 		$table->timestamp('updated_at')->nullable();

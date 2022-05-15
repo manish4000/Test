@@ -13,35 +13,7 @@
 
                     <h5>Applications statistics</h5>           
 
-                    <!-- <div class="row g-0 py-2 ">
-
-                        @for($i=1;$i<=4;$i++)
-
-                            <div class="col-3 border ">
-                                <div class="row">
-                                    <div class="col-4 my-auto my-5 ">
-                                            <div class="p-2 ">
-                                                
-                                                <i class="fa fa-paper-plane-o fa-2x" aria-hidden="true"></i>
-                                            </div>
-
-                                    </div>
-
-                                    <div class="col-8 my-5 ">
-                                            <div>
-                                                <span>0</span>
-                                                <p class="fw-bold">Applied Jobs</p>
-
-                                            </div>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                        @endfor
-                    </div> -->
-                    <div class="container my-5 py-5">
-
+                     <div class="container my-5 py-5">
 
                                     <!--Section: Block Content-->
                                     <section>
@@ -50,7 +22,7 @@
                                     <div class="row">
 
                                         <!--Grid column-->
-                                        <div class="col-lg-3 col-md-12 mb-4">
+                                        <div class="col-lg-3 col-6 mb-4">
 
                                         <div class="media blue lighten-2  z-depth-1 rounded">
                                             <i class="far fa-money-bill-alt fa-3x blue z-depth-1 p-4 rounded-left "></i>
@@ -67,7 +39,7 @@
                                         <!--Grid column-->
 
                                         <!--Grid column-->
-                                        <div class="col-lg-3 col-md-6 mb-4">
+                                        <div class="col-lg-3 col-6 mb-4">
 
                                         <div class="media deep-purple lighten-2  z-depth-1 rounded">
                                             <i class="fas fa-chart-bar fa-3x deep-purple z-depth-1 p-4 rounded-left "></i>
@@ -84,7 +56,7 @@
                                         <!--Grid column-->
 
                                         <!--Grid column-->
-                                        <div class="col-lg-3 col-md-6 mb-4">
+                                        <div class="col-lg-3 col-6 mb-4">
 
                                         <div class="media pink lighten-2  z-depth-1 rounded">
                                             <i class="fas fa-download fa-3x pink z-depth-1 p-4 rounded-left "></i>
@@ -101,7 +73,7 @@
                                         <!--Grid column-->
 
                                         <!--Grid column-->
-                                        <div class="col-lg-3 col-md-6 mb-4">
+                                        <div class="col-lg-3 col-6 mb-4">
 
                                         <div class="media pink lighten-2  z-depth-1 rounded">
                                             <i class="fas fa-download fa-3x pink z-depth-1 p-4 rounded-left "></i>
@@ -122,7 +94,7 @@
                                     <!--Section: Blocks Content-->
 
 
-</div>
+            </div>
 
                     <div >
                         <h5 class="mt-4">Jobs Applied Recently</h5>

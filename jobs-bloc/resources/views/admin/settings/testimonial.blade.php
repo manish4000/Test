@@ -58,6 +58,8 @@
               <th>Image</th>
               <th>Name</th>
               <th>Designation</th>
+              <th>Star</th>
+              <th>Location</th>
               <th>Status</th>
               <th>Action</th>
             </tr>
@@ -79,6 +81,8 @@
                   <td><img src="{{ APP_PATH.WEBSITE_TESTMONIAL_IMAGE.$data->image }}" width="150px"></td>
                   <td>{{ $data->name }}</td>
                   <td>{{$data->designation}}</td>
+                  <td>{{$data->star}}</td>
+                  <td>{{$data->location}}</td>
                   
                   @if($data->is_active =='1')
                   
@@ -150,8 +154,25 @@
                     <div class="form-group">
                       <label for="designation">Designation</label>
                       <input type="text" class="form-control" value="" name="designation" required>
-
                       <span class="text-danger error-text  designation_error "></span>
+                    </div>
+                    <div class="form-group">
+                      <label for="star">Star</label>
+                      <select name="star" id="" class="form-control" required> 
+
+                      <option >Select</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>                      
+                    </select>
+                      <span class="text-danger error-text  star_error "></span>
+                    </div>
+                    <div class="form-group">
+                      <label for="location">Location</label>
+                      <input type="text" class="form-control" value="" name="location" required>
+                      <span class="text-danger error-text  location_error "></span>
                     </div>
                   
                     <div class="form-group">
@@ -228,6 +249,26 @@
                       <input type="text" class="form-control" id="edit_designation" value="" name="designation" required>
 
                       <span class="text-danger error-text  designation_error "></span>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="star">Star</label>
+                      <select name="star" id="edit_star" class="form-control" required> 
+                        
+                      <option >Select</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>                      
+                    </select>
+                      <span class="text-danger error-text  star_error "></span>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="location">Location</label>
+                      <input type="text" class="form-control" value="" id="edit_location" name="location" required>
+                      <span class="text-danger error-text  location_error "></span>
                     </div>
                   
                     <div class="form-group">
@@ -333,6 +374,8 @@
                  $('#edit_name').val(response.testimonial_data.name);
                  $('#edit_is_active').val(response.testimonial_data.is_active);
                  $('#edit_designation').val(response.testimonial_data.designation);
+                 $('#edit_location').val(response.testimonial_data.location);
+                 $('#edit_star').val(response.testimonial_data.star);
                  $('#edit_id').val(testimonial_id);    
 
               }  

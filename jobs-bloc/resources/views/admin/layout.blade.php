@@ -165,7 +165,7 @@ body{
       }
 }
 
-.dtHorizontalExampleWrapper {
+/* .dtHorizontalExampleWrapper {
   max-width: 500px;
   margin: 0 auto;
 }
@@ -185,7 +185,7 @@ table.dataTable thead .sorting_desc_disabled:after,
 table.dataTable thead .sorting_desc_disabled:before {
   
  bottom: .5em;
-}
+} */
 
 
 

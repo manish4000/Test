@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -157,6 +158,7 @@ Route::group(['prefix' => 'admin','middleware'=> ['guest','preventBackHistory','
  });
 
 
+//==================================== admin ==============================================
  Route::group(['prefix' => 'admin','as'=>'admin.' ,'middleware'=> ['auth','isAdmin','preventBackHistory'] ,'namespace' => 'App\Http\Controllers\Admin'],function(){
     
               Route::get('/logout','Auth\LoginController@logout')->name('logout');
@@ -197,7 +199,24 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
+
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        if(Auth::user()->role == "candidate"){
+            return view('website.candidate.dashboard');
+        }
+        return view('website.employer.dashboard');
     })->name('dashboard');
+
+    Route::get('/profile', function () {
+        if(Auth::user()->role == "candidate"){
+            return view('website.candidate.dashboard');
+        }
+        return view('website.employer.dashboard');
+    })->name('dashboard');
+
+
+
 });
+
+///////////////////////////////////////////////////////////////////
+
