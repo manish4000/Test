@@ -299,30 +299,30 @@ table.dataTable thead .sorting_desc_disabled:before {
                     <p class="ps-3">Dashboard</p>
                   </a>
             </li>
-            <li class="nav-item">
-                  <a href="" class="nav-link {{ Request::is('admin/settings')? 'active': '' }} ">
+            <li class="nav-item menu-is-opening menu-open">
+                  <a href="" class="nav-link {{  (request()->segment(2) =='settings')? 'active':''; }} ">
                   <img  src="{{asset('assets/img/icons/settings.png')}}" alt="" height="25" width="30">
                     <p class="ps-3"> Settings <i class="fa-solid fa-angle-down ps-5"></i> </p>
                   </a>
 
-                  <ul class="nav nav-treeview">
+                  <ul class="nav nav-treeview " >
 
                     <li class="nav-item">                       
-                        <a href="{{route('admin.settings.social.index')}}" class="nav-link">
+                        <a href="{{route('admin.settings.social.index')}}" class="nav-link {{  (request()->segment(3) =='social')? 'active':''; }} ">
                         <!-- <i class="far fa-circle nav-icon"></i> -->
                         <p><i class="fa-solid fa-angles-right pe-2"></i>  Social Settings</p>
                          
                         </a>
                     </li> 
                     <li class="nav-item">                       
-                        <a href="{{route('admin.settings.contact.index')}}" class="nav-link">
+                        <a href="{{route('admin.settings.contact.index')}}" class="nav-link {{  (request()->segment(3) =='contact')? 'active':''; }} ">
                         <!-- <i class="far fa-circle nav-icon"></i> -->
                         <p><i class="fa-solid fa-angles-right pe-2"></i>  Contact Settings</p>
                          
                         </a>
                     </li> 
                       <li class="nav-item">                       
-                          <a href="{{route('admin.settings.testimonial.index')}}" class="nav-link">
+                          <a href="{{route('admin.settings.testimonial.index')}}" class="nav-link {{  (request()->segment(3) =='testimonial')? 'active':''; }} ">
                           <!-- <i class="far fa-circle nav-icon"></i> -->
                           <p><i class="fa-solid fa-angles-right pe-2"></i> Testimonial</p>
                           

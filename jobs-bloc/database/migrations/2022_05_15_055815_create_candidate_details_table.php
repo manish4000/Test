@@ -15,7 +15,7 @@ class CreateCandidateDetailsTable extends Migration
     {
         Schema::create('candidate_details', function (Blueprint $table) {
 
-            $table->id();
+     
             $table->bigInteger('user_id')->length(20)->unsigned();
             $table->string('featured_image')->nullable();
             $table->string('cover_image')->nullable();

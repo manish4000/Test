@@ -18,18 +18,30 @@
 
                 <div class="px-4 py-2 border ">
                         <h4 class="my-4">Edit Profile</h4>
-                    <form class="row g-3" action="{{route('')}}" method="POST" id="profile_update" >
+                    <form class="row g-3" action="{{route('candidate.profile.update')}}" method="POST" id="profile_update" >
+
+                                     @csrf
                                 <div class="col-md-6">
                                     <label for="inputPassword4" class="form-label">Featured Image</label>
-                                    <input type="file" class="form-control p-3" id="inputfile4" name="featured_image">
+                                    <input type="file" class="form-control p-3 shadow-sm" id="featured_image" name="featured_image">
                                     <span class="text-danger error-text  featured_image_error "></span>
                                 </div>
                                 <div class="col-md-6">
+                                    <img id="featured_image-preview-image-before-upload" src="https://t4.ftcdn.net/jpg/04/70/29/97/360_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpg"
+                                        alt="preview image" style="max-height: 100px;">
+                                </div>
+                                <div class="col-md-6">
                                     <label for="inputPassword4" class="form-label">Cover Photo</label>
-                                    <input type="file" class="form-control p-3" id="inputPassword4" name="cover_image">
+                                    <input type="file" class="form-control p-3 shadow-sm" id="cover_image" name="cover_image">
                                     <span class="text-danger error-text  cover_image_error "></span> 
                                     
                                 </div>
+                                                            
+                                <div class="col-md-6 ">
+                                    <img id="cover_image-preview-image-before-upload" src="https://t4.ftcdn.net/jpg/04/70/29/97/360_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpg"
+                                        alt="preview image" style="max-height: 100px;">
+                                </div>
+                                
                                 <div class="col-md-6">
                                     <label for="inputPassword4" class="form-label">Show my profile</label>
                                     <select class="form-select p-3" aria-label="Default select example">
@@ -37,61 +49,63 @@
                                     <option value="0">Hide</option>
                               
                                     </select>
-                                    <span class="text-danger error-text  cover_image_error "></span> 
+                                    <span class="text-danger error-text   "></span> 
                                 </div>
                                 <div class="col-md-6">
                                     <label for="text" class="form-label">Profile url</label>
-                                    <input type="text" class="form-control p-3" id="profile_url">
+                                    <input type="text" class="form-control p-3 shadow-sm" id="profile_url">
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inputPassword4" class="form-label">Full Name</label>
-                                    <input type="text" class="form-control p-3" id="" name="name">
-                                    <span class="text-danger error-text  cover_image_error "></span> 
+                                    <input type="text" class="form-control p-3 shadow-sm" id="" name="name" value="{{$user_details->name}}">
+                                    <span class="text-danger error-text  name_error "></span> 
                                 </div>
                                 <div class="col-md-6">
                                     <label for="dob" class="form-label">Date of Birth</label>
-                                    <input type="date" class="form-control p-3" id="inputPassword4" name="dob">
+                                    <input type="date" class="form-control p-3 shadow-sm" id="inputPassword4" name="dob">
                                     <span class="text-danger error-text  dob_error "></span> 
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inputPassword4" class="form-label">Email</label>
-                                    <input type="email" class="form-control p-3" id="" name="email">
+                                    <input type="email" class="form-control p-3 shadow-sm " id="" name="email" value="{{$user_details->email}}">
                                     <span class="text-danger error-text  email_error "></span> 
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inputPassword4" class="form-label">Phone</label>
-                                    <input type="text" class="form-control p-3" id="" name="phone">
+                                    <input type="text" class="form-control p-3 shadow-sm" id="" name="phone" value="{{$user_details->phone}}">
                                     <span class="text-danger error-text  phone_error "></span> 
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inputPassword4" class="form-label">Job Title</label>
-                                    <input type="text" class="form-control p-3" id="" name="job_title">
+                                    <input type="text" class="form-control p-3 shadow-sm" id="" name="job_title">
                                     <span class="text-danger error-text  job_title_error "></span> 
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inputPassword4" class="form-label">Salary</label>
-                                    <input type="text" class="form-control p-3" id="" name="salary">
+                                    <input type="text" class="form-control p-3 shadow-sm" id="" name="salary">
                                     <span class="text-danger error-text  salary_error "></span> 
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inputPassword4" class="form-label">Salary Type</label>
                                     <select class="form-select p-3" aria-label="Default select example" name="salary_type_id">
-                                    <option value="1">Show</option>
-                                    <option value="0">Hide</option>
+                                    
+                                     @foreach($salary_types as $type)   
+                                     <option value="{{$type->id}}">{{$type->title}}</option>
+                                     @endforeach
                                     </select>
                                     <span class="text-danger error-text  salary_type_id_error "></span> 
                                 </div>
                                 
                                 <div class="col-md-6">
                                     <label for="inputPassword4" class="form-label">Introduction Video URL</label>
-                                    <input type="text" class="form-control p-3" id="" name="introduction_video_url">
+                                    <input type="text" class="form-control p-3 shadow-sm" id="" name="introduction_video_url">
                                     <span class="text-danger error-text  introduction_video_url_error "></span> 
                                 </div>
 
                                 <div class="col-md-12">
                                     <label for="inputPassword4" class="form-label">Candidate Categories</label>
-                                    <input type="text" class="form-control p-3" id="">
-                                    <span class="text-danger error-text  cover_image_error "></span> 
+                                    <input type="text" class="form-control p-3 shadow-sm" id="">
+                                    <span class="text-danger error-text   "></span> 
                                 </div>
 
                                 <div class="col-md-12">
@@ -102,12 +116,12 @@
 
                                 <div class="col-md-12">
                                     <label for="inputPassword4" class="form-label">Candidate Locations</label>                       
-                                    <input type="text" class="form-control p-3" id="" name="location_id ">
+                                    <input type="text" class="form-control p-3 shadow-sm" id="" name="location_id ">
                                     <span class="text-danger error-text  location_id_error "></span> 
                                 </div>
                                 <div class="col-md-12 ">
                                     <label for="inputPassword4" class="form-label">Friendly Address</label>                       
-                                    <input type="text" class="form-control p-3" id="" name="friendly_address">
+                                    <input type="text" class="form-control p-3 shadow-sm" id="" name="friendly_address">
                                     <span class="text-danger error-text  friendly_address_error "></span> 
                                 </div>
                                 <label for="inputPassword4" id="social" class="form-label ">Socials</label> 
@@ -148,7 +162,7 @@
 
                                 <div class="col-md-12 ">
                                     <label for="inputPassword4" class="form-label">Candidate Tags</label>                       
-                                    <input type="text" class="form-control p-3" id="" name="candidate_tags">
+                                    <input type="text" class="form-control p-3 shadow-sm" id="" name="candidate_tags">
                                     <span class="text-danger error-text  candidate_tags_error "></span> 
                                 </div>
                                 
@@ -219,7 +233,7 @@
 
 
 
-        $("#milk_type_update").on('submit',function(e){
+        $("#profile_update").on('submit',function(e){
 
 e.preventDefault();
 
@@ -237,7 +251,9 @@ $.ajax({
         },
         success:function(data){
 
-            if(data.status == 400){
+            console.log(data);
+
+            if(data.status == 401){
 
                 $.each(data.error,function(prefix,val){
                     $('span.'+prefix+'_error').text(val[0]);
@@ -245,15 +261,13 @@ $.ajax({
 
             }else if(data.status == 200){
 
-                $('#milk_type_update')[0].reset();
-
                 Swal.fire(
                             'Good job!',
                             data.message,
                             'success'
                     );
 
-             window.location = "{{ route('admin.milk_management.milk_type.index') }}";
+             window.location = "";
 
             }else if(data.status == 500){
 
@@ -263,7 +277,7 @@ $.ajax({
                             'error'
                     );
 
-             window.location = "{{ route('admin.milk_management.milk_type.index') }}"     
+             window.location = ""     
 
             }
 
@@ -276,12 +290,45 @@ $.ajax({
 });
 
 
-});
 
 
 
 
 
 </script>
+<script type="text/javascript">
+      
+$(document).ready(function (e) {
+ 
+   
+   $('#featured_image').change(function(){
+            
+    let reader = new FileReader();
+ 
+    reader.onload = (e) => { 
+ 
+      $('#featured_image-preview-image-before-upload').attr('src', e.target.result); 
+    }
+ 
+    reader.readAsDataURL(this.files[0]); 
+   
+   });
+   $('#cover_image').change(function(){
+            
+    let reader = new FileReader();
+ 
+    reader.onload = (e) => { 
+ 
+      $('#cover_image-preview-image-before-upload').attr('src', e.target.result); 
+    }
+ 
+    reader.readAsDataURL(this.files[0]); 
+   
+   });
+   
+});
+ 
+</script>
+
 
 @endsection

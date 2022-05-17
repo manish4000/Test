@@ -23,7 +23,7 @@
         </a>
         
         <a
-           href="#"
+           href="{{route('candidate.profile.index')}}"
            class="list-group-item list-group-item-action  py-2  active"
            >
           <i class="fas fa-user fa-fw me-3 my-3"></i
