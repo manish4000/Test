@@ -18,14 +18,21 @@
 
                 <div class="px-4 py-2 border ">
                         <h4 class="my-4">Edit Resume</h4>
-                    <form class="row g-3">
-                                <div class="col-md-6">
+                    <form class="row g-3" method="POST" target="" action="{{route('candidate.resume.update')}}" id="update_resume">
+                      @csrf
+                                <div class="col-md-12">
                                     <label for="inputPassword4" class="form-label">Portfolio Photos</label>
-                                    <input type="file" class="form-control p-3" id="inputfile4">
+                                    <input type="file" class="form-control p-3" name="portfolio_photos[]" id="portfolio_photos" multiple>
+                                    <span class="text-danger error-text  portfolio_photos_error "></span>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="row">
+                                   <div class="images-preview-div" > </div>
+                                </div>
+
+                                <div class="col-md-12">
                                     <label for="inputPassword4" class="form-label">CV Attachment</label>
-                                    <input type="file" class="form-control p-3" id="inputPassword4">
+                                    <input type="file" name="cv"  class="form-control p-3" id="">
+                                    <span class="text-danger error-text  cv_error "></span>
                                 </div>
 
                                 <label for="inputPassword4" id="" class="form-label fw-bold">Education</label> 
@@ -442,5 +449,94 @@
         // });
 
 </script>
+
+<script>
+
+$("#update_resume").on('submit',function(e){
+
+e.preventDefault();
+
+$.ajax({
+
+        url:$(this).attr('action'),
+        method:$(this).attr('method'),
+        data:new FormData(this),
+        processData:false,
+        dataType:'json',
+        contentType:false,
+        beforeSend:function(){
+
+            $(document).find('span.error-text').text('')
+        },
+        success:function(data){
+
+            console.log(data);
+
+            if(data.status == 401){
+
+                $.each(data.error,function(prefix,val){
+                    $('span.'+prefix+'_error').text(val[0]);
+                });
+
+            }else if(data.status == 200){
+
+                Swal.fire(
+                            'Good job!',
+                            data.message,
+                            'success'
+                    );
+
+             window.location = "";
+
+            }else if(data.status == 500){
+
+              Swal.fire(
+                            'Oops...',
+                            'Something went wrong!',
+                            'error'
+                    );
+
+             window.location = ""     
+
+            }
+
+        } 
+
+
+
+});
+
+});
+
+
+
+
+
+
+
+</script>
+<script type="text/javascript">
+    $(function() {
+// Multiple images preview with JavaScript
+var previewImages = function(input, imgPreviewPlaceholder) {
+if (input.files) {
+var filesAmount = input.files.length;
+for (i = 0; i < filesAmount; i++) {
+var reader = new FileReader();
+reader.onload = function(event) {
+$($.parseHTML('<img>')).attr('src', event.target.result).appendTo(imgPreviewPlaceholder);
+}
+reader.readAsDataURL(input.files[i]);
+}
+}
+};
+$('#portfolio_photos').on('change', function() {
+previewImages(this, 'div.images-preview-div');
+});
+});
+
+</script>
+
+
 
 @endsection

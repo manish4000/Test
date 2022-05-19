@@ -27,8 +27,7 @@
                                     <span class="text-danger error-text  featured_image_error "></span>
                                 </div>
                                 <div class="col-md-6">
-                                    <img id="featured_image-preview-image-before-upload" src="https://t4.ftcdn.net/jpg/04/70/29/97/360_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpg"
-                                        alt="preview image" style="max-height: 100px;">
+                                    <img id="featured_image-preview-image-before-upload" src="<?php echo  isset($candidate_details->featured_image) ? APP_PATH.CANDIDATE_FEATURE_IMAGE_URL.$candidate_details->featured_image : 'https://t4.ftcdn.net/jpg/04/70/29/97/360_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpg' ?> "   alt="preview image" style="max-height: 100px;" />
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inputPassword4" class="form-label">Cover Photo</label>
@@ -38,7 +37,7 @@
                                 </div>
                                                             
                                 <div class="col-md-6 ">
-                                    <img id="cover_image-preview-image-before-upload" src="https://t4.ftcdn.net/jpg/04/70/29/97/360_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpg"
+                                    <img id="cover_image-preview-image-before-upload" src="<?php echo  isset($candidate_details->cover_image) ? APP_PATH.CANDIDATE_COVER_IMAGE_URL.$candidate_details->cover_image : 'https://t4.ftcdn.net/jpg/04/70/29/97/360_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpg' ?>"
                                         alt="preview image" style="max-height: 100px;">
                                 </div>
                                 
@@ -62,7 +61,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="dob" class="form-label">Date of Birth</label>
-                                    <input type="date" class="form-control p-3 shadow-sm" id="inputPassword4" name="dob">
+                                    <input type="date" class="form-control p-3 shadow-sm" id="inputPassword4" name="dob" value="{{$candidate_details->dob ?? ''}}">
                                     <span class="text-danger error-text  dob_error "></span> 
                                 </div>
                                 <div class="col-md-6">
@@ -77,17 +76,17 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inputPassword4" class="form-label">Job Title</label>
-                                    <input type="text" class="form-control p-3 shadow-sm" id="" name="job_title">
+                                    <input type="text" class="form-control p-3 shadow-sm" id="" name="job_title" value="{{$candidate_details->job_title ?? ''}}">
                                     <span class="text-danger error-text  job_title_error "></span> 
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inputPassword4" class="form-label">Salary</label>
-                                    <input type="text" class="form-control p-3 shadow-sm" id="" name="salary">
+                                    <input type="text" class="form-control p-3 shadow-sm" id="" name="salary" value="{{$candidate_details->salary ?? ''}}">
                                     <span class="text-danger error-text  salary_error "></span> 
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inputPassword4" class="form-label">Salary Type</label>
-                                    <select class="form-select p-3" aria-label="Default select example" name="salary_type_id">
+                                    <select class="form-select p-3" aria-label="Default select example" name="salary_type_id" value="{{$candidate_details->salary_type_id ?? ''}}">
                                     
                                      @foreach($salary_types as $type)   
                                      <option value="{{$type->id}}">{{$type->title}}</option>
@@ -98,30 +97,44 @@
                                 
                                 <div class="col-md-6">
                                     <label for="inputPassword4" class="form-label">Introduction Video URL</label>
-                                    <input type="text" class="form-control p-3 shadow-sm" id="" name="introduction_video_url">
+                                    <input type="text" class="form-control p-3 shadow-sm" id="" name="introduction_video_url" value="{{$candidate_details->introduction_video_url ?? ''}}">
                                     <span class="text-danger error-text  introduction_video_url_error "></span> 
                                 </div>
 
                                 <div class="col-md-12">
+
+                                <?php  $selected =  explode(',',$candidate_details->candidate_job_categories) ?>
+
                                     <label for="inputPassword4" class="form-label">Candidate Categories</label>
-                                    <input type="text" class="form-control p-3 shadow-sm" id="">
-                                    <span class="text-danger error-text   "></span> 
+                                    <select id="candidate_categories" multiple name="candidate_job_categories[]" placeholder="Native Select" data-search="true" data-silent-initial-value-set="true">
+                                    
+                                    @foreach($job_categories as $category)   
+                                     <option value="{{$category->id}}" {{(in_array($category->id ,$selected) ? 'selected' : '' )}}>{{$category->title}}</option>
+                                     @endforeach
+                                    
+                                    </select>
                                 </div>
+                                    
+
 
                                 <div class="col-md-12">
                                     <label for="inputPassword4" class="form-label">Description</label>                       
-                                     <textarea class="form-control" id="editor" rows="5" name="description"></textarea>
+                                     <textarea class="form-control" id="editor" rows="5" name="description">{!! $candidate_details->description !!} </textarea>
                                      <span class="text-danger error-text  description_error "></span> 
                                 </div>
 
                                 <div class="col-md-12">
                                     <label for="inputPassword4" class="form-label">Candidate Locations</label>                       
-                                    <input type="text" class="form-control p-3 shadow-sm" id="" name="location_id ">
-                                    <span class="text-danger error-text  location_id_error "></span> 
+                                    <select class="form-select p-3" aria-label="Default select example" name="location_id" value="{{$candidate_details->location_id ?? ''}}">
+                                  
+                                     @foreach($locations as $type)   
+                                     <option value="{{$type->id}}">{{$type->title}}</option>
+                                     @endforeach
+                                    </select>
                                 </div>
                                 <div class="col-md-12 ">
                                     <label for="inputPassword4" class="form-label">Friendly Address</label>                       
-                                    <input type="text" class="form-control p-3 shadow-sm" id="" name="friendly_address">
+                                    <input type="text" class="form-control p-3 shadow-sm" id="" name="friendly_address" value="{{$candidate_details->friendly_address ?? ''}}">
                                     <span class="text-danger error-text  friendly_address_error "></span> 
                                 </div>
                                 <label for="inputPassword4" id="social" class="form-label ">Socials</label> 
@@ -130,18 +143,20 @@
                                                
                                         
                                                 <tbody>
+                                                        @foreach($user_social_networks as $user_network)
                                                             <tr>
                                                                 <td>
                                                                     <label for="inputPassword4" class="form-label">Network</label>                       
                                                                     <select class="form-control p-2"  data-live-search="true"  name="network[]" >
-                                                                    <option value="1">Show</option>
-                                                                    <option value="0">Hide</option>                                
+                                                                        @foreach($social_networks as $network)
+                                                                        <option value="{{$network->id}}" {{($network->id == $user_network->social_network_id)?'selected' : '' }}>{{$network->title}}</option>                                
+                                                                        @endforeach
                                                                     </select>
                                                                 </td>
 
                                                                 <td>
                                                                     <label for="inputPassword4" class="form-label">Url</label>                       
-                                                                    <input type="text" class="form-control p-2" id="" name="url[]">
+                                                                    <input type="text" class="form-control p-2" id="" name="url[]" value="{{$user_network->url}}">
                                                                 </td>
 
                                                                 <td class="my-auto">
@@ -150,6 +165,7 @@
                                                                 </td>
                                                             </tr>
 
+                                                        @endforeach
                                                 </tbody>
 
                                         </table>
@@ -162,7 +178,7 @@
 
                                 <div class="col-md-12 ">
                                     <label for="inputPassword4" class="form-label">Candidate Tags</label>                       
-                                    <input type="text" class="form-control p-3 shadow-sm" id="" name="candidate_tags">
+                                    <input type="text" class="form-control p-3 shadow-sm" id="" name="candidate_tags" value="{{$candidate_details->candidate_tags ?? ''}}">
                                     <span class="text-danger error-text  candidate_tags_error "></span> 
                                 </div>
                                 
@@ -204,8 +220,9 @@
                                                                 '<td>'+
                                                                 '<label for="inputPassword4" class="form-label">Network</label>'+                       
                                                                 '<select class="form-select p-2" aria-label="Default select example" name="network[]">'+
-                                                                '<option value="1">Show</option>'+
-                                                                '<option value="0">Hide</option>'+
+                                                                '@foreach($social_networks as $network)'+
+                                                                        '<option value="{{$network->id}}">{{$network->title}}</option>'+                                
+                                                                        '@endforeach'+
                                                                 '</select>'+
                                                                 '</td>'+
 
@@ -330,5 +347,12 @@ $(document).ready(function (e) {
  
 </script>
 
+
+<script>
+VirtualSelect.init({ 
+  ele: '#candidate_categories' 
+});
+
+</script>
 
 @endsection

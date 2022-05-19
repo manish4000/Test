@@ -225,6 +225,9 @@ Route::group(['prefix' => 'candidate','namespace' => 'App\Http\Controllers\websi
     Route::get('profile','ProfileController@index')->name('profile.index'); 
     Route::post('profile','ProfileController@updateProfile')->name('profile.update'); 
 
+    Route::get('resume','ResumeController@index')->name('resume.index'); 
+    Route::post('resume','ResumeController@updateResume')->name('resume.update'); 
+
 
 });
 

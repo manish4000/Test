@@ -30,7 +30,7 @@
             ><span>Profile</span>
         </a>
         <a
-           href="#"
+           href="{{route('candidate.resume.index')}}"
            class="list-group-item list-group-item-action  py-2 ripple"
            ><i class="fas fa-file fa-fw me-3 my-3"></i><span>My Resume</span></a
           >

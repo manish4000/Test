@@ -24,6 +24,8 @@ class CreateCandidateDetailsTable extends Migration
             $table->string('salary')->nullable();
             $table->bigInteger('salary_type_id')->nullable()->length(20)->unsigned();
             $table->string('introduction_video_url')->nullable();
+            $table->string('candidate_job_categories')->nullable();
+
             $table->text('description')->nullable();
             $table->bigInteger('location_id')->nullable()->length(20)->unsigned();
             $table->tinyText('friendly_address')->nullable();
