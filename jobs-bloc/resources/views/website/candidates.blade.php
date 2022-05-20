@@ -147,7 +147,7 @@
 
             @for($i=1;$i<=10;$i++)
 
-                                <div class="col-6 border">
+                                <div class="col-12 col-lg-6 border">
                                 <div class="product py-4">
 
                                     <div class="text-center"> <img src="https://jobsbloc.com/wp-content/themes/careerup/images/placeholder.png" width="200"> </div>

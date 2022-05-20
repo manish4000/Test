@@ -84,7 +84,9 @@ class ProfileController extends Controller
 
                            $url = $request->url;
 
-                          for($i =0 ;$i<count($social_platform); $i++){
+                           $loop_time = ($social_platform == null)? 0 : count($social_platform);
+
+                          for($i =0 ;$i<$loop_time; $i++){
 
                             $data = [
                              'user_id' => $user->id ,

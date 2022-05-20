@@ -28,16 +28,18 @@
                                 <div class="row">
                                    <div class="images-preview-div" > </div>
                                 </div>
-
+                                
+                                  
+                                
                                 <div class="col-md-12">
                                     <label for="inputPassword4" class="form-label">CV Attachment</label>
-                                    <input type="file" name="cv"  class="form-control p-3" id="">
+                                    <input type="file" name="cv"  class="form-control p-3" id="" value="{{$resume_details->cv}}">
                                     <span class="text-danger error-text  cv_error "></span>
+                                    <p class="text-warning">{{$resume_details->cv}}</p>
                                 </div>
 
+
                                 <label for="inputPassword4" id="" class="form-label fw-bold">Education</label> 
-
-
                                 <div class="accordion" id="accordionExample">
                                   <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingOne">
@@ -53,30 +55,29 @@
                                                       
 
                                                           <tbody id="education_body">
+
+                                                              @foreach($candidate_education as $education)
                                                                       <tr>
                                                                           <td>
                                                                               <div class="col-12 mb-2">
-                                                                                <input type="text" class="form-control p-2" id="" name="title[]" placeholder="title">
+                                                                                <input type="text" class="form-control p-2" id="" name="ed_title[]" placeholder="title" value="{{$education->ed_title}}">
                                                                               </div>
                                                                               <div class="col-12 mb-2">
-                                                                                <input type="text" class="form-control p-2" id="" name="academy[]" placeholder="academy">
+                                                                                <input type="text" class="form-control p-2" id="" name="ed_academy[]" placeholder="academy" value="{{$education->ed_academy}}">
                                                                               </div>
                                                                               <div class="col-12 mb-2">
-                                                                                <input type="text" class="form-control p-2" id="" name="year[]" placeholder="year">
+                                                                                <input type="text" class="form-control p-2" id="" minlength="4" maxlength="4" name="ed_year[]" placeholder="year" value="{{$education->ed_year}}">
                                                                               </div>
                                                                               <div class="col-12 mb-2">
-                                                                              
-                                                                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description[]">                                                                
-                                                                                </textarea>
+                                                                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="ed_description[]" >{{$education->ed_description}}</textarea>
                                                                               </div>
                                                                           </td>
 
                                                                           <td class="my-auto">
-
-                                                                              <a href="#" class="btn btn-danger removeEducation">Delete </a>
+                                                                              <a href="#" class="btn btn-danger btn-sm removeEducation">Delete </a>
                                                                           </td>
                                                                       </tr>
-
+                                                              @endforeach
                                                           </tbody>
 
                                                   </table>
@@ -114,33 +115,34 @@
                                           <div class="row">
                                                   <table class="table table-borderedless">
                                                           <tbody id="experience_body">
+
+                                                              @foreach($candidate_experience as $experience)
                                                                       <tr>
                                                                           <td>
                                                                               <div class="col-12 mb-2">
-                                                                                <input type="text" class="form-control p-2" id="" name="title[]" placeholder="title">
+                                                                                <input type="text" class="form-control p-2" id="" name="ex_title[]" placeholder="title" value="{{$experience->ex_title}}">
                                                                               </div>
                                                                               <div class="col-12 mb-2">
-                                                                                <input type="text" class="form-control p-2" id="" name="start_date[]" placeholder="start_date">
+                                                                                <input type="date" class="form-control p-2" id="" name="ex_start_date[]" placeholder="start_date" value="{{$experience->ex_start_date}}">
                                                                               </div>
                                                                               <div class="col-12 mb-2">
-                                                                                <input type="text" class="form-control p-2" id="" name="end_date[]" placeholder="end_date">
+                                                                                <input type="date" class="form-control p-2" id="" name="ex_end_date[]" placeholder="end_date" value="{{$experience->ex_end_date}}">
                                                                               </div>
                                                                               <div class="col-12 mb-2">
-                                                                                <input type="text" class="form-control p-2" id="" name="company[]" placeholder="company">
+                                                                                <input type="text" class="form-control p-2" id="" name="ex_company[]" placeholder="company" value="{{$experience->ex_company}}">
                                                                               </div>
-                                                                              <div class="col-12 mb-2">
-                                                                                
-                                                                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description[]">                                                                
-                                                                                </textarea>
+                                                                              <div class="col-12 mb-2">   
+                                                                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="ex_description[]">{{$experience->ex_description}}</textarea>
                                                                               </div>
                                                                           </td>
 
                                                                           <td class="my-auto">
 
-                                                                              <a href="#" class="btn btn-danger removeExperience">Delete </a>
+                                                                              <a href="#" class="btn btn-danger btn-sm removeExperience">Delete </a>
                                                                           </td>
                                                                       </tr>
 
+                                                              @endforeach
                                                           </tbody>
 
                                                    </table>
@@ -173,32 +175,33 @@
                                                   <div class="row">
                                                           <table class="table table-borderedless">
                                                                   <tbody id="award_body">
+
+                                                                      @foreach($candidate_award as $award)
                                                                               <tr>
                                                                                   <td>
                                                                                       <div class="col-12 mb-2">
-                                                                                        <input type="text" class="form-control p-2" id="" name="title[]" placeholder="title">
+                                                                                        <input type="text" class="form-control p-2" id="" name="aw_title[]" placeholder="title" value="{{$award->aw_title}}">
                                                                                       </div>
                                                                                       <div class="col-12 mb-2">
-                                                                                        <input type="year" class="form-control p-2" id="" name="year[]" placeholder="year">
+                                                                                        <input type="year" class="form-control p-2" id="" minlength="4" maxlength="4" name="aw_year[]" value="{{$award->aw_year}}" placeholder="year">
                                                                                       </div>
                                                                                       <div class="col-12 mb-2">
                                                                                         
-                                                                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description[]">                                                                
-                                                                                        </textarea>
+                                                                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="aw_description[]" >{{$award->aw_description}}</textarea>
                                                                                       </div>
                                                                                   </td>
 
                                                                                   <td class="my-auto">
 
-                                                                                      <a href="#" class="btn btn-danger removeAward">Delete </a>
+                                                                                      <a href="#" class="btn btn-danger btn-sm removeAward">Delete </a>
                                                                                   </td>
                                                                               </tr>
-
+                                                                      @endforeach
                                                                   </tbody>
 
                                                           </table>
 
-                                                          <div>  <a href="#" class="btn btn-info addAward">add antoher Award</a>    </div>
+                                                          <div>  <a href="#" class="btn btn-info  addAward">add antoher Award</a>    </div>
 
                                                   </div>
 
@@ -224,23 +227,24 @@
                                               <table class="table table-borderedless">
                                                    
                                                       <tbody id="skill_body">
+
+                                                        @foreach($candidate_skill as $skill)
                                                                   <tr>
                                                                       <td>
                                                                           <div class="col-12 mb-2">
-                                                                            <input type="text" class="form-control p-2" id="" name="title[]" placeholder="title">
+                                                                            <input type="text" class="form-control p-2" id="" name="sk_title[]" placeholder="title" value="{{$skill->sk_title}}">
                                                                           </div>
                                                                           <div class="col-12 mb-2">
-                                                                            <input type="text" class="form-control p-2" id="" name="percentage[]" placeholder="Percentage">
+                                                                            <input type="text" class="form-control p-2" id="" minlength="1" maxlength="3" name="sk_percentage[]" placeholder="Percentage" value="{{$skill->sk_percentage}}">
                                                                           </div>
-                                                                        
                                                                       </td>
 
                                                                       <td class="my-auto">
 
-                                                                          <a href="#" class="btn btn-danger removeSkill">Delete </a>
+                                                                          <a href="#" class="btn btn-danger btn-sm removeSkill">Delete </a>
                                                                       </td>
                                                                   </tr>
-
+                                                      @endforeach
                                                       </tbody>
 
                                               </table>
@@ -258,13 +262,10 @@
                                  
                                 </div>
 
-                                <div class="col-md-12 ">
-                                    <label for="inputPassword4" class="form-label">Candidate Tags</label>                       
-                                    <input type="text" class="form-control p-3" id="">
-                                </div>
+                                
                                 
                                 <div class="col-12">
-                                    <button type="submit" class="btn px-4 text-white fw-bold py-3 btn-warning">Save Profile</button>
+                                    <button type="submit" class="btn px-4 text-white fw-bold py-3 btn-warning">Save Resume</button>
                                 </div>
                     </form>           
                     
@@ -300,22 +301,22 @@
                 var tr =  '<tr>'+
                                                                 '<td>'+
                                                                     '<div class="col-12 mb-2">'+
-                                                                      '<input type="text" class="form-control p-2" id="" name="title[]" placeholder="title">'+
+                                                                      '<input type="text" class="form-control p-2" id="" name="ed_title[]" placeholder="title">'+
                                                                     '</div>'+
                                                                     '<div class="col-12 mb-2">'+
-                                                                      '<input type="text" class="form-control p-2" id="" name="academy[]" placeholder="academy">'+
+                                                                      '<input type="text" class="form-control p-2" id="" name="ed_academy[]" placeholder="academy">'+
                                                                     '</div>'+
                                                                     '<div class="col-12 mb-2">'+
-                                                                      '<input type="text" class="form-control p-2" id="" name="year[]" placeholder="year">'+
+                                                                      '<input type="text" class="form-control p-2" id="" minlength="4" maxlength="4" name="ed_year[]" placeholder="year">'+
                                                                     '</div>'+
                                                                     '<div class="col-12 mb-2">'+
-                                                                      '<input type="text" class="form-control p-2" id="" name="description[]" placeholder="description">'+
+                                                                                '<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="ed_description[]" ></textarea>'+
                                                                     '</div>'+
                                                                 '</td>'+
 
                                                                 '<td class="my-auto">'+
 
-                                                                     '<a href="#" class="btn btn-danger removeEducation">Delete </a>'+
+                                                                     '<a href="#" class="btn btn-danger btn-sm removeEducation">Delete </a>'+
                                                                 '</td>'+
                                                             '</tr>';
 
@@ -340,27 +341,26 @@
             var tr = '<tr>'
                                                                 +'<td>'+
                                                                     '<div class="col-12 mb-2">'+
-                                                                      '<input type="text" class="form-control p-2" id="" name="title[]" placeholder="title">'+
+                                                                      '<input type="text" class="form-control p-2" id="" name="ex_title[]" placeholder="title">'+
                                                                     '</div>'+
                                                                     '<div class="col-12 mb-2">'+
-                                                                      '<input type="text" class="form-control p-2" id="" name="start_date[]" placeholder="start_date">'+
+                                                                      '<input type="date" class="form-control p-2" id="" name="ex_start_date[]" placeholder="start_date">'+
                                                                     '</div>'+
                                                                     '<div class="col-12 mb-2">'+
-                                                                      '<input type="text" class="form-control p-2" id="" name="end_date[]" placeholder="end_date">'+
+                                                                      '<input type="date" class="form-control p-2" id="" name="ex_end_date[]" placeholder="end_date">'+
                                                                     '</div>'+
                                                                     '<div class="col-12 mb-2">'+
-                                                                      '<input type="text" class="form-control p-2" id="" name="company[]" placeholder="company">'+
+                                                                      '<input type="text" class="form-control p-2" id="" name="ex_company[]" placeholder="company">'+
                                                                     '</div>'+
                                                                     '<div class="col-12 mb-2">'+
                                                                       
-                                                                      '<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description[]">'+                                                                
-                                                                      '</textarea>'+
+                                                                      '<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="ex_description[]">'+'</textarea>'+
                                                                     '</div>'+
                                                                 '</td>'+
 
                                                                 '<td class="my-auto">'+
 
-                                                                     '<a href="#" class="btn btn-danger removeExperience">Delete </a>'+
+                                                                     '<a href="#" class="btn btn-danger btn-sm removeExperience">Delete </a>'+
                                                                 '</td>'+
                                                             '</tr>' ;
 
@@ -379,21 +379,20 @@
             var tr = '<tr>'+
                                                                 '<td>'+
                                                                     '<div class="col-12 mb-2">'+
-                                                                      '<input type="text" class="form-control p-2" id="" name="title[]" placeholder="title">'+
+                                                                      '<input type="text" class="form-control p-2" id="" name="aw_title[]" placeholder="title">'+
                                                                     '</div>'+
                                                                     '<div class="col-12 mb-2">'+
-                                                                      '<input type="year" class="form-control p-2" id="" name="year[]" placeholder="year">'+
+                                                                      '<input type="year" class="form-control p-2" id="" minlength="4" maxlength="4" name="aw_year[]" placeholder="year">'+
                                                                     '</div>'+
                                                                     '<div class="col-12 mb-2">'+
                                                                       
-                                                                      '<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description[]">'+                                                                
-                                                                      '</textarea>'+
+                                                                      '<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="aw_description[]">'+'</textarea>'+
                                                                     '</div>'+
                                                                 '</td>'+
 
                                                                 '<td class="my-auto">'+
 
-                                                                     '<a href="#" class="btn btn-danger removeAward">Delete </a>'+
+                                                                     '<a href="#" class="btn btn-danger btn-sm removeAward">Delete </a>'+
                                                                 '</td>'+
                                                             '</tr>';
 
@@ -419,17 +418,17 @@
             var tr = '<tr>'+
                                                                       '<td>'+
                                                                           '<div class="col-12 mb-2">'+
-                                                                            '<input type="text" class="form-control p-2" id="" name="title[]" placeholder="title">'+
+                                                                            '<input type="text" class="form-control p-2" id="" name="sk_title[]" placeholder="title">'+
                                                                           '</div>'+
                                                                           '<div class="col-12 mb-2">'+
-                                                                            '<input type="text" class="form-control p-2" id="" name="percentage[]" placeholder="Percentage">'+
+                                                                            '<input type="text" class="form-control p-2" id="" minlength="1" maxlength="3" name="sk_percentage[]" placeholder="Percentage">'+
                                                                           '</div>'+
                                                                         
                                                                       '</td>'+
 
                                                                       '<td class="my-auto">'+
 
-                                                                          '<a href="#" class="btn btn-danger removeSkill">Delete </a>'+
+                                                                          '<a href="#" class="btn btn-danger btn-sm removeSkill">Delete </a>'+
                                                                       '</td>'+
                                                                   '</tr>' ;
 

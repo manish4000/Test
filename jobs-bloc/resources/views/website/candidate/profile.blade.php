@@ -348,11 +348,6 @@ $(document).ready(function (e) {
 </script>
 
 
-<script>
-VirtualSelect.init({ 
-  ele: '#candidate_categories' 
-});
 
-</script>
 
 @endsection

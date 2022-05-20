@@ -63,7 +63,7 @@ Route::get('/test', function () {
 // this is for candidates
 Route::get('/candidates/dashboard/', function () {
     return view('website.candidate.dashboard');
-});
+})->name('candidate.dashboard');
 
 Route::get('/candidates/profile/', function () {
     return view('website.candidate.profile');
@@ -75,21 +75,23 @@ Route::get('/candidates/resume/', function () {
 
 Route::get('/candidates/shortlist-jobs/', function () {
     return view('website.candidate.shortlist_jobs');
-});
+})->name('candidate.shortlist_jobs');
 
 Route::get('/candidates/applied-jobs/', function () {
     return view('website.candidate.applied_jobs');
-});
+})->name('candidate.applied_jobs');
+
 Route::get('/candidates/alert-jobs/', function () {
     return view('website.candidate.alert_job');
-});
+})->name('candidate.alert_job');
+
 Route::get('/candidates/change-password/', function () {
     return view('website.candidate.change_password');
-});
+})->name('candidate.change_password');
 
 Route::get('/candidates/delete-profile/', function () {
     return view('website.candidate.delete_profile');
-});
+})->name('candidate.delete_profile');
 
 //this is for employer 
 

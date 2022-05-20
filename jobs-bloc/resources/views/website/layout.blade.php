@@ -82,18 +82,18 @@
                   class="img-fluid rounded-circle me-3" width="50">
                    {{Auth::user()->name}} </a>
                     <ul class="dropdown-menu">
-                   <li><a class="dropdown-item" href="#"><i class="fas fa-tachometer-alt fa-fw"></i>  Dashboard</a></li>
-                   <li><a class="dropdown-item" href="#"><i class="fas fa-user fa-fw"></i> Profile</a></li>
-                   <li><a class="dropdown-item" href="#"><i class="fas fa-file fa-fw"></i> My Resume</a></li>
-                   <li><a class="dropdown-item" href="#"><i class="fas fa-star-o fa-fw"></i> Applied Jobs</a></li>
+                   <li><a class="dropdown-item" href="{{route('candidate.dashboard')}}"><i class="fas fa-tachometer-alt fa-fw"></i>  Dashboard</a></li>
+                   <li><a class="dropdown-item" href="{{route('candidate.profile.index')}}"><i class="fas fa-user fa-fw"></i> Profile</a></li>
+                   <li><a class="dropdown-item" href="{{route('candidate.resume.index')}}"><i class="fas fa-file fa-fw"></i> My Resume</a></li>
+                   <li><a class="dropdown-item" href="{{route('candidate.applied_jobs')}}"><i class="fas fa-star-o fa-fw"></i> Applied Jobs</a></li>
                    <li><a class="dropdown-item" href="#"><i class="fas fa-tag fa-fw fa-fw"></i> Packages</a></li>
-                   <li><a class="dropdown-item" href="#"><i class="fas fa-chart-bar fa-fw"></i> Shortlist Jobs</a></li>
+                   <li><a class="dropdown-item" href="{{route('candidate.shortlist_jobs')}}"><i class="fas fa-chart-bar fa-fw"></i> Shortlist Jobs</a></li>
                    <li><a class="dropdown-item" href="#"><i class="fas fa-user-secret fa-fw"></i> Following Employers</a></li>
-                   <li><a class="dropdown-item" href="#"><i class="fas fa-bell-o fa-fw"></i> Alerts Jobs</a></li>
+                   <li><a class="dropdown-item" href="{{route('candidate.alert_job')}}"><i class="fas fa-bell-o fa-fw"></i> Alerts Jobs</a></li>
                    <li><a class="dropdown-item" href="#"><i class="fas fa-comments-o fa-fw"></i> Messages</a></li>
-                   <li><a class="dropdown-item" href="#"><i class="fas fa-unlock-alt fa-fw"></i> Change Password</a></li>
+                   <li><a class="dropdown-item" href="{{route('candidate.change_password')}}"><i class="fas fa-unlock-alt fa-fw"></i> Change Password</a></li>
                    <li><a class="dropdown-item" href="{{route('logout')}}"><i class="fas fa-sign-out fa-fw"></i> Logout</a></li>
-                   <li><a class="dropdown-item" href="#"><i class="fas fa-trash fa-fw"></i> Delete Profile</a></li>
+                   <li><a class="dropdown-item" href="{{route('candidate.delete_profile')}}"><i class="fas fa-trash fa-fw"></i> Delete Profile</a></li>
                     
                     
                     </ul>
