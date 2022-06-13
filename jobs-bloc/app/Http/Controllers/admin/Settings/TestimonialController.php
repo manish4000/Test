@@ -26,9 +26,9 @@ class TestimonialController extends Controller
             'name' => "required",
             'description' => 'required', 
             'is_active' => 'required',
-            'star' => 'required',
+            'star' => 'required|numeric',
             'location' => 'required',
-            'image' => "required|image|mimes:png,jpg,jpeg|max:1024",            
+         'image' => "required|image|mimes:png,jpg,jpeg|max:1024",            
         ]);
 
 

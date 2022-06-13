@@ -1,26 +1,22 @@
-@extends('admin.layout')
+@extends('layouts.app', ['activePage' => 'map', 'titlePage' => __('Map')])
 
 @section('content')
 
-
+{{-- 
 <div>
-<ol class="breadcrumb bg-white d-flex justify-content-end pe-4 ">
+  <ol class="breadcrumb bg-white d-flex justify-content-end  ">
 		<li><a href="{{URL::to('admin/dashboard')}}" class="text-decoration-none text-reset" ><i class="fa fa-dashboard"></i> Dashboard</a> <i class="fa-solid fa-caret-right"></i></li>
-        
+     
 		<li><a href="#" class="text-decoration-none text-reset ms-1">Testmonial</a></li>
-
 	</ol>
+
 </div>
-
-
 
 <div class="row">
-<div class="col-lg-12 margin-tb">
-
-    <button type="button" class="btn btn-success mb-2" data-bs-toggle="modal" data-bs-target="#add_testimonial">Add New Testmonial</button>
-
-</div>
-</div>
+  <div class="col-lg-12">
+      <button type="button" class="btn btn-success mb-2" data-toggle="modal" data-target="#add_testimonial">Add New Testmonial</button>
+  </div>
+</div> --}}
 
 <!-- check session -->
 
@@ -45,82 +41,129 @@
 
 <!--  -->
 
+<div class="content">
+  <div class="container-fluid">
 
+   
 
-
-<table class="table table-striped  table-bordered table-dark ">
-
-<thead>
-            <tr>
-              <th>#</th>
-          
-              <th>Description</th>
-              <th>Image</th>
-              <th>Name</th>
-              <th>Designation</th>
-              <th>Star</th>
-              <th>Location</th>
-              <th>Status</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-         
-          @if (isset( $testimonial_data))
-  
-          <tbody>
-         
-        
-
-                @foreach ($testimonial_data as $data)
-              <tr>
-                  <td>{{ $data->id }}</td>
-                  <td>
-                      
-                      {{ substr($data->description,0,80) }}
-                    </td>
-                  <td><img src="{{ APP_PATH.WEBSITE_TESTMONIAL_IMAGE.$data->image }}" width="150px"></td>
-                  <td>{{ $data->name }}</td>
-                  <td>{{$data->designation}}</td>
-                  <td>{{$data->star}}</td>
-                  <td>{{$data->location}}</td>
-                  
-                  @if($data->is_active =='1')
-                  
-                  <td>  <span class="badge badge-success">Active</span> </td>
-                  
-                  @else
-                  <td><span class="badge badge-danger">Inactive</span></td>
-                  
-                  @endif          
-                  <td  style="width: 220px;">
-            
-
-                      <a href="{{route('admin.settings.testimonial.status',$data->id)}}" class="btn btn-warning btn-sm" >Status</a>
-                      <button type="button" data-bs-toggle="modal" data-bs-target="#edit_testimonial" class="edit_testimonial   btn btn-primary btn-sm"  value="{{$data->id}}" >Edit</button>
-                      <button type="button" data-bs-toggle="modal" data-bs-target="#delete_testimonial" class="delete_testimonial   btn btn-danger btn-sm" value="{{$data->id}}" >Delete</button>
-                   </td>
-                  
-              </tr>
-              @endforeach 
-           
-          </tbody>
+    <ol class="breadcrumb bg-white d-flex justify-content-start  ">
+      <li><a href="{{URL::to('admin/dashboard')}}" class="text-decoration-none text-reset" ><i class="fa fa-dashboard"></i> Dashboard</a> <i class="fa-solid fa-caret-right"></i></li>
        
-  @endif
-</table>
+      <li><a href="#" class="text-decoration-none text-reset ms-1">Testmonial</a></li>
+    </ol>
+    <button type="button" class="btn btn-success mb-2" data-toggle="modal" data-target="#add_testimonial">Add New Testmonial</button>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-primary">
+            <h4 class="card-title "> Testimonial </h4>
+            <p class="card-category"> Here is a subtitle for this table</p>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead class=" text-primary">
+                  <th>ID </th>
+                  <th>
+                    Description
+                  </th>
+                  <th>
+                    Image
+                  </th>
+                  <th>
+                    Name
+                  </th>
+                  <th>
+                    Designation
+                  </th>
+                  <th>
+                    Star
+                  </th>
+                  <th>
+                    Location
+                  </th>
+                  <th>
+                    Status
+                  </th>
+                  <th>
+                    Action
+                  </th>
+                </thead>
+                @if (isset( $testimonial_data))
+  
+                <tbody>
+               
+              
+      
+                      @foreach ($testimonial_data as $data)
+                    <tr>
+                        <td>{{ $data->id }}</td>
+                        <td>
+                            
+                            {{ substr($data->description,0,80) }}
+                          </td>
+                        <td><img src="{{ APP_PATH.WEBSITE_TESTMONIAL_IMAGE.$data->image }}" width="150px"></td>
+                        <td>{{ $data->name }}</td>
+                        <td>{{$data->designation}}</td>
+                        <td>{{$data->star}}</td>
+                        <td>{{$data->location}}</td>
+                        
+                        @if($data->is_active =='1')
+                        
+                        <td>  <span class="badge badge-success">Active</span> </td>
+                        
+                        @else
+                        <td><span class="badge badge-danger">Inactive</span></td>
+                        
+                        @endif          
+                        <td  style="width: 220px;">
+                  
+      
+                            <a href="{{route('admin.settings.testimonial.status',$data->id)}}" class="btn btn-warning btn-sm" >Status</a>
+                            <button type="button" data-toggle="modal" data-target="#edit_testimonial" class="edit_testimonial   btn btn-primary btn-sm"  value="{{$data->id}}" >Edit</button>
+                            <button type="button" data-toggle="modal" data-target="#delete_testimonial" class="delete_testimonial   btn btn-danger btn-sm" value="{{$data->id}}" >Delete</button>
+                         </td>
+                        
+                    </tr>
+                    @endforeach 
+                 
+                </tbody>
+             
+               @endif
+
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+     
+    </div>
+  </div>
+</div>
 
 
-<!-- model box -->
+
 
 <!-- Button trigger modal -->
 
 
+
+
+
+
+
+
+
+
+
+
 <!-- Modal -->
-<div class="modal fade" id="add_testimonial" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xl">
+<div class="modal fade bd-example-modal-lg" id="add_testimonial" tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Add New Testmonial</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
 
@@ -130,34 +173,45 @@
                       @csrf
 
                    <div class="form-group">
-                      <label for="name">Name</label>
+                      <label class="mb-2" for="name">Name</label>
                       <input type="text" class="form-control" value="" name="name" required>
 
                       <span class="text-danger error-text  name_error "></span>
                     </div>
                   
                     <div class="form-group">
-                      <label for="description">Description</label>
+                      <label class="mb-2" for="description">Description</label>
                       <textarea name="description" id="" class="form-control" rows="3"></textarea>
                       
                       <span class="text-danger error-text description_error"></span>
                     </div>
-                  
-                    <div class="form-group">
-                      <label for="image">Image</label>
-                      <input type="file" class="form-control" value="" name="image" required >
-                      <span class="text-danger error-text  image_error "></span>
+
+
+
+
+                   
+                    <div class="form-group form-file-upload form-file-multiple">
+                      
+                      <input type="file" multiple="false" name="image" class="inputFileHidden" style="z-index:423522">
+                      <div class="input-group">
+                          <input type="text" class="form-control inputFileVisible" placeholder="Single File">
+                          <span class="input-group-btn">
+                              <button type="button" class="btn btn-fab btn-round btn-primary">
+                                  <i class="material-icons">attach_file</i>
+                              </button>
+                          </span>
+                      </div>
                     </div>
                   
-                   
+                
 
                     <div class="form-group">
-                      <label for="designation">Designation</label>
+                      <label class="mb-2" for="designation">Designation</label>
                       <input type="text" class="form-control" value="" name="designation" required>
                       <span class="text-danger error-text  designation_error "></span>
                     </div>
                     <div class="form-group">
-                      <label for="star">Star</label>
+                      <label class="mb-2" for="star">Star</label>
                       <select name="star" id="" class="form-control" required> 
 
                       <option >Select</option>
@@ -170,13 +224,13 @@
                       <span class="text-danger error-text  star_error "></span>
                     </div>
                     <div class="form-group">
-                      <label for="location">Location</label>
+                      <label class="mb-2" for="location">Location</label>
                       <input type="text" class="form-control" value="" name="location" required>
                       <span class="text-danger error-text  location_error "></span>
                     </div>
                   
                     <div class="form-group">
-                    <label for="">Is Active</label>
+                    <label class="mb-2" for="">Is Active</label>
                     <select name="is_active" id="" class="form-control" required> 
                       <option value="1">Yes</option>
                         <option value="0">No</option>
@@ -188,12 +242,23 @@
                     <button type="submit" class="btn btn-primary">Submit</button>
                   </form>
 
+
+                  <form>
+                    <div class="form-group">
+                      <label class="mb-2" for="exampleFormControlInput1">Email address</label>
+                      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                    </div>
+                    
+                  </form>
+
+
+
               </div>
 
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
       </div>
     </div>
@@ -209,11 +274,11 @@
 <!-- edit model box -->
 
 <div class="modal fade" id="edit_testimonial" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xl">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Edit Testmonial </h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
 
@@ -236,12 +301,25 @@
                       <span class="text-danger error-text description_error"></span>
                     </div>
                   
-                    <div class="form-group">
-                      <label for="image">Image</label>
-                      <input type="file" class="form-control" value="" name="image"  >
-                      <span class="text-danger error-text image_error"></span>        
+
+                    <div class="form-group form-file-upload form-file-multiple">
+                      
+                      <input type="file" multiple="false" name="image" class="inputFileHidden" style="z-index:423522">
+                      <div class="input-group">
+                          <input type="text" class="form-control inputFileVisible" placeholder="Single File">
+                          <span class="input-group-btn">
+                              <button type="button" class="btn btn-fab btn-round btn-primary">
+                                  <i class="material-icons">attach_file</i>
+                              </button>
+                          </span>
+
+                          <span class="text-danger error-text image_error"></span>  
+                      </div>
                     </div>
-                                
+
+
+
+                   
                     <div><img src="" alt="" id="edit_image" height="200"></div>
 
                     <div class="form-group">
@@ -289,7 +367,7 @@
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
       </div>
     </div>
@@ -311,7 +389,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Delete Testmonial</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
       </div>
         <div class="modal-body">
 
@@ -321,7 +399,7 @@
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="button" class="delete_testimonial_btn  btn btn-danger">Delete</button>
       </div>
     </div>
@@ -537,6 +615,8 @@
 
 
 </script>
+
+
 
 
 @endsection
