@@ -4,9 +4,9 @@ namespace App\Http\Controllers\website\candidate;
 
 use App\Http\Controllers\Controller;
 use App\Models\CandidateDetailsModel;
-use App\Models\JobCategoryModel;
+use App\Models\Job\JobCategory;
 use App\Models\LocationModel;
-use App\Models\SalaryTypeModel;
+use App\Models\Job\SalaryTypeModel;
 use App\Models\socialNetworks;
 use App\Models\User;
 use App\Models\UserSocialNetwork;
@@ -20,14 +20,14 @@ class ProfileController extends Controller
     public function index(){    
 
         $user_details = Auth::user();
-        
         $candidate_details  = CandidateDetailsModel::where('user_id',$user_details->id)->first();
         $locations = LocationModel::where('is_active',1)->get();
         $salary_types =  SalaryTypeModel::where('is_active',1)->get();
         $social_networks = socialNetworks::where('is_active',1)->get();
-        $job_categories = JobCategoryModel::where('is_active',1)->get();
+        $job_categories = JobCategory::where('is_active',1)->get();
 
         $user_social_networks = UserSocialNetwork::where('user_id',$user_details->id)->get();
+
         return view('website.candidate.profile',compact('salary_types','user_details','candidate_details','locations','job_categories','social_networks','user_social_networks'));
     }
 
@@ -37,7 +37,7 @@ class ProfileController extends Controller
             // return response($request->all());
 
           $validator = Validator::make($request->all(), [  
-            'name' => 'required|string',
+            'name' => 'nullable|string',
             'phone' => 'nullable|numeric|digits_between:10,10',
             'address' => 'nullable', 
             'dob' => 'nullable|date' ,
@@ -138,7 +138,7 @@ class ProfileController extends Controller
 
                         $cat=  $request->candidate_job_categories;
 
-                        $job_categories = implode(',', $cat);
+                         $job_categories = implode(',', $cat);
 
 
 

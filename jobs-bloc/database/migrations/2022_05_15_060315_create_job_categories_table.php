@@ -17,6 +17,9 @@ class CreateJobCategoriesTable extends Migration
             $table->id();
             $table->bigInteger('parent_id');
             $table->string('title');
+            $table->string('slug');
+            $table->integer('order')->unsigned();
+            $table->boolean('is_featured');
             $table->boolean('is_active');
             $table->timestamps();
         });

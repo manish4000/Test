@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Job;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -17,3 +17,4 @@ class SalaryTypeModel extends Model
     protected $primaryKey ="id";
     public $timestamps =true;
 }
+

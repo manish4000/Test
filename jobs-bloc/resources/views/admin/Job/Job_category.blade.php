@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'map', 'titlePage' => __('Locations')])
+@extends('layouts.app', ['activePage' => 'map', 'titlePage' => __('Job Category ')])
 
 @section('content')
 
@@ -9,10 +9,11 @@
 <div class="content">
   <div class="container-fluid">
 
+
     <ol class="breadcrumb bg-white d-flex justify-content-start  ">
       <li><a href="{{URL::to('admin/dashboard')}}" class="text-decoration-none text-reset" ><i class="fa fa-dashboard"></i> Dashboard</a> <i class="fa-solid fa-caret-right"></i></li>
        
-      <li><a href="#" class="text-decoration-none text-reset ms-1">Locations</a></li>
+      <li><a href="#" class="text-decoration-none text-reset ms-1">Job Category </a></li>
     </ol>
 
     @if (\Session::has('status_update'))
@@ -36,12 +37,12 @@
 
 
 
-    <button type="button" class="btn btn-success mb-2" data-toggle="modal" data-target="#add_testimonial">Add New Location</button>
+    <button type="button" class="btn btn-success mb-2" data-toggle="modal" data-target="#add_testimonial">Add New Job Category</button>
     <div class="row">
       <div class="col-md-12">
         <div class="card">
           <div class="card-header card-header-primary">
-            <h4 class="card-title "> Location </h4>
+            <h4 class="card-title "> Job Category </h4>
             <p class="card-category"> Here is a subtitle for this table</p>
           </div>
           <div class="card-body">
@@ -49,25 +50,31 @@
               <table class="table">
                 <thead class=" text-primary">
                   <th>ID </th>
-                  <th>
-                   Title
-                  </th>
-                  
-                  <th>
-                    Action
-                  </th>
+                  <th>Title </th>
+                  <th>Parent Category </th>
+                  <th>Order</th>
+                  <th>Status</th>
+                  <th>IS Featured</th>    
+
+                  <th>Action</th>
                 </thead>
-                @if (isset( $location_data))
+                @if (isset( $job_category_data))
   
                 <tbody>
-               
+                    
+                 
               
       
-                      @foreach ($location_data as $data)
+                      @foreach ($job_category_data as $data)
                     <tr>
                         <td>{{ $data->id }}</td>
                        
                         <td>{{$data->title}}</td>
+                        <td>{{$data->parent_category}}</td>
+                        <td>{{$data->order}}</td>
+                       
+                  
+                       
                         
                         @if($data->is_active =='1')
                         
@@ -76,9 +83,25 @@
                         @else
                         <td><span class="badge badge-danger">Inactive</span></td>
                         
-                        @endif          
-                        <td  style="width: 220px;">
-                            <a href="{{route('admin.location.status',$data->id)}}" class="btn btn-warning btn-sm" >Status</a>
+                        @endif  
+                        
+                        @if($data->is_featured =='1')
+                        
+                        <td>  <span class="badge badge-success">Active</span> </td>
+                        
+                        @else
+                        <td><span class="badge badge-danger">Inactive</span></td>
+                        
+                        @endif  
+
+
+
+
+                        <td>
+                            <a href="{{route('admin.job.job_category.status',$data->id)}}" class="btn btn-warning btn-sm" >Status</a>
+
+                            <a href="{{route('admin.job.job_category.featured',$data->id)}}" class="btn btn-info btn-sm" > Featured <i class="material-icons">star</i></a>
+
                             <button type="button" data-toggle="modal" data-target="#edit_testimonial" class="edit_testimonial   btn btn-primary btn-sm"  value="{{$data->id}}" >Edit</button>
                             <button type="button" data-toggle="modal" data-target="#delete_testimonial" class="delete_testimonial   btn btn-danger btn-sm" value="{{$data->id}}" >Delete</button>
                          </td>
@@ -92,6 +115,8 @@
 
               </table>
             </div>
+
+            {{$job_category_data->links('pagination::bootstrap-4')}}
           </div>
         </div>
       </div>
@@ -108,27 +133,19 @@
 
 
 
-
-
-
-
-
-
-
-
 <!-- Modal -->
 <div class="modal fade bd-example-modal-lg" id="add_testimonial" tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add New Location</h5>
-        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+        <h5 class="modal-title" id="exampleModalLabel">Add New Job Category </h5>
+        <a type="button" class="btn-close" data-dismiss="modal" aria-label="Close"><i class="material-icons">close</i> </a>
       </div>
       <div class="modal-body">
 
                     
-                <div class="container" >
-                  <form action="{{route('admin.location.store')}}"  method="POST" id="testimonial_create">
+              <div class="container" >
+                  <form action="{{route('admin.job.job_category.store')}}"  method="POST" id="testimonial_create">
                       @csrf
 
                    
@@ -136,6 +153,28 @@
                       <label class="mb-2" for="title">Title</label>
                       <input type="text" class="form-control" value="" name="title" required>
                       <span class="text-danger error-text  title_error "></span>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="mb-2" for="Parent Category">Parent Category </label>
+
+                      <select name="parent_id" id="" class="form-control" required> 
+                        <option> Select </option>
+                        @isset($job_categories)
+
+                            @foreach($job_categories as $category)
+                            <option value="{{$category->id}}"> {{$category->title}} </option>
+                            @endforeach
+                         @endisset
+                      </select>
+
+                      <span class="text-danger error-text  parent_id_error "></span>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="mb-2" for="Order">Order</label>
+                      <input type="text" class="form-control" value="" name="order" required>
+                      <span class="text-danger error-text  order_error "></span>
                     </div>
                   
                     <div class="form-group">
@@ -146,12 +185,19 @@
                     </select>
                     <span class="text-danger error-text  is_active_error "></span>
                     </div>
+
+                    <div class="form-group">
+                        <label class="mb-2" for="">Is Featured</label>
+                        <select name="is_featured" id="" class="form-control" required> 
+                        <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                        <span class="text-danger error-text  is_featured_error "></span>
+                    </div>
                     
                   
                     <button type="submit" class="btn btn-primary">Submit</button>
                   </form>
-
-
               </div>
 
 
@@ -176,43 +222,68 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Edit Location </h5>
+        <h5 class="modal-title" id="exampleModalLabel">Edit Job Category </h5>
         <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
 
-                    
-                <div class="container" >
-                  <form action="{{route('admin.location.store')}}"  method="POST" id="update_testimonial" enctype="multipart/form-data">
-                      @csrf
-                  
-                      <div class="form-group">
-                        
-                        <label for="title">title</label>
+        <div class="container" >
+            <form action="{{route('admin.job.job_category.store')}}"  method="POST" id="testimonial_create">
+                @csrf
 
-                        <input type="hidden" title="id" id="edit_id" name="id">
-
-                        <input type="text" class="form-control" id="edit_title" value="" name="title" required>
-  
-                        <span class="text-danger error-text  title_error "></span>
-                      </div>
-                   
              
-                  
-                    <div class="form-group">
-                    <label for="">Is Active</label>
-                    <select name="is_active" id="edit_is_active" class="form-control" required> 
-                      <option value="1">Yes</option>
-                        <option value="0">No</option>
-                    </select>
-                    <span class="text-danger error-text  is_active_error "></span>
-                    </div>
-                    
-                  
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                  </form>
-
+              <div class="form-group">
+                <label class="mb-2" for="title">Title</label>
+                <input type="text" name="id" id="edit_id">
+                <input type="text" class="form-control" value="" id="edit_title" name="title" required>
+                <span class="text-danger error-text  title_error "></span>
               </div>
+
+              <div class="form-group">
+                <label class="mb-2" for="Parent Category">Parent Category </label>
+
+                <select name="parent_id" id="edit_parent_id" class="form-control" required> 
+                  <option> Select </option>
+                  @isset($job_categories)
+
+                      @foreach($job_categories as $category)
+                      <option value="{{$category->id}}"> {{$category->title}} </option>
+                      @endforeach
+                   @endisset
+                </select>
+
+                <span class="text-danger error-text  parent_id_error "></span>
+              </div>
+
+              <div class="form-group">
+                <label class="mb-2" for="Order">Order</label>
+                <input type="text" class="form-control"  id="edit_order" value="" name="order" required>
+                <span class="text-danger error-text  order_error "></span>
+              </div>
+            
+              <div class="form-group">
+              <label class="mb-2" for="">Is Active</label>
+              <select name="is_active" id="edit_is_active" class="form-control" required> 
+                <option value="1">Yes</option>
+                  <option value="0">No</option>
+              </select>
+              <span class="text-danger error-text  is_active_error "></span>
+              </div>
+
+              <div class="form-group">
+                  <label class="mb-2" for="">Is Featured</label>
+                  <select name="is_featured" id="edit_is_featured" class="form-control" required> 
+                  <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                  <span class="text-danger error-text  is_featured_error "></span>
+              </div>
+              
+            
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+
 
 
       </div>
@@ -238,8 +309,8 @@
   <div class="modal-dialog ">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Delete Location</h5>
-        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"> </button>
+        <h5 class="modal-title" id="exampleModalLabel">Delete Job Type</h5>
+        <a type="button" class="btn-close" data-dismiss="modal" aria-label="Close"> <i class="material-icons">close</i></a>
       </div>
         <div class="modal-body">
 
@@ -280,7 +351,7 @@
 
           type:"GET",
 
-          url:  "{{APP_PATH}}" + "admin/location/edit/"+testimonial_id,
+          url:  "{{APP_PATH}}" + "admin/job/job-category/edit/"+testimonial_id,
 
          
           success:function(response){
@@ -299,8 +370,12 @@
 
                  
                   $('#edit_id').val(testimonial_id);    
-                 $('#edit_title').val(response.location_data.title);
-                 $('#edit_is_active').val(response.location_data.is_active);
+                  $('#edit_title').val(response.job_category_data.title);
+                 $('#edit_order').val(response.job_category_data.order);
+                 $('#edit_parent_id').val(response.job_category_data.parent_id);
+                 $('#edit_is_featured').val(response.job_category_data.is_featured);
+                 $('#edit_is_active').val(response.job_category_data.is_active);
+                 
 
               }  
             
@@ -333,7 +408,7 @@
           $.ajax({
 
             type:"DELETE",
-            url: "{{APP_PATH}}"+"admin/location/delete/"+delete_testimonial_id,
+            url: "{{APP_PATH}}"+"admin/job/job-category/delete/"+delete_testimonial_id,
           
 
             data:{'_token': '{{ csrf_token() }}' },

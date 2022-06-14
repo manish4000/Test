@@ -40,7 +40,7 @@
                                         <p class="text-center">Login Your Account</p>
 
 
-                                <form id="contact_us_create" name="contact-form" action="route('')" method="POST" id="user_create" class="p-3">
+                                <form id="contact_us_create" name="contact-form" action="{{route('login')}}" method="POST" id="user_create" class="p-3">
                                         @csrf
                                         <!--Grid row-->
                                         <div class="row mb-3">
@@ -48,7 +48,7 @@
                                             <div class="col-md-12">
                                                 <div class="md-form mb-0">
                                                 
-                                                    <input type="text" id="email" name="email_username" class="form-control p-2" >
+                                                    <input type="text" id="" name="email_username" class="form-control p-2" >
                                                     <span class="text-danger error-text email_username_error "></span>
                                                     
                                                 </div>
@@ -74,7 +74,7 @@
                                             <div class="col-md-12">
 
                                                 <div class="mb-1 form-check">
-                                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                <input type="checkbox" class="form-check-input" id="">
                                                 <label class="form-check-label" for="exampleCheck1">Keep me signed in</label>
                                                 </div>
                                             </div>

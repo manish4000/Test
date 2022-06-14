@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'map', 'titlePage' => __('Locations')])
+@extends('layouts.app', ['activePage' => 'map', 'titlePage' => __('Salary Type')])
 
 @section('content')
 
@@ -9,10 +9,11 @@
 <div class="content">
   <div class="container-fluid">
 
+
     <ol class="breadcrumb bg-white d-flex justify-content-start  ">
       <li><a href="{{URL::to('admin/dashboard')}}" class="text-decoration-none text-reset" ><i class="fa fa-dashboard"></i> Dashboard</a> <i class="fa-solid fa-caret-right"></i></li>
        
-      <li><a href="#" class="text-decoration-none text-reset ms-1">Locations</a></li>
+      <li><a href="#" class="text-decoration-none text-reset ms-1">Salary Type </a></li>
     </ol>
 
     @if (\Session::has('status_update'))
@@ -36,12 +37,12 @@
 
 
 
-    <button type="button" class="btn btn-success mb-2" data-toggle="modal" data-target="#add_testimonial">Add New Location</button>
+    <button type="button" class="btn btn-success mb-2" data-toggle="modal" data-target="#add_testimonial">Add New salary Type</button>
     <div class="row">
       <div class="col-md-12">
         <div class="card">
           <div class="card-header card-header-primary">
-            <h4 class="card-title "> Location </h4>
+            <h4 class="card-title "> Salary Types </h4>
             <p class="card-category"> Here is a subtitle for this table</p>
           </div>
           <div class="card-body">
@@ -57,13 +58,13 @@
                     Action
                   </th>
                 </thead>
-                @if (isset( $location_data))
+                @if (isset( $salary_type_data))
   
                 <tbody>
                
               
       
-                      @foreach ($location_data as $data)
+                      @foreach ($salary_type_data as $data)
                     <tr>
                         <td>{{ $data->id }}</td>
                        
@@ -78,7 +79,7 @@
                         
                         @endif          
                         <td  style="width: 220px;">
-                            <a href="{{route('admin.location.status',$data->id)}}" class="btn btn-warning btn-sm" >Status</a>
+                            <a href="{{route('admin.job.salary_type.status',$data->id)}}" class="btn btn-warning btn-sm" >Status</a>
                             <button type="button" data-toggle="modal" data-target="#edit_testimonial" class="edit_testimonial   btn btn-primary btn-sm"  value="{{$data->id}}" >Edit</button>
                             <button type="button" data-toggle="modal" data-target="#delete_testimonial" class="delete_testimonial   btn btn-danger btn-sm" value="{{$data->id}}" >Delete</button>
                          </td>
@@ -121,14 +122,14 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add New Location</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Add New Salary Type </h5>
         <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
 
                     
                 <div class="container" >
-                  <form action="{{route('admin.location.store')}}"  method="POST" id="testimonial_create">
+                  <form action="{{route('admin.job.salary_type.store')}}"  method="POST" id="testimonial_create">
                       @csrf
 
                    
@@ -176,14 +177,14 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Edit Location </h5>
+        <h5 class="modal-title" id="exampleModalLabel">Edit Salary Type </h5>
         <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
 
                     
                 <div class="container" >
-                  <form action="{{route('admin.location.store')}}"  method="POST" id="update_testimonial" enctype="multipart/form-data">
+                  <form action="{{route('admin.job.salary_type.store')}}"  method="POST" id="update_testimonial" enctype="multipart/form-data">
                       @csrf
                   
                       <div class="form-group">
@@ -238,8 +239,8 @@
   <div class="modal-dialog ">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Delete Location</h5>
-        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"> </button>
+        <h5 class="modal-title" id="exampleModalLabel">Delete Salary Type</h5>
+        <a type="button" class="btn-close" data-dismiss="modal" aria-label="Close"> <i class="material-icons">close</i></a>
       </div>
         <div class="modal-body">
 
@@ -280,7 +281,7 @@
 
           type:"GET",
 
-          url:  "{{APP_PATH}}" + "admin/location/edit/"+testimonial_id,
+          url:  "{{APP_PATH}}" + "admin/job/salary-type/edit/"+testimonial_id,
 
          
           success:function(response){
@@ -299,8 +300,8 @@
 
                  
                   $('#edit_id').val(testimonial_id);    
-                 $('#edit_title').val(response.location_data.title);
-                 $('#edit_is_active').val(response.location_data.is_active);
+                 $('#edit_title').val(response.salary_type_data.title);
+                 $('#edit_is_active').val(response.salary_type_data.is_active);
 
               }  
             
@@ -333,7 +334,7 @@
           $.ajax({
 
             type:"DELETE",
-            url: "{{APP_PATH}}"+"admin/location/delete/"+delete_testimonial_id,
+            url: "{{APP_PATH}}"+"admin/job/salary-type/delete/"+delete_testimonial_id,
           
 
             data:{'_token': '{{ csrf_token() }}' },
@@ -461,7 +462,6 @@
 
 
 </script>
-
 
 
 

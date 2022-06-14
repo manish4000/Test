@@ -165,45 +165,138 @@ Route::group(['prefix' => 'admin','middleware'=> ['guest','preventBackHistory','
     
               Route::get('/logout','Auth\LoginController@logout')->name('logout');
 
-              Route::get('/dashboard','DashboardController@dashboardData')->name('dashboard');
+            //   Route::get('/dashboard','DashboardController@dashboardData')->name('dashboard');
+
+              Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-              Route::group(['prefix' => 'settings','as'=>'settings.' ,'middleware'=> ['autoTrim'],'namespace' => 'Settings' ],function(){
-
-                Route::get('/social','SocialController@index')->name('social.index'); 
-                Route::post('/social','ContactController@store')->name('social.store');  
-
-                Route::get('/contact','ContactController@index')->name('contact.index'); 
-
-                Route::post('/contact','ContactController@store')->name('contact.store'); 
-
-              //this is for testmonials              
+              Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
+          
+              Route::group(['middleware' => 'auth'], function () {
+                  Route::get('table-list', function () {
+                      return view('pages.table_list');
+                  })->name('table');
+          
+                  Route::get('typography', function () {
+                      return view('pages.typography');
+                  })->name('typography');
+          
+                  Route::get('icons', function () {
+                      return view('pages.icons');
+                  })->name('icons');
+          
+                  Route::get('map', function () {
+                      return view('pages.map');
+                  })->name('map');
+          
+                  Route::get('notifications', function () {
+                      return view('pages.notifications');
+                  })->name('notifications');
+          
+                  Route::get('rtl-support', function () {
+                      return view('pages.language');
+                  })->name('language');
+          
+                  Route::get('upgrade', function () {
+                      return view('pages.upgrade');
+                  })->name('upgrade');
+              });
+          
+              Route::group(['middleware' => 'auth'], function () {
+                  Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
+                  Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
+                  Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
+                  Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
+              });
+          
+          
+          
+          
+                      // 
+          
+          
+                        Route::get('/dashboard','DashboardController@dashboardData')->name('dashboard');
+          
+          
+                        Route::group(['prefix' => 'settings','as'=>'settings.' ,'middleware'=> ['autoTrim'],'namespace' => 'Settings' ],function(){
+          
+                          Route::get('/social','SocialController@index')->name('social.index'); 
+                          Route::post('/social','ContactController@store')->name('social.store');  
+          
+                          Route::get('/contact','ContactController@index')->name('contact.index'); 
+          
+                          Route::post('/contact','ContactController@store')->name('contact.store'); 
+          
+                        //this is for testmonials              
+                        
+                          Route::group(['prefix' => 'testimonial','as'=>'testimonial.'],function(){
+                  
+                              Route::get('/','TestimonialController@index')->name('index');
+                              Route::Post('/store','TestimonialController@store')->name('store');
+                  
+                              Route::get('/edit/{id}','TestimonialController@edit')->name('edit');
+                              Route::post('/update/','TestimonialController@update')->name('update');
+                              Route::delete('/delete/{id}','TestimonialController@destroy')->name('delete');
+                              Route::get('/status/{id}','TestimonialController@changeStatus')->name('status');
+                  
+                          });
+                  });
+          
+          
+          
+                  Route::group(['prefix' => 'job','as'=>'job.' ,"namespace" => "Job"],function(){
+                      
+                      Route::group(['prefix' => 'job-type','as'=>'job_type.'],function(){
+                          
+                          Route::get('/','JobTypeController@index')->name('index');
+                          Route::Post('/store','JobTypeController@store')->name('store');
+                          Route::get('/edit/{id}','JobTypeController@edit')->name('edit');
+                          Route::post('/update/','JobTypeController@update')->name('update');
+                          Route::delete('/delete/{id}','JobTypeController@destroy')->name('delete');
+                          Route::get('/status/{id}','JobTypeController@changeStatus')->name('status');
               
-                Route::group(['prefix' => 'testimonial','as'=>'testimonial.'],function(){
-        
-                    Route::get('/','TestimonialController@index')->name('index');
-                    Route::Post('/store','TestimonialController@store')->name('store');
-        
-                    Route::get('/edit/{id}','TestimonialController@edit')->name('edit');
-                    Route::post('/update/','TestimonialController@update')->name('update');
-                    Route::delete('/delete/{id}','TestimonialController@destroy')->name('delete');
-                    Route::get('/status/{id}','TestimonialController@changeStatus')->name('status');
-        
-                });
-        });
+                      });
 
-        // this if for location api
-        Route::group(['prefix' => 'location','as'=>'location.'],function(){
-        
-            Route::get('/','LocationController@index')->name('index');
-            Route::Post('/store','LocationController@store')->name('store');
-            Route::get('/edit/{id}','LocationController@edit')->name('edit');
-            Route::post('/update/','LocationController@update')->name('update');
-            Route::delete('/delete/{id}','LocationController@destroy')->name('delete');
-            Route::get('/status/{id}','LocationController@changeStatus')->name('status');
-
-        });
-
+                      Route::group(['prefix' => 'salary-type','as'=>'salary_type.'],function(){
+          
+                          Route::get('/','SalaryTypeController@index')->name('index');
+                          Route::Post('/store','SalaryTypeController@store')->name('store');
+                          Route::get('/edit/{id}','SalaryTypeController@edit')->name('edit');
+                          Route::post('/update/','SalaryTypeController@update')->name('update');
+                          Route::delete('/delete/{id}','SalaryTypeController@destroy')->name('delete');
+                          Route::get('/status/{id}','SalaryTypeController@changeStatus')->name('status');
+              
+                      });
+                     
+                      Route::group(['prefix' => 'job-category','as'=>'job_category.'],function(){
+          
+                          Route::get('/','JobCategory@index')->name('index');
+                          Route::Post('/store','JobCategory@store')->name('store');
+                          Route::get('/edit/{id}','JobCategory@edit')->name('edit');
+                          Route::post('/update/','JobCategory@update')->name('update');
+                          Route::delete('/delete/{id}','JobCategory@destroy')->name('delete');
+                          Route::get('/status/{id}','JobCategory@changeStatus')->name('status');
+                          Route::get('/featured/{id}','JobCategory@changefeatured')->name('featured');
+              
+                      });
+                     
+          
+                  });
+          
+          
+          
+          
+                  // this if for location api
+                  Route::group(['prefix' => 'location','as'=>'location.'],function(){
+                  
+                      Route::get('/','LocationController@index')->name('index');
+                      Route::Post('/store','LocationController@store')->name('store');
+                      Route::get('/edit/{id}','LocationController@edit')->name('edit');
+                      Route::post('/update/','LocationController@update')->name('update');
+                      Route::delete('/delete/{id}','LocationController@destroy')->name('delete');
+                      Route::get('/status/{id}','LocationController@changeStatus')->name('status');
+          
+                  });
 
  });
 
@@ -248,49 +341,3 @@ Route::group(['prefix' => 'candidate','namespace' => 'App\Http\Controllers\websi
 
 
 ///////////////////////////////////////////////////////////////////
-
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Auth::routes();
-
-Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home')->middleware('auth');
-
-Route::group(['middleware' => 'auth'], function () {
-	Route::get('table-list', function () {
-		return view('pages.table_list');
-	})->name('table');
-
-	Route::get('typography', function () {
-		return view('pages.typography');
-	})->name('typography');
-
-	Route::get('icons', function () {
-		return view('pages.icons');
-	})->name('icons');
-
-	Route::get('map', function () {
-		return view('pages.map');
-	})->name('map');
-
-	Route::get('notifications', function () {
-		return view('pages.notifications');
-	})->name('notifications');
-
-	Route::get('rtl-support', function () {
-		return view('pages.language');
-	})->name('language');
-
-	Route::get('upgrade', function () {
-		return view('pages.upgrade');
-	})->name('upgrade');
-});
-
-Route::group(['middleware' => 'auth'], function () {
-	Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
-	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
-	Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
-	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
-});
-
