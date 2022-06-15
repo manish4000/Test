@@ -4,7 +4,8 @@ namespace App\Http\Controllers\website\candidate;
 
 use App\Http\Controllers\Controller;
 use App\Models\CandidateDetailsModel;
-use App\Models\Job\JobCategory;
+
+use App\Models\Job\JobCategoryModel;
 use App\Models\LocationModel;
 use App\Models\Job\SalaryTypeModel;
 use App\Models\socialNetworks;
@@ -24,7 +25,7 @@ class ProfileController extends Controller
         $locations = LocationModel::where('is_active',1)->get();
         $salary_types =  SalaryTypeModel::where('is_active',1)->get();
         $social_networks = socialNetworks::where('is_active',1)->get();
-        $job_categories = JobCategory::where('is_active',1)->get();
+        $job_categories = JobCategoryModel::where('is_active',1)->get();
 
         $user_social_networks = UserSocialNetwork::where('user_id',$user_details->id)->get();
 

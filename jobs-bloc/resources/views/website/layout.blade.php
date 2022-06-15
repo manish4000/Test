@@ -98,8 +98,20 @@
                     
                     </ul>
                 </li>
-                @else    
-                  
+                @elseif(Auth::user()->role == "employer")    
+                <li class="nav-item dropdown">
+                  <a class="nav-link  dropdown-toggle text-dark" href="#" data-bs-toggle="dropdown">
+                     <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-1.webp" alt="avatar"
+                  class="img-fluid rounded-circle me-3" width="50">
+                   {{Auth::user()->name}} </a>
+                    <ul class="dropdown-menu">
+
+                    <li><a class="dropdown-item" href="{{route('candidate.dashboard')}}"><i class="fas fa-tachometer-alt fa-fw"></i>  Dashboard</a></li>
+                    <li><a class="dropdown-item" href="{{route('employer.profile.index')}}"><i class="fas fa-user fa-fw"></i> Profile</a></li>
+                    <li><a class="dropdown-item" href="{{route('logout')}}"><i class="fas fa-sign-out fa-fw"></i> Logout</a></li>
+
+                    </ul>
+                </li>
                 @endif
             @else
             <li>

@@ -15,7 +15,7 @@ class JobCategory extends Controller
     public function index(){
 
         
-        $job_category_data = JobCategoryModel::select(['job_categories.id','job_categories.title','job_categories.parent_id','job_categories.is_active','job_categories.is_featured', 'parent.title as parent_category'])->leftJoin('job_categories AS parent','job_categories.parent_id','=','parent.id')->paginate(15);
+        $job_category_data = JobCategoryModel::select(['job_categories.id','job_categories.title','job_categories.parent_id','job_categories.order','job_categories.is_active','job_categories.is_featured', 'parent.title as parent_category'])->leftJoin('job_categories AS parent','job_categories.parent_id','=','parent.id')->paginate(15);
 
 
         $job_categories = JobCategoryModel::get();        
@@ -29,9 +29,9 @@ class JobCategory extends Controller
         $validator = Validator::make($request->all(),[   
             'title' => 'required',
             'is_active' => "required",
-            "parent_id" => "required",
- 
-            "order" => "required",
+            "parent_id" => "nullable|integer",
+
+            "order" => "required|integer",
             "is_featured" => "required",
       
         ]);

@@ -17,70 +17,82 @@
 
                 <div class="px-4 py-2 border ">
                         <h4 class="my-4">Edit Profile</h4>
-                    <form class="row g-3">
+                    <form class="row g-3" action="{{route('employer.profile.update')}}" method="POST" id="profile_update" enctype="multipart/form-data">
+
+                      @csrf
                                 <div class="col-md-6">
-                                    <label for="inputPassword4" class="form-label">Logo Image</label>
-                                    <input type="file" class="form-control p-3" id="inputfile4">
+                                    <label class="form-label">Logo Image</label>
+                                    <input type="file" class="form-control p-3" name="logo_image" id="logo_image"  >
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="inputPassword4" class="form-label">Cover Photo</label>
-                                    <input type="file" class="form-control p-3" id="inputPassword4">
+                                  <img id="logo_image-preview-image-before-upload" src="<?php echo  isset($employer_details->logo_image) ? APP_PATH.EMPLOYER_LOGO_IMAGE_URL.$employer_details->logo_image : 'https://t4.ftcdn.net/jpg/04/70/29/97/360_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpg' ?> "   alt="preview image" style="max-height: 100px;" />
+                               </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Cover Photo</label>
+                                    <input type="file" class="form-control p-3"  name="cover_image" id="cover_image">
+                                </div>
+                                <div class="col-md-6 ">
+                                  <img id="cover_image-preview-image-before-upload" src="<?php echo  isset($employer_details->cover_image) ? APP_PATH.EMPLOYER_COVER_IMAGE_URL.$employer_details->cover_image : 'https://t4.ftcdn.net/jpg/04/70/29/97/360_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpg' ?>"
+                                      alt="preview image" style="max-height: 100px;">
+                              </div>
+
+                                <div class="col-md-6">
+                                    <label class="form-label">Company</label>
+                                    <input type="text" class="form-control p-3" name="company" value="{{($user_details->company)?? '' }}" >
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Founded Date</label>
+                                    <input type="date" class="form-control p-3"  name="founded_date"value="{{($employer_details->founded_date)?? '' }}" >
                                 </div>
 
                                 <div class="col-md-6">
-                                    <label for="inputPassword4" class="form-label">Title</label>
-                                    <input type="password" class="form-control p-3" id="inputPassword4">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" class="form-control p-3" name="email" value="{{($user_details->email)?? '' }}">
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="inputPassword4" class="form-label">Founded Date</label>
-                                    <input type="date" class="form-control p-3" id="">
-                                </div>
-
-                                <div class="col-md-6">
-                                    <label for="inputPassword4" class="form-label">Email</label>
-                                    <input type="email" class="form-control p-3" id="">
+                                    <label class="form-label">Website</label>
+                                    <input type="url" class="form-control p-3"  name="website" value="{{($employer_details->website)?? '' }}">
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="inputPassword4" class="form-label">Website</label>
-                                    <input type="url" class="form-control p-3" id="" name="website">
-                                </div>
-                                
-                                <div class="col-md-6">
-                                    <label for="inputPassword4" class="form-label">Phone</label>
-                                    <input type="text" class="form-control p-3" id="">
+                                    <label class="form-label">Phone</label>
+                                    <input type="text" class="form-control p-3" name="phone" value="{{($user_details->phone)?? '' }}" >
                                 </div>
                                 <div class="col-md-12">
-                                    <label for="inputPassword4" class="form-label">Categories</label>
-                                    <input type="text" class="form-control p-3" id="">
+                                    <label class="form-label">Categories</label>
+                                    <input type="text" class="form-control p-3" >
                                 </div>
                                
                                 <div class="col-md-6">
-                                    <label for="inputPassword4" class="form-label">Introduction Video URL</label>
-                                    <input type="text" class="form-control p-3" id="">
+                                    <label class="form-label">Introduction Video URL</label>
+                                    <input type="text" class="form-control p-3" name="introduction_video_url" value="{{($employer_details->introduction_video_url)?? '' }}">
                                 </div>
 
                                 <div class="col-md-12">
-                                    <label for="inputPassword4" class="form-label">Description</label>                       
-                                     <textarea class="form-control" id="editor" rows="5"></textarea>
+                                    <label class="form-label">Description</label>                       
+                                     <textarea class="form-control" id="editor" name="description" rows="5" >{{($employer_details->description) ?? '' }} </textarea>
                                 </div>
 
                                 <div class="col-md-12">
-                                    <label for="inputPassword4" class="form-label">Locations</label>                       
-                                    <input type="text" class="form-control p-3" id="">
+                                    <label class="form-label">Locations</label>                       
+                                    <select name="location_id"  value="{{($employer_details->location_id)?? '' }}" class="form-control p-3">
+                                      @foreach($locations as $location)
+                                        <option value="{{$location->id}}"> {{ $location->title}}</option>
+                                      @endforeach
+                                    </select>
                                 </div>
                                 
                                 <div class="col-md-12 ">
-                                    <label for="inputPassword4" class="form-label">Friendly Address</label>                       
-                                    <input type="text" class="form-control p-3" id="">
+                                    <label class="form-label">Friendly Address</label>                       
+                                    <input type="text" class="form-control p-3" name="friendly_address" value="{{($employer_details->friendly_address)?? '' }}">
                                 </div>
 
                                 <div class="col-md-12">
-                                    <label for="inputPassword4" class="form-label">Profile  Photo</label>
-                                    <input type="file" class="form-control p-3" id="inputPassword4">
+                                    <label class="form-label">Profile  Photo</label>
+                                    <input type="file" class="form-control p-3" name="profile_image">
                                 </div>
 
 
-                                <label for="inputPassword4" id="social" class="form-label ">Socials</label> 
+                                <label id="social" class="form-label ">Socials</label> 
                                 
                                 <div class="accordion" id="accordionExample">
                                       <div class="accordion-item">
@@ -93,34 +105,35 @@
                                               <div class="accordion-body">
 
                                                     <div class="row">
-                                                        <table class="table table-borderedless">
-                                                                <tbody id="social_body">
-                                                                            <tr>
-                                                                                <td>
-                                                                                    <label for="inputPassword4" class="form-label">Network</label>                       
-                                                                                    <select class="form-select p-2" aria-label="Default select example" name="network[]">
-                                                                                    <option value="1">Show</option>
-                                                                                    <option value="0">Hide</option>                                
-                                                                                    </select>
-                                                                                </td>
+                                                    <table class="table table-borderedless">
+                                                      <tbody id="social_tab">
+                                                        @foreach($user_social_networks as $user_network)
+                                                            <tr>
+                                                                <td>
+                                                                    <label for="inputPassword4" class="form-label">Network</label>                       
+                                                                    <select class="form-control p-2"  data-live-search="true"  name="network[]" >
+                                                                        @foreach($social_networks as $network)
+                                                                        <option value="{{$network->id}}" {{($network->id == $user_network->social_network_id)?'selected' : '' }}>{{$network->title}}</option>                                
+                                                                        @endforeach
+                                                                    </select>
+                                                                </td>
 
-                                                                                <td>
-                                                                                    <label for="inputPassword4" class="form-label">Url</label>                       
-                                                                                    <input type="text" class="form-control p-2" id="" name="url[]">
-                                                                                </td>
+                                                                <td>
+                                                                    <label for="inputPassword4" class="form-label">Url</label>                       
+                                                                    <input type="text" class="form-control p-2"  name="url[]" value="{{$user_network->url}}">
+                                                                </td>
 
-                                                                                <td class="my-auto">
+                                                                <td class="my-auto">
 
-                                                                                    <a href="#" class="btn btn-danger removeSocial">Delete </a>
-                                                                                </td>
-                                                                            </tr>
+                                                                     <a href="#" class="btn btn-danger remove">Delete </a>
+                                                                </td>
+                                                            </tr>
 
-                                                                </tbody>
-
-                                                        </table>
-
+                                                        @endforeach
+                                                     </tbody>
+                                                   </table>
                                                         <div>
-                                                            <a href="#" class="btn btn-info addSocial">add antoher network</a>
+                                                            <a href="#" class="btn btn-info addRow">add antoher network</a>
                                                         </div>
 
                                                     </div>
@@ -148,32 +161,40 @@
                                                                       <tr>
                                                                           <td>
                                                                               <div class="col-12 mb-2">
-                                                                                 
-                                                                                <input type="text" class="form-control p-2" id="" name="name[]" placeholder="name">
+                                                                                 <label for="" class="text-samll ps-1"> <small>Name </small> </label>
+                                                                                <input type="text" class="form-control p-2"  name="name[]" placeholder="name">
                                                                               </div>
                                                                               <div class="col-12 mb-2">
-                                                                                <input type="text" class="form-control p-2" id="" name="designation[]" placeholder="Designation">
+                                                                                <label for="" class="text-samll ps-1"> <small>Designation </small> </label>
+                                                                                <input type="text" class="form-control p-2"  name="designation[]" placeholder="Designation">
                                                                               </div>
                                                                               <div class="col-12 mb-2">
-                                                                                <input type="text" class="form-control p-2" id="" name="experience[]" placeholder="Experience">
+                                                                                <label for="" class="text-samll ps-1"> <small>Experience </small> </label>
+                                                                                <input type="text" class="form-control p-2"  name="experience[]" placeholder="Experience">
                                                                               </div>
                                                                               <div class="col-12 mb-2">
-                                                                                <input type="file" class="form-control p-2" id="" name="profile_image[]" placeholder=" Profile Image">
+                                                                                <label for="" class="text-samll ps-1"> <small>Profile Image</small> </label>
+                                                                                <input type="file" class="form-control p-2"  name="profile_image[]" placeholder=" Profile Image">
                                                                               </div>
 
                                                                               <div class="col-12 mb-2">
-                                                                                <input type="text" class="form-control p-2" id="" name="facebook[]" placeholder=" Facebook Url">
+                                                                                <label for="" class="text-samll ps-1"> <small>Facebook Url</small> </label>
+                                                                                <input type="text" class="form-control p-2"  name="facebook[]" placeholder=" Facebook Url">
                                                                               </div>
                                                                               <div class="col-12 mb-2">
-                                                                                <input type="text" class="form-control p-2" id="" name="twitter[]" placeholder="Twitter Url">
+                                                                                <label for="" class="text-samll ps-1"> <small>Twitter Url</small> </label>
+                                                                                <input type="text" class="form-control p-2"  name="twitter[]" placeholder="Twitter Url">
                                                                               </div>
                                                                               <div class="col-12 mb-2">
-                                                                                <input type="text" class="form-control p-2" id="" name="linkedin[]" placeholder="Linkedin Url">
+                                                                                <label for="" class="text-samll ps-1"> <small>Linkedin Url</small> </label>
+                                                                                <input type="text" class="form-control p-2"  name="linkedin[]" placeholder="Linkedin Url">
                                                                               </div>
                                                                               <div class="col-12 mb-2">
-                                                                                <input type="text" class="form-control p-2" id="" name="instagram[]" placeholder=" Instagram url">
+                                                                                <label for="" class="text-samll ps-1"> <small>Instagram url</small> </label>
+                                                                                <input type="text" class="form-control p-2"  name="instagram[]" placeholder=" Instagram url">
                                                                               </div>
                                                                               <div class="col-12 mb-2">
+                                                                                <label for="" class="text-samll ps-1"> <small>Description  </small> </label>
                                                                                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description[]">Description                                                            
                                                                                 </textarea>
                                                                               </div>
@@ -203,7 +224,7 @@
                                 </div>
                                 <div class="col-md-12 ">
                                     <label for="inputPassword4" class="form-label">Candidate Tags</label>                       
-                                    <input type="text" class="form-control p-3" id="">
+                                    <input type="text" class="form-control p-3" >
                                 </div>
                                 
                                 <div class="col-12">
@@ -245,31 +266,39 @@
                 var team = '<tr>'+
                                                                           '<td>'+
                                                                               '<div class="col-12 mb-2">'+
-                                                                                '<input type="text" class="form-control p-2" id="" name="name[]" placeholder="name">'+
+                                                                                ' <label for="" class="text-samll ps-1"> <small>Name </small> </label>'+
+                                                                                '<input type="text" class="form-control p-2"  name="name[]" placeholder="name">'+
                                                                               '</div>'+
                                                                               '<div class="col-12 mb-2">'+
-                                                                                '<input type="text" class="form-control p-2" id="" name="designation[]" placeholder="Designation">'+
+                                                                                ' <label for="" class="text-samll ps-1"> <small>Designation</small> </label>'+
+                                                                                '<input type="text" class="form-control p-2"  name="designation[]" placeholder="Designation">'+
                                                                               '</div>'+
                                                                               '<div class="col-12 mb-2">'+
-                                                                                '<input type="text" class="form-control p-2" id="" name="experience[]" placeholder="Experience">'+
+                                                                                ' <label for="" class="text-samll ps-1"> <small>Experience</small> </label>'+
+                                                                                '<input type="text" class="form-control p-2"  name="experience[]" placeholder="Experience">'+
                                                                               '</div>'+
                                                                               '<div class="col-12 mb-2">'+
-                                                                                '<input type="file" class="form-control p-2" id="" name="profile_image[]" placeholder=" Profile Image">'+
+                                                                                ' <label for="" class="text-samll ps-1"> <small>Profile Image </small> </label>'+
+                                                                                '<input type="file" class="form-control p-2"  name="profile_image[]" placeholder=" Profile Image">'+
                                                                               '</div>'+
                                                                               '<div class="col-12 mb-2">'+
-                                                                                '<input type="text" class="form-control p-2" id="" name="facebook[]" placeholder=" Facebook Url">'+
+                                                                                ' <label for="" class="text-samll ps-1"> <small>Facebook Url </small> </label>'+
+                                                                                '<input type="text" class="form-control p-2"  name="facebook[]" placeholder=" Facebook Url">'+
                                                                               '</div>'+
                                                                               '<div class="col-12 mb-2">'+
-                                                                                '<input type="text" class="form-control p-2" id="" name="twitter[]" placeholder="Twitter Url">'+
+                                                                                ' <label for="" class="text-samll ps-1"> <small>Twitter Url</small> </label>'+
+                                                                                '<input type="text" class="form-control p-2"  name="twitter[]" placeholder="Twitter Url">'+
                                                                               '</div>'+
                                                                               '<div class="col-12 mb-2">'+
-                                                                                '<input type="text" class="form-control p-2" id="" name="linkedin[]" placeholder="Linkedin Url">'+
+                                                                                ' <label for="" class="text-samll ps-1"> <small>Linkedin Url</small> </label>'+
+                                                                                '<input type="text" class="form-control p-2"  name="linkedin[]" placeholder="Linkedin Url">'+
                                                                               '</div>'+
                                                                               '<div class="col-12 mb-2">'+
-                                                                                '<input type="text" class="form-control p-2" id="" name="instagram[]" placeholder=" Instagram url">'+
+                                                                                ' <label for="" class="text-samll ps-1"> <small>Instagram url</small> </label>'+
+                                                                                '<input type="text" class="form-control p-2"  name="instagram[]" placeholder=" Instagram url">'+
                                                                               '</div>'+
                                                                               '<div class="col-12 mb-2">'+
-                                                                                
+                                                                                ' <label for="" class="text-samll ps-1"> <small>Description </small> </label>'+
                                                                                 '<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description[]">'+'Description'+                                                            
                                                                                 '</textarea>'+
                                                                               '</div>'+
@@ -295,39 +324,81 @@
         });
 
 
-     $('.addSocial').on('click',function(){
-        addSocial();
-    });  
 
-    function addSocial(){
 
-        var social ='<tr>'+
-                                                                                '<td>'+
-                                                                                    '<label for="inputPassword4" class="form-label">'+ 'Network'+'</label>'+                       
-                                                                                    '<select class="form-select p-2" aria-label="Default select example" name="network[]">'+
-                                                                                    '<option value="1">'+'Show'+'</option>'+
-                                                                                    '<option value="0">'+'Hide'+'</option>'+                                
-                                                                                    '</select>'+
-                                                                                '</td>'+
+    
+    $('.addRow').on('click',function(){
+            addRow();
+        });
 
-                                                                                '<td>'+
-                                                                                    '<label for="inputPassword4" class="form-label">'+'Url'+'</label>'+                       
-                                                                                    '<input type="text" class="form-control p-2" id="" name="url[]">'+
-                                                                                '</td>'+
+        function addRow(){
+                var social =  '<tr>'+
+                                                                '<td>'+
+                                                                '<label for="inputPassword4" class="form-label">Network</label>'+                       
+                                                                '<select class="form-select p-2" aria-label="Default select example" name="network[]">'+
+                                                                '@foreach($social_networks as $network)'+
+                                                                        '<option value="{{$network->id}}">{{$network->title}}</option>'+                                
+                                                                        '@endforeach'+
+                                                                '</select>'+
+                                                                '</td>'+
 
-                                                                                '<td class="my-auto">'+
+                                                                '<td>'+
+                                                                '<label for="inputPassword4" class="form-label">Url</label>'+                       
+                                                                '<input type="text" class="form-control p-2"  name="url[]">'+
+                                                                '</td>'+
+                                                                '<td class="my-auto">'+
+                                                                    '<a href="#" class="btn btn-danger remove">Delete </a>'+
+                                                                '</td>'+
+                                                                '</tr>';
 
-                                                                                    '<a href="#" class="btn btn-danger removeSocial">'+'Delete'+ '</a>'+
-                                                                                '</td>'+
-                                                                            '</tr>' ;
-        
-                                                  $('#social_body').append(social); 
-    }
+                          $('#social_tab').append(social);              
+        };
 
-    $('tbody').on('click','.removeSocial',function(){
+
+        $('tbody').on('click','.remove',function(){
             $(this).closest("tr").remove();
         });
 
 </script>
+
+
+<script type="text/javascript">
+      
+  $(document).ready(function (e) {
+   
+     
+     $('#logo_image').change(function(){
+              
+      let reader = new FileReader();
+   
+      reader.onload = (e) => { 
+   
+        $('#logo_image-preview-image-before-upload').attr('src', e.target.result); 
+      }
+   
+      reader.readAsDataURL(this.files[0]); 
+     
+     });
+     $('#cover_image').change(function(){
+              
+      let reader = new FileReader();
+   
+      reader.onload = (e) => { 
+   
+        $('#cover_image-preview-image-before-upload').attr('src', e.target.result); 
+      }
+   
+      reader.readAsDataURL(this.files[0]); 
+     
+     });
+     
+  });
+   
+  </script>
+  
+
+
+
+
 
 @endsection

@@ -70,7 +70,12 @@
                         <td>{{ $data->id }}</td>
                        
                         <td>{{$data->title}}</td>
-                        <td>{{$data->parent_category}}</td>
+                        
+                            @if($data->parent_category == null)
+                            <td> No Parent Category </td>
+                            @else
+                              <td>{{$data->parent_category}}   </td>                        
+                             @endif 
                         <td>{{$data->order}}</td>
                        
                   
@@ -228,10 +233,9 @@
       <div class="modal-body">
 
         <div class="container" >
-            <form action="{{route('admin.job.job_category.store')}}"  method="POST" id="testimonial_create">
+            <form action="{{route('admin.job.job_category.store')}}"  method="POST" id="update_testimonial">
                 @csrf
 
-             
               <div class="form-group">
                 <label class="mb-2" for="title">Title</label>
                 <input type="text" name="id" id="edit_id">
@@ -240,10 +244,10 @@
               </div>
 
               <div class="form-group">
-                <label class="mb-2" for="Parent Category">Parent Category </label>
+                <label for="Parent Category">Parent Category </label>
 
-                <select name="parent_id" id="edit_parent_id" class="form-control" required> 
-                  <option> Select </option>
+                <select name="parent_id" id="edit_parent_id" class="form-control" > 
+                  <option>  </option>
                   @isset($job_categories)
 
                       @foreach($job_categories as $category)
@@ -498,12 +502,10 @@
                  dataType:'json',
                  contentType:false,
                  beforeSend:function(){
-
                       $(document).find('span.error-text').text('')
                  },
                  success:function(data){
 
-                    console.log(data);
 
                       if(data.status == 401){
 

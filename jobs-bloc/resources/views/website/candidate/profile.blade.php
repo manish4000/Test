@@ -12,13 +12,11 @@
               @include('website.candidate.layout')
             </div>
 
-
-
             <div class="col-12 col-md-9  py-4 px-3">
 
                 <div class="px-4 py-2 border ">
                         <h4 class="my-4">Edit Profile</h4>
-                    <form class="row g-3" action="{{route('candidate.profile.update')}}" method="POST" id="profile_update" >
+                    <form class="row g-3" action="{{route('candidate.profile.update')}}" method="POST" id="profile_update" enctype="multipart/form-data">
 
                                      @csrf
                                 <div class="col-md-6">
@@ -313,6 +311,7 @@ $.ajax({
 
 
 </script>
+
 <script type="text/javascript">
       
 $(document).ready(function (e) {

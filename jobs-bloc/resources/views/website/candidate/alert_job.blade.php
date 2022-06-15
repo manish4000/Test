@@ -1,8 +1,5 @@
 @extends('website.layout')
 
-
-
-
 @section('content')
 
 <div class="container">

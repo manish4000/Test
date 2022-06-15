@@ -328,14 +328,20 @@ Route::middleware([
 
 //these route for candidates
 Route::group(['prefix' => 'candidate','namespace' => 'App\Http\Controllers\website\candidate','as'=>'candidate.'],function(){
-
+    
     Route::get('profile','ProfileController@index')->name('profile.index'); 
     Route::post('profile','ProfileController@updateProfile')->name('profile.update'); 
 
     Route::get('resume','ResumeController@index')->name('resume.index'); 
     Route::post('resume','ResumeController@updateResume')->name('resume.update'); 
 
+});
 
+Route::group(['prefix' => 'employer','namespace' => 'App\Http\Controllers\website\employer','as'=>'employer.'],function(){
+
+    Route::get('profile','ProfileController@index')->name('profile.index'); 
+    Route::post('profile','ProfileController@updateProfile')->name('profile.update'); 
+    
 });
 
 

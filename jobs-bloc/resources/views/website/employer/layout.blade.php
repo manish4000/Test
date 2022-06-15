@@ -1,10 +1,7 @@
 <!--Main Navigation-->
 <header>
   <!-- Sidebar -->
-  <nav
-       id="sidebar"
-       class="collapse d-lg-block sidebar collapse bg-light"
-       >
+  <nav>
     <div class="position-sticky ">
       <div class="list-group list-group-flush mx-3 mt-4">
 
@@ -13,7 +10,7 @@
            class="list-group-item list-group-item-action shadow mb-2 py-3 fw-bold text-center"
            aria-current="true"
            >
-          <span> axcel.jovonni@ifyourock.com</span>
+          <span> {{Auth::user()->name}} </span>
         </a>
 
         <a
@@ -26,29 +23,23 @@
         </a>
         
         <a
-           href="#"
+           href="{{route('employer.profile.index')}}"
            class="list-group-item list-group-item-action  py-2  active"
            >
           <i class="fas fa-user fa-fw me-3 my-3"></i
             ><span>Profile</span>
         </a>
         <a
-           href="#"
+           href="{{route('candidate.resume.index')}}"
            class="list-group-item list-group-item-action  py-2 ripple"
-           ><i class="fas fa-file fa-fw me-3 my-3"></i><span>Submit Job</span></a
+           ><i class="fas fa-file fa-fw me-3 my-3"></i><span>My Resume</span></a
           >
         <a
-           href="#"
+           href="{{route('candidate.applied_jobs')}}"
            class="list-group-item list-group-item-action  py-2 ripple"
            ><i class="fas fa-star-o fa-fw me-3 my-3"></i
-          ><span>Applicants</span> </a
+          ><span>Applied Jobs</span> </a
           >
-        <a
-           href="#"
-           class="list-group-item list-group-item-action  py-2 ripple"
-           >
-           <i class="fa fa-search-plus me-3 my-3" aria-hidden="true"></i><span>Shortlist Candidates</span>
-        </a>
         <a
            href="#"
            class="list-group-item list-group-item-action  py-2 ripple"
@@ -56,11 +47,22 @@
           <i class="fas fa-tag fa-fw me-3 my-3"></i><span>Packages</span>
         </a>
         <a
+           href="{{route('candidate.shortlist_jobs')}}"
+           class="list-group-item list-group-item-action  py-2 ripple"
+           ><i class="fas fa-chart-bar fa-fw me-3 my-3"></i><span>Shortlist Jobs</span></a
+          >
+        <a
            href="#"
            class="list-group-item list-group-item-action  py-2 ripple"
-           ><i class="fas fa-chart-bar fa-fw me-3 my-3"></i><span>My Jobs</span></a
+           ><i class="fas fa-user-secret fa-fw me-3 my-3"></i
+          ><span>Following Employers</span></a
           >
-      
+        <a
+           href="{{route('candidate.alert_job')}}"
+           class="list-group-item list-group-item-action  py-2 ripple"
+           ><i class="fas fa-bell-o fa-fw me-3 my-3"></i
+          ><span>Alerts Jobs</span></a
+          >
         <a
            href="#"
            class="list-group-item list-group-item-action  py-2 ripple"
@@ -68,15 +70,15 @@
           ><span>Messages</span></a
           >
         <a
-           href="#"
+           href="{{route('candidate.change_password')}}"
            class="list-group-item list-group-item-action  py-2 ripple"
            ><i class="fas fa-unlock-alt fa-fw me-3 my-3"></i><span>Change Password</span></a
           >
-        <a href="#"  class="list-group-item list-group-item-action py-2 ripp le">
+        <a href="{{route('logout')}}"  class="list-group-item list-group-item-action py-2 ripp le">
           <i class="fas fa-sign-out fa-fw me-3 my-3"></i><span>Logout</span>
         </a>
-
-        <a href="#"  class="list-group-item list-group-item-action py-2 ripp le">
+    
+        <a href="{{route('candidate.delete_profile')}}"  class="list-group-item list-group-item-action py-2 ripp le">
           <i class="fas fa-trash fa-fw me-3 my-3"></i><span>Delete Profile</span>
         </a>
       </div>
@@ -85,10 +87,10 @@
   <!-- Sidebar -->
 
   <!-- Navbar -->
-  <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white" >
-    <!-- Container wrapper -->
+  <!-- <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white" >
+  
     <div class="container-fluid">
-      <!-- Toggle button -->
+    
       <button
               class="navbar-toggler"
               type="button"
@@ -102,19 +104,61 @@
       </button>
 
     </div>
-    <!-- Container wrapper -->
-  </nav>
+ 
+  </nav> -->
   <!-- Navbar -->
 </header>
 <!--Main Navigation-->
 
 <!--Main layout-->
-<main style="margin-top: 58px">
+<!-- <main style="margin-top: 58px">
   <div class="container pt-4">
 
   </div>
-</main>
+</main> -->
 
+<!-- 
+<script>
+  // Graph
+var ctx = document.getElementById("myChart");
 
-
+var myChart = new Chart(ctx, {
+  type: "line",
+  data: {
+    labels: [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ],
+    datasets: [
+      {
+        data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
+        lineTension: 0,
+        backgroundColor: "transparent",
+        borderColor: "#007bff",
+        borderWidth: 4,
+        pointBackgroundColor: "#007bff",
+      },
+    ],
+  },
+  options: {
+    scales: {
+      yAxes: [
+        {
+          ticks: {
+            beginAtZero: false,
+          },
+        },
+      ],
+    },
+    legend: {
+      display: false,
+    },
+  },
+});
+</script> -->
 <!--Main layout-->
