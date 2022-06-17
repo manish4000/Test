@@ -58,8 +58,16 @@
                                     <input type="text" class="form-control p-3" name="phone" value="{{($user_details->phone)?? '' }}" >
                                 </div>
                                 <div class="col-md-12">
+
+                                  <?php  $selected =  explode(',',$employer_details->employer_job_categories) ?>
                                     <label class="form-label">Categories</label>
-                                    <input type="text" class="form-control p-3" >
+                                    <select id="" multiple name="employer_job_categories[]" placeholder="Native Select" data-search="true" data-silent-initial-value-set="true">
+                                    
+                                      @foreach($job_categories as $category)   
+                                       <option value="{{$category->id}}" {{(in_array($category->id ,$selected) ? 'selected' : '' )}}>{{$category->title}}</option>
+                                       @endforeach
+                                      
+                                      </select>
                                 </div>
                                
                                 <div class="col-md-6">
@@ -158,44 +166,45 @@
                                           <div class="row">
                                                   <table class="table table-borderedless">
                                                           <tbody id="team_body">
+                                                            @foreach($employer_team_details as $employer_team)
                                                                       <tr>
                                                                           <td>
                                                                               <div class="col-12 mb-2">
                                                                                  <label for="" class="text-samll ps-1"> <small>Name </small> </label>
-                                                                                <input type="text" class="form-control p-2"  name="name[]" placeholder="name">
+                                                                                <input type="text" class="form-control p-2"  name="mamber_name[]" placeholder="name"  value="{{$employer_team->name}}">
                                                                               </div>
                                                                               <div class="col-12 mb-2">
                                                                                 <label for="" class="text-samll ps-1"> <small>Designation </small> </label>
-                                                                                <input type="text" class="form-control p-2"  name="designation[]" placeholder="Designation">
+                                                                                <input type="text" class="form-control p-2"  name="mamber_designation[]" placeholder="Designation"  value="{{$employer_team->designation}}">
                                                                               </div>
                                                                               <div class="col-12 mb-2">
                                                                                 <label for="" class="text-samll ps-1"> <small>Experience </small> </label>
-                                                                                <input type="text" class="form-control p-2"  name="experience[]" placeholder="Experience">
+                                                                                <input type="text" class="form-control p-2"  name="mamber_experience[]" placeholder="Experience"  value="{{$employer_team->name}}">
                                                                               </div>
                                                                               <div class="col-12 mb-2">
                                                                                 <label for="" class="text-samll ps-1"> <small>Profile Image</small> </label>
-                                                                                <input type="file" class="form-control p-2"  name="profile_image[]" placeholder=" Profile Image">
+                                                                                <input type="file" class="form-control p-2"  name="mamber_profile_image[]" placeholder=" Profile Image">
                                                                               </div>
 
                                                                               <div class="col-12 mb-2">
                                                                                 <label for="" class="text-samll ps-1"> <small>Facebook Url</small> </label>
-                                                                                <input type="text" class="form-control p-2"  name="facebook[]" placeholder=" Facebook Url">
+                                                                                <input type="text" class="form-control p-2"  name="mamber_facebook[]" placeholder=" Facebook Url"  value="{{$employer_team->facebook}}">
                                                                               </div>
                                                                               <div class="col-12 mb-2">
                                                                                 <label for="" class="text-samll ps-1"> <small>Twitter Url</small> </label>
-                                                                                <input type="text" class="form-control p-2"  name="twitter[]" placeholder="Twitter Url">
+                                                                                <input type="text" class="form-control p-2"  name="mamber_twitter[]" placeholder="Twitter Url"  value="{{$employer_team->twitter}}">
                                                                               </div>
                                                                               <div class="col-12 mb-2">
                                                                                 <label for="" class="text-samll ps-1"> <small>Linkedin Url</small> </label>
-                                                                                <input type="text" class="form-control p-2"  name="linkedin[]" placeholder="Linkedin Url">
+                                                                                <input type="text" class="form-control p-2"  name="mamber_linkedin[]" placeholder="Linkedin Url"  value="{{$employer_team->linkedin}}"> 
                                                                               </div>
                                                                               <div class="col-12 mb-2">
                                                                                 <label for="" class="text-samll ps-1"> <small>Instagram url</small> </label>
-                                                                                <input type="text" class="form-control p-2"  name="instagram[]" placeholder=" Instagram url">
+                                                                                <input type="text" class="form-control p-2"  name="mamber_instagram[]" placeholder=" Instagram url"  value="{{$employer_team->instagram}}">
                                                                               </div>
                                                                               <div class="col-12 mb-2">
                                                                                 <label for="" class="text-samll ps-1"> <small>Description  </small> </label>
-                                                                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description[]">Description                                                            
+                                                                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="mamber_description[]">{{$employer_team->description}}                                                            
                                                                                 </textarea>
                                                                               </div>
                                                                               
@@ -205,7 +214,7 @@
                                                                               <a href="#" class="btn btn-danger removeTeam">Delete </a>
                                                                           </td>
                                                                       </tr>
-
+                                                              @endforeach          
                                                           </tbody>
 
                                                    </table>
@@ -228,7 +237,7 @@
                                 </div>
                                 
                                 <div class="col-12">
-                                    <button type="submit" class="btn px-4 text-white fw-bold py-3 btn-warning">Save Profile</button>
+                                    <input type="submit" class="btn px-4 text-white fw-bold py-3 btn-warning" value="Submit ">
                                 </div>
                     </form>           
                     
@@ -267,39 +276,39 @@
                                                                           '<td>'+
                                                                               '<div class="col-12 mb-2">'+
                                                                                 ' <label for="" class="text-samll ps-1"> <small>Name </small> </label>'+
-                                                                                '<input type="text" class="form-control p-2"  name="name[]" placeholder="name">'+
+                                                                                '<input type="text" class="form-control p-2"  name="mamber_name[]" placeholder="name">'+
                                                                               '</div>'+
                                                                               '<div class="col-12 mb-2">'+
                                                                                 ' <label for="" class="text-samll ps-1"> <small>Designation</small> </label>'+
-                                                                                '<input type="text" class="form-control p-2"  name="designation[]" placeholder="Designation">'+
+                                                                                '<input type="text" class="form-control p-2"  name="mamber_designation[]" placeholder="Designation">'+
                                                                               '</div>'+
                                                                               '<div class="col-12 mb-2">'+
                                                                                 ' <label for="" class="text-samll ps-1"> <small>Experience</small> </label>'+
-                                                                                '<input type="text" class="form-control p-2"  name="experience[]" placeholder="Experience">'+
+                                                                                '<input type="text" class="form-control p-2"  name="mamber_experience[]" placeholder="Experience">'+
                                                                               '</div>'+
                                                                               '<div class="col-12 mb-2">'+
                                                                                 ' <label for="" class="text-samll ps-1"> <small>Profile Image </small> </label>'+
-                                                                                '<input type="file" class="form-control p-2"  name="profile_image[]" placeholder=" Profile Image">'+
+                                                                                '<input type="file" class="form-control p-2"  name="mamber_profile_image[]" placeholder=" Profile Image">'+
                                                                               '</div>'+
                                                                               '<div class="col-12 mb-2">'+
                                                                                 ' <label for="" class="text-samll ps-1"> <small>Facebook Url </small> </label>'+
-                                                                                '<input type="text" class="form-control p-2"  name="facebook[]" placeholder=" Facebook Url">'+
+                                                                                '<input type="text" class="form-control p-2"  name="mamber_facebook[]" placeholder=" Facebook Url">'+
                                                                               '</div>'+
                                                                               '<div class="col-12 mb-2">'+
                                                                                 ' <label for="" class="text-samll ps-1"> <small>Twitter Url</small> </label>'+
-                                                                                '<input type="text" class="form-control p-2"  name="twitter[]" placeholder="Twitter Url">'+
+                                                                                '<input type="text" class="form-control p-2"  name="mamber_twitter[]" placeholder="Twitter Url">'+
                                                                               '</div>'+
                                                                               '<div class="col-12 mb-2">'+
                                                                                 ' <label for="" class="text-samll ps-1"> <small>Linkedin Url</small> </label>'+
-                                                                                '<input type="text" class="form-control p-2"  name="linkedin[]" placeholder="Linkedin Url">'+
+                                                                                '<input type="text" class="form-control p-2"  name="mamber_linkedin[]" placeholder="Linkedin Url">'+
                                                                               '</div>'+
                                                                               '<div class="col-12 mb-2">'+
                                                                                 ' <label for="" class="text-samll ps-1"> <small>Instagram url</small> </label>'+
-                                                                                '<input type="text" class="form-control p-2"  name="instagram[]" placeholder=" Instagram url">'+
+                                                                                '<input type="text" class="form-control p-2"  name="mamber_instagram[]" placeholder=" Instagram url">'+
                                                                               '</div>'+
                                                                               '<div class="col-12 mb-2">'+
                                                                                 ' <label for="" class="text-samll ps-1"> <small>Description </small> </label>'+
-                                                                                '<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description[]">'+'Description'+                                                            
+                                                                                '<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="mamber_description[]">'+'Description'+                                                            
                                                                                 '</textarea>'+
                                                                               '</div>'+
                                                                               
@@ -360,7 +369,69 @@
         });
 
 </script>
+{{-- update data  --}}
+<script>
 
+
+$("#profile_update").on('submit',function(e){
+
+  e.preventDefault();
+  
+  $.ajax({
+  
+          url:$(this).attr('action'),
+          method:$(this).attr('method'),
+          data:new FormData(this),
+          processData:false,
+          dataType:'json',
+          contentType:false,
+          beforeSend:function(){
+  
+              $(document).find('span.error-text').text('')
+          },
+          success:function(data){
+  
+              console.log(data);
+  
+              if(data.status == 401){
+  
+                  $.each(data.error,function(prefix,val){
+                      $('span.'+prefix+'_error').text(val[0]);
+                  });
+  
+              }else if(data.status == 200){
+  
+                  Swal.fire(
+                              'Good job!',
+                              data.message,
+                              'success'
+                      );
+  
+               window.location = "";
+  
+              }else if(data.status == 500){
+  
+                Swal.fire(
+                              'Oops...',
+                              'Something went wrong!',
+                              'error'
+                      );
+  
+               window.location = ""     
+  
+              }
+  
+          } 
+  
+  
+  
+  });
+  
+  });
+
+</script>
+
+{{--  --}}
 
 <script type="text/javascript">
       

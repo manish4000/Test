@@ -4,6 +4,7 @@ namespace App\Http\Controllers\website\employer;
 
 use App\Http\Controllers\Controller;
 use App\Models\EmployerDetailsModel;
+use App\Models\EmployerTeamModel;
 use App\Models\Job\JobCategoryModel;
 use App\Models\LocationModel;
 use App\Models\socialNetworks;
@@ -24,10 +25,11 @@ class ProfileController extends Controller
     
         $social_networks = socialNetworks::where('is_active',1)->get();
         $job_categories = JobCategoryModel::where('is_active',1)->get();
+        $employer_team_details = EmployerTeamModel::where('user_id',$user_details->id)->get();
 
         $user_social_networks = UserSocialNetwork::where('user_id',$user_details->id)->get();
 
-        return view('website.employer.profile',compact('user_details','social_networks','employer_details','locations','job_categories','user_social_networks'));
+        return view('website.employer.profile',compact('user_details','social_networks','employer_details','locations','job_categories','employer_team_details','user_social_networks'));
     }
 
     public function updateProfile(Request $request){
@@ -92,6 +94,58 @@ class ProfileController extends Controller
                             $data = [];
 
                           }
+                      //this part for save employer team mamber details     
+
+                        $employer_team_model =    new  EmployerTeamModel;
+                        $employer_team_model->where('user_id',$user->id)->delete();
+
+                        $mamber_name = $request->mamber_name; 
+                        $mamber_designation = $request->mamber_designation; 
+                        $mamber_experience = $request->mamber_experience; 
+                        $mamber_profile_image = $request->mamber_profile_image; 
+                        $mamber_facebook = $request->mamber_facebook; 
+                        $mamber_twitter = $request->mamber_twitter; 
+                        $mamber_linkedin = $request->mamber_linkedin; 
+                        $mamber_instagram = $request->mamber_instagram; 
+                        $mamber_description = $request->mamber_description; 
+                       
+                          $mamber_count = ($mamber_name == null)? 0 : count($mamber_name);
+
+                          for($i =0 ;$i<$mamber_count; $i++){
+
+
+                           
+
+                            $data = [
+
+                             'user_id' => $user->id,
+                             'name' => $mamber_name[$i],
+                             'designation' => $mamber_designation[$i],
+                             'experience' => $mamber_experience[$i],
+                    
+                             'facebook' => $mamber_facebook[$i],
+                             'twitter' => $mamber_twitter[$i],
+                             'linkedin' => $mamber_linkedin[$i],
+                             'instagram' => $mamber_instagram[$i],
+                             'description' => $mamber_description[$i],
+
+                            ];
+
+                            // if($request->hasFile('mamber_profile_image')){
+                
+                            //     $image =  $request->file('mamber_profile_image');
+                            //     $extension = $image->getClientOriginalExtension();
+                            //     $file_name = 'employer-'.time().'.'.$extension;
+                            //     $image->move(EMPLOYER_TEAM_IMAGE_URL,$file_name);
+
+                            //     $data['profile_image'] = $file_name;
+                            // }
+
+                            $employer_team_model->insert($data);
+
+                            $data = [];
+                          }
+
 
 
                     //check data is already exist or not 
@@ -104,8 +158,6 @@ class ProfileController extends Controller
                             $employer_details  = EmployerDetailsModel::where('id',$user->id)->first();
                         }
                     
-                        
-       
                 
                         if($request->hasFile('logo_image')){
                 
@@ -125,19 +177,18 @@ class ProfileController extends Controller
                             $employer_details->cover_image = $file_name;
                         }   
 
-                        // $cat=  $request->candidate_job_categories;
+                         $cat=  $request->employer_job_categories;
 
-                        //  $job_categories = implode(',', $cat);
+                          $job_categories = implode(',', $cat);
 
 
                         $employer_details->introduction_video_url = $request->introduction_video_url;
                         $employer_details->description = $request->description;
                         $employer_details->website = $request->website;
+                        $employer_details->employer_job_categories = $job_categories;
+
                         $employer_details->location_id = $request->location_id;
                         $employer_details->friendly_address = $request->friendly_address;
-       
-                            
-
 
                         if($employer_details->save()){
 
