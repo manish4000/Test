@@ -35,6 +35,8 @@ class ProfileController extends Controller
     public function updateProfile(Request $request){
 
 
+
+
             // return response($request->all());
 
           $validator = Validator::make($request->all(), [  
@@ -102,7 +104,7 @@ class ProfileController extends Controller
                         $mamber_name = $request->mamber_name; 
                         $mamber_designation = $request->mamber_designation; 
                         $mamber_experience = $request->mamber_experience; 
-                        $mamber_profile_image = $request->mamber_profile_image; 
+                        
                         $mamber_facebook = $request->mamber_facebook; 
                         $mamber_twitter = $request->mamber_twitter; 
                         $mamber_linkedin = $request->mamber_linkedin; 
@@ -131,15 +133,15 @@ class ProfileController extends Controller
 
                             ];
 
-                            // if($request->hasFile('mamber_profile_image')){
+                            if($request->hasFile('mamber_profile_image')){
                 
-                            //     $image =  $request->file('mamber_profile_image');
-                            //     $extension = $image->getClientOriginalExtension();
-                            //     $file_name = 'employer-'.time().'.'.$extension;
-                            //     $image->move(EMPLOYER_TEAM_IMAGE_URL,$file_name);
+                                $image =  $request->file('mamber_profile_image')[$i];
+                                $extension = $image->getClientOriginalExtension();
+                                $file_name = 'employer-team'.time().'.'.$extension;
+                                $image->move(EMPLOYER_TEAM_IMAGE_URL,$file_name);
 
-                            //     $data['profile_image'] = $file_name;
-                            // }
+                                $data['profile_image'] = $file_name;
+                            }
 
                             $employer_team_model->insert($data);
 

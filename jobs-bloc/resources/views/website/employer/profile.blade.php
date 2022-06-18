@@ -185,6 +185,10 @@
                                                                                 <label for="" class="text-samll ps-1"> <small>Profile Image</small> </label>
                                                                                 <input type="file" class="form-control p-2"  name="mamber_profile_image[]" placeholder=" Profile Image">
                                                                               </div>
+                                                                              <div class="col-12 mb-2">
+                                                                                {{ $employer_team_details}}                                                                               
+                                                                                <img id="team_image-preview-image-before-upload" src="<?php echo  isset($employer_team_details->profile_image) ? APP_PATH.EMPLOYER_TEAM_IMAGE_URL.$employer_team_details->profile_image : 'https://t4.ftcdn.net/jpg/04/70/29/97/360_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpg' ?> "   alt="preview image" style="max-height: 100px;" />
+                                                                              </div>
 
                                                                               <div class="col-12 mb-2">
                                                                                 <label for="" class="text-samll ps-1"> <small>Facebook Url</small> </label>
@@ -391,7 +395,7 @@ $("#profile_update").on('submit',function(e){
           },
           success:function(data){
   
-              console.log(data);
+          
   
               if(data.status == 401){
   
@@ -457,6 +461,19 @@ $("#profile_update").on('submit',function(e){
       reader.onload = (e) => { 
    
         $('#cover_image-preview-image-before-upload').attr('src', e.target.result); 
+      }
+   
+      reader.readAsDataURL(this.files[0]); 
+     
+     });
+
+     $('#team_image').change(function(){
+              
+      let reader = new FileReader();
+   
+      reader.onload = (e) => { 
+   
+        $('#team_image-preview-image-before-upload').attr('src', e.target.result); 
       }
    
       reader.readAsDataURL(this.files[0]); 
