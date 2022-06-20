@@ -39,24 +39,30 @@
 
 <div class="container-fluid py-3">
 
-        @for($i=1;$i<=12;$i++)        
+        @foreach($job_categories as $category)        
 
             <div class="row  shadow mx-2 my-3 py-5">
+
                     <div class="col-12 col-md-3 text-md-center mb-3">
-                    <h5 class="fw-bold"> Administration jobs </h5> 
+                    <h5 class="fw-bold"> {{$category->title}} </h5> 
                     <span class="text-muted"><small> (10 Jobs)</small> </span>
                     </div>
-                    <div class="col-12 col-md-9">
-                            <div class="row text-muted">
-                                <div class="col-12 col-md-6 col-lg-3"> Dairy jobs (0 Jobs) </div>
-                                <div class="col-12 col-md-6 col-lg-3"> Forestry jobs (0 Jobs)</div>
-                                <div class="col-12 col-md-6 col-lg-3">Fertilizer/Pesticides jobs (0 Jobs)</div>
-                                
-                            </div>
-                    </div>
+
+                    @if($category->children !== null)
+
+                        
+                        <div class="col-12 col-md-9">
+                                <div class="row text-muted">
+                                    @foreach($category->children as $subcategory)
+                                    <div class="col-12 col-md-6 col-lg-3"> {{$subcategory->title}} </div>  
+                                    @endforeach   
+                                </div>
+                        </div>
+                     
+                    @endif 
             </div>
 
-        @endfor
+        @endforeach
 
 
 </div>

@@ -20,9 +20,12 @@
                     <div class="col-12 col-lg-4 mb-3">
                     <select class="form-select border-warning py-4 px-5" aria-label="Default select example">
                     <option selected>Open this select menu</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+
+                    @foreach ($locations as $location)
+                    <option value="{{$location->id}}">{{$location->title}}</option>
+                        
+                    @endforeach
+                        
                     </select>                        
                     </div>
                     <div class=" d-grid  col-lg-2 text-start mb-3">
@@ -57,6 +60,61 @@
 
     </div> -->
 </div>
+{{-- Featured Jobs --}}
+
+
+
+<div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+   
+        <div>
+  
+          <!-- Nav tabs -->
+          <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#home2" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+            <li role="presentation"><a href="#profile2" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+          </ul>
+  
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="home2">
+                  <div id="owl-example" class="owl-carousel">
+                    <div> Your Content 1</div>
+                    <div> Your Content 2</div>
+                    <div> Your Content 3</div>
+                    <div> Your Content 4</div>
+                    <div> Your Content 5</div>
+                    <div> Your Content 6</div>
+                    <div> Your Content 7</div>
+                  </div>    
+            </div>
+            <div role="tabpanel" class="tab-pane" id="profile2">
+              <div id="owl-example" class="owl-carousel">
+                    <div> Your Content 2.1</div>
+                    <div> Your Content 2.2</div>
+                    <div> Your Content 2.3</div>
+                    <div> Your Content 2.4</div>
+                    <div> Your Content 2.5</div>
+                    <div> Your Content 2.6</div>
+                    <div> Your Content 2.7</div>
+                  </div> 
+            </div>
+          </div>
+  
+        </div>
+   
+      </div>
+    </div>
+  </div>
+  
+
+{{-- Featured Jobs --}}
+
+
+
+
+
 
 <!-- find online job -->
 
@@ -356,90 +414,33 @@
         data-mdb-ride="carousel">
         <div class="carousel-inner">
 
-                        <div class="carousel-item  active">
-                                <img
-                                    class="rounded-circle shadow-1-strong mb-4"
-                                    src="https://jobsbloc.com/wp-content/uploads/2022/02/additti-munshi-120x120.jpg"
-                                    alt="avatar"
-                                    style="width: 150px;"
-                                />
-                                <div class="row d-flex justify-content-center">
-                                    <div class="col-lg-8">
-                                    <h5 class="mb-3">Location</h5>
-                                    <p>Description</p>
-                                    <p class="text-muted"> name </p>
-                                    <span><img src="/images/star.png" alt="" height="25px"></span>
-                                    <span><img src="/images/star.png" alt="" height="25px"></span>
-                                    <span><img src="/images/star.png" alt="" height="25px"></span>
-                                    <span><img src="/images/star.png" alt="" height="25px"></span>
-                                    <span><img src="/images/star.png" alt="" height="25px"></span>
-                                     <p>Designation</p> 
-                                    </div>
+                @foreach ($testmonials as $key => $testmonial)
+                
+                    <div class="carousel-item  <?php echo ($key == 0)?'active':''; ?> ">
+                            <img
+                                class="rounded-circle shadow-1-strong mb-4"
+                                src="{{WEBSITE_TESTMONIAL_IMAGE}}{{$testmonial->image}}"
+                                alt="avatar"
+                                style="width: 150px;"
+                            />
+                            <div class="row d-flex justify-content-center">
+                                <div class="col-lg-8">
+                                <h5 class="mb-3">{{$testmonial->location}}</h5>
+                                <p>{{$testmonial->description}}</p>
+                                <p class="text-muted"> {{$testmonial->name}}</p>
+
+                                @for($i = 0 ;$i < $testmonial->star; $i++ )
+
+                                <span><img src="/images/star.png" alt="" height="25px"></span>
+                                  
+                                @endfor
+
+                                <p> {{$testmonial->designation}}</p> 
                                 </div>
-                        </div>
-                        <div class="carousel-item ">
-                                <img
-                                    class="rounded-circle shadow-1-strong mb-4"
-                                    src="https://jobsbloc.com/wp-content/uploads/2022/02/sushant.jpg"
-                                    alt="avatar"
-                                    style="width: 150px;"
-                                />
-                                <div class="row d-flex justify-content-center">
-                                    <div class="col-lg-8">
-                                    <h5 class="mb-3">Location</h5>
-                                    <p>Description</p>
-                                    <p class="text-muted"> name </p>
-                                    <span><img src="/images/star.png" alt="" height="25px"></span>
-                                    <span><img src="/images/star.png" alt="" height="25px"></span>
-                                    <span><img src="/images/star.png" alt="" height="25px"></span>
-                                    <span><img src="/images/star.png" alt="" height="25px"></span>
-                                    <span><img src="/images/star.png" alt="" height="25px"></span>
-                                     <p>Designation</p> 
-                                    </div>
-                                </div>
-                        </div>
-                        <div class="carousel-item ">
-                                <img
-                                    class="rounded-circle shadow-1-strong mb-4"
-                                    src="https://jobsbloc.com/wp-content/uploads/2022/02/additti-munshi-120x120.jpg"
-                                    alt="avatar"
-                                    style="width: 150px;"
-                                />
-                                <div class="row d-flex justify-content-center">
-                                    <div class="col-lg-8">
-                                    <h5 class="mb-3">Location</h5>
-                                    <p>Description</p>
-                                    <p class="text-muted"> name </p>
-                                    <span><img src="/images/star.png" alt="" height="25px"></span>
-                                    <span><img src="/images/star.png" alt="" height="25px"></span>
-                                    <span><img src="/images/star.png" alt="" height="25px"></span>
-                                    <span><img src="/images/star.png" alt="" height="25px"></span>
-                                    <span><img src="/images/star.png" alt="" height="25px"></span>
-                                     <p>Designation</p> 
-                                    </div>
-                                </div>
-                        </div>
-                        <div class="carousel-item ">
-                                <img
-                                    class="rounded-circle shadow-1-strong mb-4"
-                                    src="https://jobsbloc.com/wp-content/uploads/2022/02/sushant.jpg"
-                                    alt="avatar"
-                                    style="width: 150px;"
-                                />
-                                <div class="row d-flex justify-content-center">
-                                    <div class="col-lg-8">
-                                    <h5 class="mb-3">Location</h5>
-                                    <p>Description</p>
-                                    <p class="text-muted"> name </p>
-                                    <span><img src="/images/star.png" alt="" height="25px"></span>
-                                    <span><img src="/images/star.png" alt="" height="25px"></span>
-                                    <span><img src="/images/star.png" alt="" height="25px"></span>
-                                    <span><img src="/images/star.png" alt="" height="25px"></span>
-                                    <span><img src="/images/star.png" alt="" height="25px"></span>
-                                     <p>Designation</p> 
-                                    </div>
-                                </div>
-                        </div>
+                            </div>
+                    </div>
+                @endforeach
+                        
      
            
         </div>
@@ -478,6 +479,23 @@
 </div>
  
 
-
+<script>
+        $(document).ready(function() {
+     
+     $(".owl-carousel").owlCarousel({
+   items:4,
+   loop:true,
+   margin:10,
+   autoplay:true,
+   autoplayTimeout:3000,
+   autoplayHoverPause:true
+});
+     $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+       e.target // newly activated tab
+       e.relatedTarget // previous active tab
+       $(".owl-carousel").trigger('refresh.owl.carousel');
+     });
+   });
+</script>
 
 @endsection

@@ -44,6 +44,7 @@ class ProfileController extends Controller
             'phone' => 'nullable|numeric|digits_between:10,10',
             'address' => 'nullable', 
             'email' => "required|email",
+            'founded_date' => "required|date",
             'logo_image' => 'nullable|image|mimes:png,jpg,jpeg|max:524' ,
             'cover_image' => 'nullable|image|mimes:png,jpg,jpeg|max:524' ,
             'introduction_video_url' =>"nullable|url",
@@ -179,6 +180,15 @@ class ProfileController extends Controller
                             $employer_details->cover_image = $file_name;
                         }   
 
+                        if($request->hasFile('profile_image')){
+                
+                            $image =  $request->file('profile_image');
+                            $extension = $image->getClientOriginalExtension();
+                            $file_name = 'employer-profile'.time().'.'.$extension;
+                            $image->move(EMPLOYER_PROFILE_IMAGE_URL,$file_name);
+                            $employer_details->profile_image = $file_name;
+                        }   
+
                          $cat=  $request->employer_job_categories;
 
                           $job_categories = implode(',', $cat);
@@ -188,6 +198,7 @@ class ProfileController extends Controller
                         $employer_details->description = $request->description;
                         $employer_details->website = $request->website;
                         $employer_details->employer_job_categories = $job_categories;
+                        $employer_details->founded_date = $request->founded_date;
 
                         $employer_details->location_id = $request->location_id;
                         $employer_details->friendly_address = $request->friendly_address;

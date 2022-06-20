@@ -17,4 +17,10 @@ class JobCategoryModel extends Model
     protected $primaryKey ="id";
     public $timestamps =true;
 
+
+    public function children(){
+
+        return $this->hasMany(JobCategoryModel::class ,'parent_id')->with('children');
+    }
+
 }

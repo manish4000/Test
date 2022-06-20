@@ -11,5 +11,6 @@ define("CANDIDATE_CV_URL","uploads/candidate/cv/");
 define("EMPLOYER_LOGO_IMAGE_URL","uploads/employer/logo-images/");
 define("EMPLOYER_COVER_IMAGE_URL","uploads/employer/cover-images/");
 define("EMPLOYER_TEAM_IMAGE_URL","uploads/employer/team-images/");
+define("EMPLOYER_PROFILE_IMAGE_URL","uploads/employer/profile-images/");
 
 ?>

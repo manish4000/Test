@@ -61,7 +61,7 @@
 
                                   <?php  $selected =  explode(',',$employer_details->employer_job_categories) ?>
                                     <label class="form-label">Categories</label>
-                                    <select id="" multiple name="employer_job_categories[]" placeholder="Native Select" data-search="true" data-silent-initial-value-set="true">
+                                    <select id="" class="abc" multiple name="employer_job_categories[]" >
                                     
                                       @foreach($job_categories as $category)   
                                        <option value="{{$category->id}}" {{(in_array($category->id ,$selected) ? 'selected' : '' )}}>{{$category->title}}</option>
@@ -94,10 +94,13 @@
                                     <input type="text" class="form-control p-3" name="friendly_address" value="{{($employer_details->friendly_address)?? '' }}">
                                 </div>
 
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <label class="form-label">Profile  Photo</label>
-                                    <input type="file" class="form-control p-3" name="profile_image">
+                                    <input type="file" class="form-control p-3" name="profile_image" id="profile_image">
                                 </div>
+                                <div class="col-md-6">
+                                  <img id="profile_image-preview-image-before-upload" src="<?php echo  isset($employer_details->profile_image) ? APP_PATH.EMPLOYER_PROFILE_IMAGE_URL.$employer_details->profile_image : 'https://t4.ftcdn.net/jpg/04/70/29/97/360_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpg' ?> "   alt="preview image" style="max-height: 100px;" />
+                               </div>
 
 
                                 <label id="social" class="form-label ">Socials</label> 
@@ -186,7 +189,7 @@
                                                                                 <input type="file" class="form-control p-2"  name="mamber_profile_image[]" placeholder=" Profile Image">
                                                                               </div>
                                                                               <div class="col-12 mb-2">
-                                                                                {{ $employer_team_details}}                                                                               
+                                                                                                                                                      
                                                                                 <img id="team_image-preview-image-before-upload" src="<?php echo  isset($employer_team_details->profile_image) ? APP_PATH.EMPLOYER_TEAM_IMAGE_URL.$employer_team_details->profile_image : 'https://t4.ftcdn.net/jpg/04/70/29/97/360_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpg' ?> "   alt="preview image" style="max-height: 100px;" />
                                                                               </div>
 
@@ -217,6 +220,7 @@
                                                                           <td class="my-auto">
                                                                               <a href="#" class="btn btn-danger removeTeam">Delete </a>
                                                                           </td>
+
                                                                       </tr>
                                                               @endforeach          
                                                           </tbody>
@@ -256,7 +260,12 @@
 
 </div>
 
+<script>
 
+  $(document).ready(function() {
+    $('.abc').select2();
+  });
+</script>
 
 <script>
     ClassicEditor
@@ -454,6 +463,20 @@ $("#profile_update").on('submit',function(e){
       reader.readAsDataURL(this.files[0]); 
      
      });
+
+     $('#profile_image').change(function(){
+              
+      let reader = new FileReader();
+   
+      reader.onload = (e) => { 
+   
+        $('#profile_image-preview-image-before-upload').attr('src', e.target.result); 
+      }
+   
+      reader.readAsDataURL(this.files[0]); 
+     
+     });
+     
      $('#cover_image').change(function(){
               
       let reader = new FileReader();

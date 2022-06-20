@@ -45,6 +45,7 @@ class ProfileController extends Controller
             'email' => "required|email",
             'featured_image' => 'nullable|image|mimes:png,jpg,jpeg|max:524' ,
             'cover_image' => 'nullable|image|mimes:png,jpg,jpeg|max:524' ,
+            'profile_image' => 'nullable|image|mimes:png,jpg,jpeg|max:524' ,
             'job_title' => "nullable|string",
             'salary' =>"nullable|numeric",
             'salary_type_id' =>"nullable|numeric",

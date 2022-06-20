@@ -24,6 +24,19 @@
   
     <script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
 
+    {{-- this is for crousel  --}}
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <link rel="stylesheet" type="text/css" href="assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/chosen.min.css">
+    {{-- <link rel="stylesheet" type="text/css" href="assets/css/style.css"> --}}
+
+
+    {{-- this is for crousel --}}
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
 <!-- mdb -->
 
     <link rel="stylesheet" href="{{asset('css/virtual-select.min.css')}}" >
@@ -251,8 +264,18 @@
 
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
+  
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    
+    {{-- this is for crousel  --}}
+ 
+	
+
+	<script src="assets/js/chosen.jquery.min.js"></script>
+	<script src="assets/js/owl.carousel.min.js"></script>
+	<script src="assets/js/functions.js"></script>
+
+  {{-- this is for crousel --}}
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script>
   document.addEventListener("DOMContentLoaded", function(){
 // make it as accordion for smaller screens

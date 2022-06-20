@@ -14,19 +14,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('website.home');
-})->name('home');
+
+Route::group(['namespace' => 'App\Http\Controllers\website'],function(){
+    Route::get('/','HomeController@index')->name('home'); 
+
+    Route::get('/job-by-category','JobByCategoryController@index' )->name('job_by_category');
+});
+
+
 Route::get('/candidates', function () {
     return view('website.candidates');
 })->name('candidates');
+
 Route::get('/jobs', function () {
     return view('website.jobs');
 })->name('jobs');
 
-Route::get('/job-by-category', function () {
-    return view('website.job_by_category');
-})->name('job_by_category');
+
+
 
 Route::get('/job-by-location', function () {
     return view('website.jobs_by_location');
