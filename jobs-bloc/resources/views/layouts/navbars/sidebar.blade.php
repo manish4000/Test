@@ -88,6 +88,18 @@
                 <span class="sidebar-normal">{{ __('Job Category') }} </span>
               </a>
             </li>
+            <li class="nav-item{{ $activePage == 'table' ? ' active' : '' }}">
+              <a class="nav-link" href="{{ route('admin.job.job_type.index') }}">
+                <i class="material-icons">JT</i>
+                  <p>{{ __('Job Type') }}</p>
+              </a>
+            </li>
+            <li class="nav-item{{ $activePage == 'table' ? ' active' : '' }}">
+              <a class="nav-link" href="{{ route('admin.job.submit_job.index') }}">
+                <i class="material-icons">SJ</i>
+                  <p>{{ __('Submit Job') }}</p>
+              </a>
+            </li>
            
           </ul>
         </div>
@@ -103,12 +115,7 @@
             <p>{{ __('Location') }}</p>
         </a>
       </li>
-      <li class="nav-item{{ $activePage == 'table' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('admin.job.job_type.index') }}">
-          <i class="material-icons">JT</i>
-            <p>{{ __('Job Type') }}</p>
-        </a>
-      </li>
+     
       <li class="nav-item{{ $activePage == 'table' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('admin.job.salary_type.index') }}">
           <i class="material-icons">ST</i>

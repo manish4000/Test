@@ -166,13 +166,22 @@ Route::group(['prefix' => 'admin','middleware'=> ['guest','preventBackHistory','
 
 
 //==================================== admin ==============================================
- Route::group(['prefix' => 'admin','as'=>'admin.' ,'middleware'=> ['auth','isAdmin','preventBackHistory'] ,'namespace' => 'App\Http\Controllers\Admin'],function(){
+ Route::group(['prefix' => 'admin','as'=>'admin.' ,'middleware'=> ['auth','isAdmin','preventBackHistory'] ],function(){
     
               Route::get('/logout','Auth\LoginController@logout')->name('logout');
 
+              Route::group(['middleware' => 'auth'], function () {
+                Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
+                Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
+                Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
+                Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
+            });
+        
+
+
             //   Route::get('/dashboard','DashboardController@dashboardData')->name('dashboard');
 
-              Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+              Route::get('/dashboard', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('dashboard');
 
 
               Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
@@ -207,23 +216,16 @@ Route::group(['prefix' => 'admin','middleware'=> ['guest','preventBackHistory','
                   })->name('upgrade');
               });
           
-              Route::group(['middleware' => 'auth'], function () {
-                  Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
-                  Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
-                  Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
-                  Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
-              });
-          
+              
           
           
           
                       // 
           
           
-                        Route::get('/dashboard','DashboardController@dashboardData')->name('dashboard');
           
           
-                        Route::group(['prefix' => 'settings','as'=>'settings.' ,'middleware'=> ['autoTrim'],'namespace' => 'Settings' ],function(){
+                        Route::group(['prefix' => 'settings','as'=>'settings.' ,'middleware'=> ['autoTrim'],'namespace' => 'App\Http\Controllers\Admin\Settings' ],function(){
           
                           Route::get('/social','SocialController@index')->name('social.index'); 
                           Route::post('/social','ContactController@store')->name('social.store');  
@@ -249,8 +251,20 @@ Route::group(['prefix' => 'admin','middleware'=> ['guest','preventBackHistory','
           
           
           
-                  Route::group(['prefix' => 'job','as'=>'job.' ,"namespace" => "Job"],function(){
+                  Route::group(['prefix' => 'job','as'=>'job.' ,"namespace" => "App\Http\Controllers\Admin\Job"],function(){
                       
+
+
+                    Route::group(['prefix' => 'submit-job','as'=>'submit_job.'],function(){
+                          
+                        Route::get('/','SubmitJobController@index')->name('index');
+                        Route::Post('/store','SubmitJobController@store')->name('store');
+                       
+
+            
+                    });
+
+
                       Route::group(['prefix' => 'job-type','as'=>'job_type.'],function(){
                           
                           Route::get('/','JobTypeController@index')->name('index');
@@ -292,7 +306,7 @@ Route::group(['prefix' => 'admin','middleware'=> ['guest','preventBackHistory','
           
           
                   // this if for location api
-                  Route::group(['prefix' => 'location','as'=>'location.'],function(){
+                  Route::group(['prefix' => 'location','as'=>'location.', "namespace" => "App\Http\Controllers\Admin"],function(){
                   
                       Route::get('/','LocationController@index')->name('index');
                       Route::Post('/store','LocationController@store')->name('store');
