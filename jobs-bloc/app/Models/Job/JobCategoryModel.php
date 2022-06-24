@@ -23,4 +23,11 @@ class JobCategoryModel extends Model
         return $this->hasMany(JobCategoryModel::class ,'parent_id')->with('children');
     }
 
+
+    public function Jobs(){
+
+        return $this->belongsToMany(JobModel::class,'job_categories_relation','job_category_id','job_id');
+    }
+
+
 }

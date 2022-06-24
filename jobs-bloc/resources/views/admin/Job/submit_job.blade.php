@@ -93,31 +93,33 @@
                                     <div class="col-4">Job Location : {{$data->location_id }}  </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-4"> <h5>Deadline Date: {{$data->application_deadline_date}} </h5></div>
+                                    <div class="col-4"> Deadline Date: {{$data->application_deadline_date}}</div>
                                     <div class="col-4">Min salary: {{$data->min_salary}}  </div>
                                     <div class="col-4">Max Salary : {{$data->max_salary }}  </div>
                                 </div>
+                               
                                 <div class="row">
-                                  <div class="col-4">Tegs : {{$data->tegs }}  </div>
+                                  <div class="col-4"> Salary Type: {{$data->salary_type_id}} </div>
 
                                   <div class="col-4">Status : @if($data->is_active == 1 ) 
-                                                              <span class="badge badge-success">Active</span>
+                                                              <span class="badge badge-success p-1">Active</span>
                                                              @else
-                                                             <span class="badge badge-danger">Inactive</span>
+                                                             <span class="badge badge-danger p-1">Inactive</span>
                                                              @endif
                                   </div>
                                
                                     <div class="col-4"> Is Feature : @if($data->is_feature == 1 ) 
-                                      <span class="badge badge-success">Active</span>
+                                      <span class="badge badge-success p-1">Active</span>
                                      @else
-                                     <span class="badge badge-danger">Inactive</span>
+                                     <span class="badge badge-danger p-1">Inactive</span>
                                      @endif </div>
                                    
                                    
                                 </div>
                                 <div class="row">
                                     
-                                  <div class="col-12">Address: {{ $data->address}}  </div>
+                                  <div class="col-4">Address: {{ $data->address}}  </div>
+                                  <div class="col-4">Description: {{ strip_tags($data->description)}}  </div>
                                 </div>
       
                                       
@@ -128,8 +130,8 @@
                             <div class="col-4"> <img src="{{APP_PATH.JOB_FEATURE_IMAGE_URL.$data->feature_image}}" alt="..." class="avatar img-raised" height="100" ></div>
                           </div>
                           <div class="col-2">
-                            <a href="{{route('admin.job.job_type.status',$data->id)}}" class="btn btn-warning btn-sm" >Status</a>
-                            <a href="{{route('admin.job.job_type.status',$data->id)}}" class="btn btn-info btn-sm" > <i class="material-icons">star</i> Feature</a>
+                            <a href="{{route('admin.job.submit_job.status',$data->id)}}" class="btn btn-warning btn-sm" >Status</a>
+                            <a href="{{route('admin.job.submit_job.featured',$data->id)}}" class="btn btn-info btn-sm" > <i class="material-icons">star</i> Feature</a>
                             <button type="button" data-toggle="modal" data-target="#edit_testimonial" class="edit_testimonial   btn btn-primary btn-sm"  value="{{$data->id}}" > <i class="material-icons px-1">edit </i>Edit</button>
                             <button type="button" data-toggle="modal" data-target="#delete_testimonial" class="delete_testimonial   btn btn-danger btn-sm" value="{{$data->id}}" ><i class="material-icons">delete</i> Delete</button>
                           </div>
@@ -311,8 +313,6 @@
                   
                     <button type="submit" class="btn btn-primary">Submit</button>
                   </form>
-
-
               </div>
 
 
@@ -337,41 +337,139 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Edit Job Type </h5>
+        <h5 class="modal-title" id="exampleModalLabel">Edit Job </h5>
         <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
 
                     
                 <div class="container" >
-                  <form action="{{route('admin.job.job_type.store')}}"  method="POST" id="update_testimonial" enctype="multipart/form-data">
-                      @csrf
-                  
-                      <div class="form-group">
-                        
-                        <label for="title">title</label>
+                  <form action="{{route('admin.job.submit_job.store')}}"  method="POST" id="update_testimonial" enctype="multipart/form-data">
+                    @csrf
 
-                        <input type="hidden" title="id" id="edit_id" name="id">
+                 
+                  <div class="form-group">
+                    <label class="mb-2" for="title">Title</label>
+                    <input type="text" name="id" id="edit_id">
+                    <input type="text" class="form-control" id="edit_title" value="" name="title" required>
+                    <span class="text-danger error-text  title_error "></span>
+                  </div>
+                
+                  <div class="form-group">
+                  <label class="mb-2" for="">Job type</label>
+                  <select name="job_type_id" id="edit_job_type_id" class="form-control" required> 
 
-                        <input type="text" class="form-control" id="edit_title" value="" name="title" required>
-  
-                        <span class="text-danger error-text  title_error "></span>
-                      </div>
+                      @foreach ($job_types as $type)
+                      
+                      <option value="{{$type->id}}">{{$type->title}}</option>
+
+                      @endforeach
                    
-             
+                  </select>
+                  <span class="text-danger error-text  job_type_id_error "></span>
+                  </div>
+
+                  <div class="form-group">
+                  <label class="mb-2" for="">Job Category </label>
+                  <select name="job_category_id[]" id="category-select" class="form-control " multiple required> 
+
+                      @foreach ($job_categories as $type)
+                      
+                      <option value="{{$type->id}}">{{$type->title}}</option>
+
+                      @endforeach
+                   
+                  </select>
+                  <span class="text-danger error-text  job_category_id_error "></span>
+                  </div>
+
+                  <div class="form-group">
                   
-                    <div class="form-group">
-                    <label for="">Is Active</label>
-                    <select name="is_active" id="edit_is_active" class="form-control" required> 
-                      <option value="1">Yes</option>
-                        <option value="0">No</option>
-                    </select>
-                    <span class="text-danger error-text  is_active_error "></span>
-                    </div>
+                  <label class="mb-4" for=""></label>
+                  <textarea name="description"  class="form-control mt-3" id="edit_description" cols="30" rows="5"></textarea>
+
+                  <span class="text-danger error-text  description_error "></span>
+                  </div>
+
+       
+                  <div class="form-group form-file-upload form-file-multiple">
+                      <input type="file" multiple="false" name="feature_image" class="inputFileHidden" style="z-index:423522">
+                      <div class="input-group">
+                          <input type="text" class="form-control inputFileVisible" placeholder="Feature Image">
+                          <span class="input-group-btn">
+                              <button type="button" class="btn btn-fab btn-round btn-primary">
+                                  <i class="material-icons">attach_file</i>
+                              </button>
+                          </span>
+                      </div>
+                  </div>  
+
+                  <div><img src="" alt="" id="edit_feature_image" height="150"></div>
+                  
+                  <div class="form-group">
+                      <label class="mb-2" for="title">Application Deadline Date</label>
+                      <input type="date" class="form-control" value="" id="edit_application_deadline_date" name="application_deadline_date" required>
+                      <span class="text-danger error-text  application_deadline_date_error "></span>
+                  </div>
+
+                  <div class="form-group">
+                      <label class="mb-2" for="title">Min Salary</label>
+                      <input type="text" class="form-control" value="" id="edit_min_salary" name="min_salary" required>
+                      <span class="text-danger error-text  min_salary_error "></span>
+                  </div>
+                  <div class="form-group">
+                      <label class="mb-2" for="title">Max Salary</label>
+                      <input type="text" class="form-control" value="" id="edit_max_salary" name="max_salary" required>
+                      <span class="text-danger error-text  max_salary_error "></span>
+                  </div>
                     
-                  
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                  </form>
+                  <div class="form-group">
+                    <label class="mb-2" for="">Salary Type </label>
+                    <select name="salary_type_id"  class="form-control" id="edit_salary_type_id"  required> 
+
+                        @foreach ($salary_type as $type)
+                        
+                        <option value="{{$type->id}}">{{$type->title}}</option>
+
+                        @endforeach
+                     
+                    </select>
+                    <span class="text-danger error-text  salary_type_id_error "></span>
+                    </div>
+
+                  <div class="form-group">
+                    <label class="mb-2" for="">Location  </label>
+                    <select name="location_id"  class="form-control "  id="edit_location_id" required> 
+
+                        @foreach ($location as $type)
+                        
+                        <option value="{{$type->id}}">{{$type->title}}</option>
+
+                        @endforeach
+                     
+                    </select>
+                    <span class="text-danger error-text  location_id _error "></span>
+                  </div>
+
+                  <div class="form-group">    
+                    <label class="mb-4" for="">Address</label>
+                    <textarea name="address"  class="form-control mt-3" id="edit_address" cols="30" rows="5"></textarea>
+                    <span class="text-danger error-text  address_error "></span>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="mb-2" for="">Is Active  </label>
+                    <select name="is_active"  class="form-control" id="edit_is_active"  required>                        
+                        <option value="0">In Active</option>
+                        <option value="1">Active</option>
+
+                    </select>
+                    <span class="text-danger error-text  is_active _error "></span>
+                  </div>
+                
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+
 
               </div>
 
@@ -441,7 +539,7 @@
 
           type:"GET",
 
-          url:  "{{APP_PATH}}" + "admin/job/job-type/edit/"+testimonial_id,
+          url:  "{{APP_PATH}}" + "admin/job/submit-job/edit/"+testimonial_id,
 
          
           success:function(response){
@@ -460,8 +558,18 @@
 
                  
                   $('#edit_id').val(testimonial_id);    
-                 $('#edit_title').val(response.job_type_data.title);
-                 $('#edit_is_active').val(response.job_type_data.is_active);
+                  $('#edit_title').val(response.job_data.title);
+                  $('#edit_feature_image').attr('src', "{{APP_PATH}}"+"{{JOB_FEATURE_IMAGE_URL}}"+response.job_data.feature_image);;
+                  $('#edit_job_type_id').val(response.job_data.job_type_id);
+                  $('#edit_description').val(response.job_data.description);
+                  $('#edit_application_deadline_date').val(response.job_data.application_deadline_date);
+                  $('#edit_min_salary').val(response.job_data.min_salary);
+                  $('#edit_max_salary').val(response.job_data.max_salary);
+                  $('#edit_salary_type_id ').val(response.job_data.salary_type_id );
+                  $('#edit_location_id ').val(response.job_data.location_id );
+                  $('#edit_address').val(response.job_data.address);
+                  $('#edit_is_feature').val(response.job_data.is_feature);
+                  $('#edit_is_active').val(response.job_data.is_active);
 
               }  
             
@@ -494,7 +602,7 @@
           $.ajax({
 
             type:"DELETE",
-            url: "{{APP_PATH}}"+"admin/job/job-type/delete/"+delete_testimonial_id,
+            url: "{{APP_PATH}}"+"admin/job/submit-job/delete/"+delete_testimonial_id,
           
 
             data:{'_token': '{{ csrf_token() }}' },
@@ -546,8 +654,6 @@
 
                         }else if(data.status == 500){
 
-          
-
                             Swal.fire(
                                         'Oppss...',
                                         data.message,
@@ -558,6 +664,14 @@
                             window.location = "";
                         }else{
 
+                          Swal.fire(
+                                        'Good Job',
+                                        data.message,
+                                        'success'
+                                );
+
+
+                            window.location = "";
 
                         }
 
@@ -591,8 +705,6 @@
                       $(document).find('span.error-text').text('')
                  },
                  success:function(data){
-
-                    console.log(data);
 
                       if(data.status == 401){
 

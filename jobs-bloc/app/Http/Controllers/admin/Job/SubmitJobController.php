@@ -19,12 +19,15 @@ class SubmitJobController extends Controller
     public function index(){
 
 
-        $job_list  = JobModel::select('job.*','job_types.title as job_type_id','locations.title as location_id')
+        $job_list  = JobModel::select('job.*','job_types.title as job_type_id','locations.title as location_id','salary_types.title as salary_type_id')
                                 ->leftJoin('job_types','job.job_type_id','=','job_types.id')
                                 ->leftJoin('locations','job.location_id','=','locations.id')
+                                ->leftJoin('salary_types','job.salary_type_id','=','salary_types.id')
                                 
                                 ->get();
        
+
+
 
         $job_types =  JobTypeModel::get();
 
@@ -44,7 +47,7 @@ class SubmitJobController extends Controller
             'job_type_id' => 'required|numeric',
             'job_category_id' => 'required|array',
             'description' => 'required',
-            'feature_image' => 'required|image|mimes:png,jpg,jpeg|max:1024',
+            'feature_image' => 'nullable|image|mimes:png,jpg,jpeg|max:1024',
             'application_deadline_date' => 'required|date',
             'min_salary' => 'required|numeric',
             'max_salary' => 'required|numeric',
@@ -69,11 +72,12 @@ class SubmitJobController extends Controller
 
                         if( isset($request->id)){
                             $job_model = JobModel::find($request->id);
+                            $old_image_name = ($job_model->feature_image)?? 'no_image.jpg';
+                       
                         }else{
                             $job_model = new JobModel;
+                            $old_image_name = 'no_image.jpg';
                         }
-
-
 
                             $job_model->title =       ucwords( $request->input('title') );
                             $job_model->job_type_id =          $request->input('job_type_id');
@@ -94,6 +98,14 @@ class SubmitJobController extends Controller
                                 $file_name = time().'.'.$extension;
                                 $image->move(JOB_FEATURE_IMAGE_URL,$file_name);
                                 $job_model->feature_image = $file_name;
+
+
+                                if(file_exists(public_path(JOB_FEATURE_IMAGE_URL.$old_image_name))){
+
+                                    unlink (public_path(JOB_FEATURE_IMAGE_URL.$old_image_name));
+                                }
+
+
                             } 
 
                              $job_model->save();
@@ -135,7 +147,7 @@ class SubmitJobController extends Controller
 
                             if($response){
 
-                                return response()->json(['status' => 200, "msg" =>"your data is update " ,$request->job_category_id]); 
+                                return response()->json(['status' => 200, "msg" =>"your data is update"]); 
     
                             }else{
     
@@ -154,11 +166,11 @@ class SubmitJobController extends Controller
 
     public function changefeatured($id){
         
-        $data =  JobModel::select('is_featured')->where('id',$id)->first()->toArray();;
+        $data =  JobModel::select('is_feature')->where('id',$id)->first()->toArray();;
 
-         $status =($data['is_featured'] == '1')?'0':'1';
+         $status =($data['is_feature'] == '1')?'0':'1';
 
-       if(JobModel::where('id',$id)->update(['is_featured'=> $status ])){
+       if(JobModel::where('id',$id)->update(['is_feature'=> $status ])){
 
          return   redirect()->back()->with('status_update','The status is updated');       
 
@@ -189,6 +201,10 @@ class SubmitJobController extends Controller
     public function edit($id)
     {           
 
+        //   $job_data = JobModel::select('job.*','job_types.title as job_type_id','locations.title as location_id','salary_types.title as salary_type_id')
+        //                                 ->leftJoin('job_types','job.job_type_id','=','job_types.id')
+        //                                 ->leftJoin('locations','job.location_id','=','locations.id')
+        //                                 ->leftJoin('salary_types','job.salary_type_id','=','salary_types.id')->find($id);
           $job_data = JobModel::find($id);
 
            if($job_data){

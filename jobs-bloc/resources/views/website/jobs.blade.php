@@ -137,7 +137,7 @@
              </div>
             </div>  -->
 
-            <div class="container p-5">
+            <div class="container p-3">
 
             <div>
                 <h3 class=" fw-bold text-center my-4">Online Free Job Search Websites in India</h3>
@@ -171,21 +171,21 @@
                         <button type="submit" class="btn btn-warning   py-3  text-white  fw-bold px-5"> Get Job Alerts</button>
                     </div>
 
-            <div class="row g-4">
+            <div class="row g-3">
 
-            @for($i=1;$i<=10;$i++)
+            @foreach($jobs_data as $jobs)
 
                                 <div class="col-12 shadow">
                                     <div class="product">
 
                                           <div class="row">
 
-                                                <div class="col-3">
-                                                  <img src="https://jobsbloc.com/wp-content/themes/careerup/images/placeholder.png" height="125px"> 
+                                                <div class="col-3 ">
+                                                  <img src="https://jobsbloc.com/wp-content/themes/careerup/images/placeholder.png" class="ps-2" height="110px"> 
                                                 </div>
                                                    <div class="col-9 my-auto">
 
-                                                   <h5> <a href="#" class="text-decoration-none text-reset"> Front Office Associate</a>  <span> <i class="fa fa-star" style="color:#ffc107;"></i> </span>  </h5>       
+                                                   <a href="#" class="text-decoration-none text-reset ms-3"> {{$jobs->title}} </a>    <span> @if($jobs->is_feature == 1)  <i class="fa fa-star ms-2" style="color:#ffc107;"></i>  @endif  </span>       
 
                                                 </div>
                                           </div>           
@@ -193,7 +193,7 @@
                                     </div>
                                 </div>
 
-             @endfor
+             @endforeach
 
             </div>
             </div>

@@ -19,6 +19,7 @@ Route::group(['namespace' => 'App\Http\Controllers\website'],function(){
     Route::get('/','HomeController@index')->name('home'); 
 
     Route::get('/job-by-category','JobByCategoryController@index' )->name('job_by_category');
+    Route::get('/jobs', 'JobsController@index')->name('jobs');
 });
 
 
@@ -26,9 +27,7 @@ Route::get('/candidates', function () {
     return view('website.candidates');
 })->name('candidates');
 
-Route::get('/jobs', function () {
-    return view('website.jobs');
-})->name('jobs');
+
 
 
 
@@ -259,6 +258,13 @@ Route::group(['prefix' => 'admin','middleware'=> ['guest','preventBackHistory','
                           
                         Route::get('/','SubmitJobController@index')->name('index');
                         Route::Post('/store','SubmitJobController@store')->name('store');
+
+                        Route::get('/edit/{id}','SubmitJobController@edit')->name('edit');
+                          Route::post('/update/','SubmitJobController@update')->name('update');
+                          Route::delete('/delete/{id}','SubmitJobController@destroy')->name('delete');
+                          Route::get('/status/{id}','SubmitJobController@changeStatus')->name('status');
+                          Route::get('/featured/{id}','SubmitJobController@changefeatured')->name('featured');
+              
                        
 
             
