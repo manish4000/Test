@@ -5,112 +5,91 @@
 <div class="container mt-5 mb-5">
    <div class="row g-2">
       <div class="col-md-3">
-       
-
-                <div>
-                            <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none fs-4 d-sm-inline"> Date Posted   </span> </a>
-                        <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
-                            <li class="w-100">
-                            <div class="d-flex justify-content-between mt-2">
-                                <div class="form-check"> <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked> <label class="form-check-label" for="flexCheckChecked"> Tablets </label> </div>
-                                <span>44</span> 
-                                </div>
-                            </li>
-                            <li class="w-100">
-                            <div class="d-flex justify-content-between mt-2">
-                                <div class="form-check"> <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked> <label class="form-check-label" for="flexCheckChecked"> Tablets </label> </div>
-                                <span>44</span> 
-                                </div>
-                            </li>
-                            <li class="w-100">
-                            <div class="d-flex justify-content-between mt-2">
-                                <div class="form-check"> <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked> <label class="form-check-label" for="flexCheckChecked"> Tablets </label> </div>
-                                <span>44</span> 
-                                </div>
-                            </li>
-                            
-                        </ul>
-                </div>
-                <div>
-                            <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none fs-4 d-sm-inline"> Date Posted </span> </a>
-                        <ul class="collapse show nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
-                            <li class="w-100">
-                            <div class="d-flex justify-content-between mt-2">
-                                <div class="form-check"> <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked> <label class="form-check-label" for="flexCheckChecked"> Tablets </label> </div>
-                                <span>44</span> 
-                                </div>
-                            </li>
-                            <li class="w-100">
-                            <div class="d-flex justify-content-between mt-2">
-                                <div class="form-check"> <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked> <label class="form-check-label" for="flexCheckChecked"> Tablets </label> </div>
-                                <span>44</span> 
-                                </div>
-                            </li>
-                            <li class="w-100">
-                            <div class="d-flex justify-content-between mt-2">
-                                <div class="form-check"> <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked> <label class="form-check-label" for="flexCheckChecked"> Tablets </label> </div>
-                                <span>44</span> 
-                                </div>
-                            </li>
-                            
-                        </ul>
-                </div>
-                <div>
-                            <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none fs-4 d-sm-inline"> Date Posted   </span> </a>
-                        <ul class="collapse show nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
-                            <li class="w-100">
-                            <div class="d-flex justify-content-between mt-2">
-                                <div class="form-check"> <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked> <label class="form-check-label" for="flexCheckChecked"> Tablets </label> </div>
-                                <span>44</span> 
-                                </div>
-                            </li>
-                            <li class="w-100">
-                            <div class="d-flex justify-content-between mt-2">
-                                <div class="form-check"> <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked> <label class="form-check-label" for="flexCheckChecked"> Tablets </label> </div>
-                                <span>44</span> 
-                                </div>
-                            </li>
-                            <li class="w-100">
-                            <div class="d-flex justify-content-between mt-2">
-                                <div class="form-check"> <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked> <label class="form-check-label" for="flexCheckChecked"> Tablets </label> </div>
-                                <span>44</span> 
-                                </div>
-                            </li>
-                            
-                        </ul>
-                </div>
-
     
+                <div class="accordion mt-4" id="accordionPanelsStayOpenExample ">
 
+                        <h2 class="accordion-header" id="job_type-headingOne">
+                            <a class="accordion-button text-decoration-none fs-5"  data-bs-toggle="collapse" data-bs-target="#job_type-collapseOne" aria-expanded="true" aria-controls="job_type-collapseOne">
+                                Job Type
+                            </a>
+                        </h2>
+                        <div class="accordion-item border-0" >  
+                        <div id="job_type-collapseOne" class="accordion-collapse collapse show" aria-labelledby="job_type-headingOne" >
+                            <div class="accordion-body" style="overflow:auto;height:150px">
+                                
+                                @foreach($Job_types as $job_type)
+                                
+                                        <div class="d-flex justify-content-between mt-2">
+                                            <div class="form-check"> <input class="form-check-input p-2 bg-warning border-1 border-light text-warning job_type_id" name="job_type_id" type="radio" value="{{$job_type->id}}" id="job_type_id" checked> <label class="form-check-label" for="flexCheckChecked"> {{$job_type->title}} </label> </div>
+                                            <span>44</span> 
+                                        </div>
+                                    
+                                @endforeach
 
-         <div class="type p-2 mb-2">
-         
-         <div class="price-range-block">
+                            </div>
+                        </div>
+                        </div>
 
-                <div class="sliderText">jQuery UI Price Range Slider</div>
+                        {{--  --}}
 
-                <div id="slider-range" class="price-filter-range" name="rangeInput"></div>
+                        <h2 class="accordion-header" id="job_category-headingOne">
+                            <a class="accordion-button text-decoration-none fs-5"  data-bs-toggle="collapse" data-bs-target="#job_category-collapseOne" aria-expanded="true" aria-controls="job_category-collapseOne">
+                                Job Category
+                            </a>
+                        </h2>
+                        <div class="accordion-item border-0" >  
+                        <div id="job_category-collapseOne" class="accordion-collapse collapse show" aria-labelledby="job_category-headingOne" >
+                            <div class="accordion-body" style="overflow:auto;height:150px">
+                                
+                                @foreach($job_categories as $category)
+                                
+                                        <div class="d-flex justify-content-between mt-2">
+                                            <div class="form-check"> <input class="form-check-input p-2 bg-warning border-1 border-light text-warning job_category_id" name="job_category_id[]" type="checkbox" value="{{$category->id}}" id="job_category_id" checked> <label class="form-check-label" for="flexCheckChecked"> {{$category->title}} </label> </div>
+                                            <span>44</span> 
+                                        </div>
+                                    
+                                @endforeach
 
-                <div style="margin:30px auto">
-                <input type="number" min=0 max="9900" oninput="validity.valid||(value='0');" id="min_price" class="price-range-field" />
-                <input type="number" min=0 max="10000" oninput="validity.valid||(value='10000');" id="max_price" class="price-range-field" />
+                            </div>
+                        </div>
+                        </div>
+                        {{--  --}}
+                      
+
+                        <h2 class="accordion-header" id="job_location-headingOne">
+                            <a class="accordion-button text-decoration-none fs-5"  data-bs-toggle="collapse" data-bs-target="#job_location-collapseOne" aria-expanded="true" aria-controls="job_location-collapseOne">
+                                Job Locations
+                            </a>
+                        </h2>
+                        <div class="accordion-item border-0" >  
+                        <div id="job_location-collapseOne" class="accordion-collapse collapse show" aria-labelledby="job_location-headingOne" >
+                            <div class="accordion-body" style="overflow:auto;height:150px">
+                                
+                                @foreach($locations as $location)
+                                
+                                        <div class="d-flex justify-content-between mt-2">
+                                            <div class="form-check"> <input class="form-check-input p-2 bg-warning border-1 border-light text-warning" name="location_id[]" type="checkbox" value="{{$location->id}}" id="flexCheckChecked" checked> <label class="form-check-label" for="flexCheckChecked"> {{$location->title}} </label> </div>
+                                            <span>44</span> 
+                                        </div>
+                                    
+                                @endforeach
+
+                            </div>
+                        </div>
+                        </div>
+                        {{--  --}}
+                    
                 </div>
+               
 
-                <button class="price-range-search" id="price-range-submit">Search</button>
+                    
+                    
+    </div>
+             
 
-                <div id="searchResults" class="search-results-block"></div>
-
-                </div>
-
-         
-         </div>
-      </div>
     
       
-        <div class="col-md-9  ">
+        <div class="col-md-9" id="updateDiv">
          <!-- <div class="container  overflow-hidden">
 
        
@@ -205,85 +184,52 @@
 
 
 <script>
-    $(document).ready(function(){
-	
-	$('#price-range-submit').hide();
-
-	$("#min_price,#max_price").on('change', function () {
-
-	  $('#price-range-submit').show();
-
-	  var min_price_range = parseInt($("#min_price").val());
-
-	  var max_price_range = parseInt($("#max_price").val());
-
-	  if (min_price_range > max_price_range) {
-		$('#max_price').val(min_price_range);
-	  }
-
-	  $("#slider-range").slider({
-		values: [min_price_range, max_price_range]
-	  });
-	  
-	});
+    
+    $(function(){
 
 
-	$("#min_price,#max_price").on("paste keyup", function () {                                        
+        $('.job_type_id').click(function(){
 
-	  $('#price-range-submit').show();
+            var Job_types = [];
 
-	  var min_price_range = parseInt($("#min_price").val());
+            $('.job_type_id').each(function(){
 
-	  var max_price_range = parseInt($("#max_price").val());
-	  
-	  if(min_price_range == max_price_range){
+                if($(this).is(":checked")){
+                    Job_types.push($(this).val());
+                }
+            });
 
-			max_price_range = min_price_range + 100;
-			
-			$("#min_price").val(min_price_range);		
-			$("#max_price").val(max_price_range);
-	  }
+            job_type_data = Job_types.toString();
+        });
 
-	  $("#slider-range").slider({
-		values: [min_price_range, max_price_range]
-	  });
+        $('.job_category_id').click(function(){
 
-	});
+            var Job_category = [];
+
+            $('.job_category_id').each(function(){
+
+                if($(this).is(":checked")){
+                    Job_category.push($(this).val());
+                }
+
+            });
+
+            job_category_data = Job_category.toString();
+        });
 
 
-	$(function () {
-	  $("#slider-range").slider({
-		range: true,
-		orientation: "horizontal",
-		min: 0,
-		max: 10000,
-		values: [0, 10000],
-		step: 100,
+        $.ajax({
+            type:'get',
+            datatype:'html',
+            url:'http://127.0.0.1:8000/jobs',
+            data:"job_type_data="+ job_type_data + end + "job_category_data=" +job_category_data,
+            
 
-		slide: function (event, ui) {
-		  if (ui.values[0] == ui.values[1]) {
-			  return false;
-		  }
-		  
-		  $("#min_price").val(ui.values[0]);
-		  $("#max_price").val(ui.values[1]);
-		}
-	  });
+        });
 
-	  $("#min_price").val($("#slider-range").slider("values", 0));
-	  $("#max_price").val($("#slider-range").slider("values", 1));
 
-	});
+    });
 
-	$("#slider-range,#price-range-submit").click(function () {
-
-	  var min_price = $('#min_price').val();
-	  var max_price = $('#max_price').val();
-
-	  $("#searchResults").text("Here List of products will be shown which are cost between " + min_price  +" "+ "and" + " "+ max_price + ".");
-	});
-
-});
 </script>
 
 @endsection
