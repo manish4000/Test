@@ -8,6 +8,10 @@
     
                 <div class="accordion mt-4" id="accordionPanelsStayOpenExample ">
 
+                    <div class="text-center mb-3">
+                        <button class="btn btn-warning text-white" id="filter-data" >Apply Filter</button>
+                    </div>
+
                         <h2 class="accordion-header" id="job_type-headingOne">
                             <a class="accordion-button text-decoration-none fs-5"  data-bs-toggle="collapse" data-bs-target="#job_type-collapseOne" aria-expanded="true" aria-controls="job_type-collapseOne">
                                 Job Type
@@ -164,7 +168,7 @@
                                                 </div>
                                                    <div class="col-9 my-auto">
 
-                                                   <a href="#" class="text-decoration-none text-reset ms-3"> {{$jobs->title}} </a>    <span> @if($jobs->is_feature == 1)  <i class="fa fa-star ms-2" style="color:#ffc107;"></i>  @endif  </span>       
+                                                   <a href="{{route('job_details',$jobs->id)}}" class="text-decoration-none text-reset ms-3"> {{$jobs->title}} </a>    <span> @if($jobs->is_feature == 1)  <i class="fa fa-star ms-2" style="color:#ffc107;"></i>  @endif  </span>       
 
                                                 </div>
                                           </div>           
@@ -184,9 +188,15 @@
 
 
 <script>
-    
-    $(function(){
 
+
+
+
+
+    
+    $("#filter-data").on('click',function(e){
+
+        e.preventDefault();
 
         $('.job_type_id').click(function(){
 
@@ -217,18 +227,20 @@
             job_category_data = Job_category.toString();
         });
 
-
         $.ajax({
-            type:'get',
-            datatype:'html',
-            url:'http://127.0.0.1:8000/jobs',
-            data:"job_type_data="+ job_type_data + end + "job_category_data=" +job_category_data,
-            
+                    type:'get',
+                    datatype:'html',
+                    url:'http://127.0.0.1:8000/jobs',
+                    data:"job_type_data="+job_type_data+end+"job_category_data="+job_category_data,
+                    
+                });
 
-        });
 
 
     });
+
+    
+
 
 </script>
 

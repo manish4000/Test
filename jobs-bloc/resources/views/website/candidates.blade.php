@@ -141,7 +141,7 @@
 
                 <div class="mb-3">
                         <button type="submit" class="btn btn-warning   py-3  text-white  fw-bold px-5"> Get Candidate Alerts</button>
-                    </div>
+               </div>
 
             <div class="row g-4">
 

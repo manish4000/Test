@@ -20,6 +20,7 @@ Route::group(['namespace' => 'App\Http\Controllers\website'],function(){
 
     Route::get('/job-by-category','JobByCategoryController@index' )->name('job_by_category');
     Route::get('/jobs', 'JobsController@index')->name('jobs');
+    Route::get('/jobs/{id}','JobsController@jobDetails')->name('job_details');
 });
 
 
@@ -216,12 +217,7 @@ Route::group(['prefix' => 'admin','middleware'=> ['guest','preventBackHistory','
               });
           
               
-          
-          
-          
-                      // 
-          
-          
+
           
           
                         Route::group(['prefix' => 'settings','as'=>'settings.' ,'middleware'=> ['autoTrim'],'namespace' => 'App\Http\Controllers\Admin\Settings' ],function(){
@@ -345,8 +341,6 @@ Route::middleware([
         }
         return view('website.employer.dashboard');
     })->name('dashboard');
-
-
 
 });
 
