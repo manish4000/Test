@@ -3,6 +3,13 @@
 @section('content')
 
 
+
+<style>
+    .related-job:hover{
+        border: 1px solid rgba(233, 200, 13, 0.781);
+    }
+</style>
+
     @guest
 
         <div class="container">
@@ -39,7 +46,7 @@
                                             <div>
                                                 <p class="fw-bold">{{$job_data->job_type}} </p>
                                                 <span class="fs-4">{{$job_data->title}} </span>  <span> @if($job_data->is_feature == 1)  <i title="Feature" class="fa fa-star ms-2" style="color:#ffc107;"></i>  @endif  </span> 
-                                                <p>Posted 2 months ago</p>
+                                                <p> Posted {{$job_data->created_at->diffForHumans()}}  </p>
 
 
                                             </div>
@@ -56,8 +63,11 @@
                                     {{-- <button type="submit" class="btn btn-warning   py-3  text-white px-5 mb-3">  Apply Now  <i class="fa-solid fa-arrow-right ms-3"></i></button>
                                     <button type="submit" class="btn btn-secondary   py-3  text-white px-5">   <i class="fa-regular fa-star"></i> ShortList  </button> --}}
                                     <div class="d-grid gap-3 col-12  mx-auto">
-                                        <button class="btn btn-warning   py-3  text-white px-5 " type="button">Apply Now  <i class="fa-solid fa-arrow-right ms-2"></i> </button>
+                                        <button class="btn btn-warning   py-3  text-white px-5 " data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button">Apply Now  <i class="fa-solid fa-arrow-right ms-2"></i> </button>
                                         <button class="btn btn-warning   py-3  text-white px-5" type="button"> <i class="fa-regular fa-star me-2 "></i>  ShortList </button>
+                            
+                                            Launch static backdrop modal
+                                          </button>
                                     </div>
 
                                 </div>
@@ -81,56 +91,53 @@
             <div class="container">
                    <p class="fw-bold">Related Jobs</p> 
 
-                   <div class="row">
+                   @foreach ($related_jobs as $job)
+                   <div class="row ">
+   
+                       <div class="col-12 col-md-12 mb-3 related-job">
+                           <div class="row shadow py-4 px-4" >
+                               <div class="col-3 text-center">
+                                   <div class=" ">
+                                    <?php 
+                                        
+                                        if(file_exists(APP_PATH.JOB_FEATURE_IMAGE_URL.$job->feature_image)){
 
-                    <div class="col-12 col-md-12 mb-3">
-                        <div class="row shadow py-4 px-4" >
-                            <div class="col-3 text-center">
-                                <div class=" ">
-                                    <img src="https://jobsbloc.com/wp-content/themes/careerup/images/placeholder.png" alt="" height="120px" width="110" class="border">
-                            </div>
-                               
-                            </div>
-                            <div class="col-6 my-auto text-start">
-                                <div>
-                                    <p class="text-warning">Full time </p>
-                                    <span class="fw-bold">Duty Manager </span> <span class="badge bg-danger">Danger</span>
-                                    <p> <small>Posted 2 months ago </small> </p>
+                                            $image_url = APP_PATH.JOB_FEATURE_IMAGE_URL.$job->feature_image;
 
-                                </div>
-                            </div>
-                            <div class="col-3 my-auto">
+                                            }else{
+                                                $image_url = "https://jobsbloc.com/wp-content/themes/careerup/images/placeholder.png";
+                                            }
+                                        
+                                    ?>
+                                      <a href="{{route('job_details',$job->id)}}" class=" d-none d-md-inline"><img src="{{$image_url}}" alt="" height="120px" width="110" class="border d-none d-md-inline"></a>
+                               </div>
+                                  
+                               </div>
+                               <div class="col-6 my-auto text-start">
+                                   <div>
+                                       <p class="text-warning">{{$job->job_type}} </p>
+                                        <a href="{{route('job_details',$job->id)}}"> <span class="fw-bold">{{$job->title}}</span> <span>  </a> @if($job->is_feature == 1)  <i title="Feature" class="fa fa-star ms-2" style="color:#ffc107;"></i>  @endif  </span>  <span class="badge bg-danger">Danger</span>
+                                       <p> <small> Posted {{$job->created_at->diffForHumans()}} </small> </p>
+   
+                                   </div>
+                               </div>
+                               <div class="col-3 my-auto">
+                                @if($job->is_feature == 1)
+                                    <i class="fas fa-star fa-2x  text-warning" ></i>
+                                 
+                                @else
                                 <i class="far fa-star fa-2x  rounded-circle" ></i>
-                                <i class="fas fa-star fa-2x  text-warning" ></i>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-12 mb-3">
-                        <div class="row shadow py-4 px-4" >
-                            <div class="col-3 text-center">
-                                <div class=" ">
-                                    <img src="https://jobsbloc.com/wp-content/themes/careerup/images/placeholder.png" alt="" height="120px" width="110" class="border">
-                            </div>
-                               
-                            </div>
-                            <div class="col-6 my-auto text-start">
-                                <div>
-                                    <p class="text-warning">Full time </p>
-                                    <span class="fw-bold">Duty Manager </span> <span class="badge bg-danger">Danger</span>
-                                    <p> <small>Posted 2 months ago </small> </p>
-
-                                </div>
-                            </div>
-                            <div class="col-3 my-auto">
-                                <i class="far fa-star fa-2x  rounded-circle" ></i>
-                                <i class="fas fa-star fa-2x  text-warning" ></i>
-                            </div>
-
-                        </div>
-                    </div>
-                    
-            </div>
+                                @endif
+                                  
+                               </div>
+   
+                           </div>
+                       </div>
+                      
+                       
+                   </div>
+                       
+                   @endforeach
 
 
             </div>
@@ -140,6 +147,119 @@
         </div>
 
 
+        {{-- this is for modal box --}}
+
+        <!-- Button trigger modal -->
+
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">Apply for this job</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <form action="{{route('job.apply')}}" method="POST" id="apply_job" >
+
+                    @csrf
+                    <div class="mb-3">
+              
+                        <input type="text" class="form-control p-3" id="exampleFormControlInput1" placeholder="Enter Full Name" name="name">
+                      </div>
+                      <div class="mb-3">
+        
+                        <input type="email" class="form-control p-3" id="exampleFormControlInput1" placeholder="Email" name="email">
+                      </div>
+                      <div class="mb-3">
+                    
+                        <input type="text" class="form-control p-3" id="exampleFormControlInput1" placeholder="Phone Number" name="phone">
+                      </div>
+                      <div class="mb-3">
+                     
+                        <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Message" name="message" rows="3"></textarea>
+                      </div>
+                      <div class="mb-3">
+                        <input class="form-control p-3" type="file" name="resume" id="formFile">
+                      </div>
+
+                      <div class="mb-3">
+                        <input class="form-control btn btn-warning p-3 text-white" type="submit" id="formFile" value="Apply Job">
+                      </div>
+                      
+                </form>
+            </div>
+       
+          </div>
+      </div>
+   
+      
+    </div>
+        {{-- end modal box --}}
+
+    <script>
+            
+$(document).ready( function(){
+      
+      $("#apply_job").on('submit',function(e){
+
+          e.preventDefault();
+
+          $.ajax({
+
+                 url:$(this).attr('action'),
+             
+                 method:$(this).attr('method'),
+                 data:new FormData(this),
+                 processData:false,
+                 dataType:'json',
+                 contentType:false,
+                 beforeSend:function(){
+                      $(document).find('span.error-text').text('')
+                 },
+                 success:function(data){
+
+                      if(data.status == 401){
+                          $.each(data.error,function(prefix,val){
+                              $('span.'+prefix+'_error').text(val[0]);
+                          });
+
+                      }else if(data.status == 500){
+
+                        Swal.fire(
+                                    'Oops...',
+                                     data.message,
+                                    'error'
+                            );
+                      }else if(data.status == 200){
+
+                        console.log(data);
+
+                        $('#user_create')[0].reset();
+
+                        Swal.fire(
+                                        'Good job!',
+                                        data.message,
+                                        'success'
+                            ); 
+
+                      window.location = "" 
+                            
+                      }
+
+                 } 
+
+          });
+
+      });
+  });
+
+
+    </script>
 
 
 

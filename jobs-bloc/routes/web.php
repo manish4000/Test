@@ -21,6 +21,8 @@ Route::group(['namespace' => 'App\Http\Controllers\website'],function(){
     Route::get('/job-by-category','JobByCategoryController@index' )->name('job_by_category');
     Route::get('/jobs', 'JobsController@index')->name('jobs');
     Route::get('/jobs/{id}','JobsController@jobDetails')->name('job_details');
+    Route::post('apply-job','JobsController@applyJob')->name('job.apply');
+
 });
 
 
