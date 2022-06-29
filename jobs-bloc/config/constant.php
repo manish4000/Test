@@ -13,5 +13,6 @@ define("EMPLOYER_COVER_IMAGE_URL","uploads/employer/cover-images/");
 define("EMPLOYER_TEAM_IMAGE_URL","uploads/employer/team-images/");
 define("EMPLOYER_PROFILE_IMAGE_URL","uploads/employer/profile-images/");
 define("JOB_FEATURE_IMAGE_URL","uploads/job/feature-images/");
+define("JOB_APPLICATIONS_RESUME_URL","uploads/job/job-applications/");
 
 ?>

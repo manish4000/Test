@@ -10,6 +10,7 @@ use App\Models\JobApplicationModel;
 use App\Models\JobModel;
 use App\Models\LocationModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class JobsController extends Controller
@@ -69,6 +70,7 @@ class JobsController extends Controller
             'phone' => 'nullable|numeric|digits_between:10,10',
             'email' => "required|email",
             'resume' => 'nullable|image|mimes:png,jpg,jpeg|max:524',         
+            'job_id' => "required|numeric",
         ]);
 
         if($validator->fails()){
@@ -76,7 +78,8 @@ class JobsController extends Controller
         }else{
 
                 $job_application_model  = new  JobApplicationModel;
-
+                $job_application_model->user_id = Auth::user()->id;
+                $job_application_model->job_id =  $request->job_id;
                 $job_application_model->name = $request->name;
                 $job_application_model->phone = $request->email;
                 $job_application_model->email = $request->email;
@@ -89,13 +92,24 @@ class JobsController extends Controller
                     $extension = $image->getClientOriginalExtension();
                     $file_name = time().'.'.$extension;
 
-                    $image->move(WEBSITE_TESTMONIAL_IMAGE,$file_name);
+                    $image->move(JOB_APPLICATIONS_RESUME_URL,$file_name);
 
                     $job_application_model->resume = $file_name;
 
              } 
 
-             $job_application_model->save();
+
+             if($job_application_model->save()){
+
+                return response()->json([
+                    "status" => 200,
+                    "message" => "You have successfully applied to the job"
+                ]);
+             }
+
+
+
+
 
 
         }

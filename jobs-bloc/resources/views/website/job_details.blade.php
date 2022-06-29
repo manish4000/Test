@@ -164,11 +164,12 @@
             </div>
             <div class="modal-body">
 
+            
                 <form action="{{route('job.apply')}}" method="POST" id="apply_job" >
 
                     @csrf
                     <div class="mb-3">
-              
+                        <input type="hidden" name="job_id" id="" value="{{$job_data->id}}">
                         <input type="text" class="form-control p-3" id="exampleFormControlInput1" placeholder="Enter Full Name" name="name">
                       </div>
                       <div class="mb-3">
@@ -239,7 +240,7 @@ $(document).ready( function(){
 
                         console.log(data);
 
-                        $('#user_create')[0].reset();
+                        $('#apply_job')[0].reset();
 
                         Swal.fire(
                                         'Good job!',
