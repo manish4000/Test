@@ -24,10 +24,17 @@
     
   <div class="container  py-5 ">
 
-            @for($i=1;$i<=10;$i++)
+           
 
-                <p>We are a dedicated team who are continuously working to make you feel at home and give you a personalized touch at every step because we here at Jobsbloc understand the importance of a satisfying career..</p>
-            @endfor
+                <p class="fw-bold">Jobsbloc .com is solely intended for the purpose as a medium of exchange of information to its users/visitors/members related to genuine existing job vacancies and other services solely related with the purpose of job and career enhancement services..</p>
+                <p class="fw-bold">It may also contain links/website/images for other services provided through our website for your benefit.</p>
+                <p class="fw-bold">By visiting our website or becoming a member of the website you confirm that you are not less then 18yrs of age and if you are for any purpose(for which jobsbloc is intended to) visiting the website should be under the guidance/supervision of an elderly person .</p>
+                <p class="fw-bold">The website www.jobsbloc.com is owned and operated by Kushplacementservices ..</p>
+                <p class="fw-bold">By registering on jobsbloc you agree to abide by the terms and conditions of use..</p>
+                <p class="fw-bold">We(jobsbloc) use your information to improvise our services in order to provide you with better experience through our website as it helps solve the purpose of being into existence for your benefit .</p>
+                <p class="fw-bold">We (jobsbloc) reserve exclusive rights to cancel/delete any content displayed /published or reflected on our website or in any other mode..</p>
+
+          
 
   </div>
 

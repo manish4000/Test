@@ -16,7 +16,7 @@
 
     <link href="css/style.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript"></script> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" type="text/css" media="all" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.min.css" integrity="sha512-cyIcYOviYhF0bHIhzXWJQ/7xnaBuIIOecYoPZBgJHQKFPo+TOBA+BY1EnTpmM8yKDU4ZdI3UGccNGCEUdfbBqw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -53,96 +53,111 @@
   </head>
   <body>
 
-  <nav class="navbar navbar-expand-lg navbar-dark p-3 m-2 shadow border border-3 border-warning bg-white" id="headerNav">
-  <div class="container">
-    <a class="navbar-brand d-block " href="#">
-      <img src="images/logo.png" height="50" />
-    </a>
-    <button class="navbar-toggler text-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon bg-dark"></span>
-    </button>
-    <!-- <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-  Button with data-bs-target
-</button> -->
+<div class="container-fluid p-2  shadow border border-3 border-warning bg-white">
 
-    <div class=" collapse navbar-collapse " id="navbarNavDropdown">
-      <ul class="navbar-nav px-3 ">
-        <li class="nav-item">
-          <a class="nav-link text-dark  active text-decoration-none text-reset" aria-current="page" href="{{route('home')}}">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-dark " aria-current="page" href="{{route('candidates')}}">Find Resume</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-dark " aria-current="page" href="{{route('jobs')}}">Job Search</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-dark " aria-current="page" href="{{route('job_by_category')}}">Jobs By Category</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-dark " aria-current="page" href="{{route('job_by_location')}}">Jobs By Location</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-dark " aria-current="page" href="{{route('contact')}}">Contact</a>
-        </li>
-     
+  {{-- style="display: flex;justify-content:center;" --}}
 
-        @if(Route::has('login'))
-            @auth 
-                @if(Auth::user()->role == "candidate")
-                <li class="nav-item dropdown">
-                  <a class="nav-link  dropdown-toggle text-dark" href="#" data-bs-toggle="dropdown">
-                     <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-1.webp" alt="avatar"
-                  class="img-fluid rounded-circle me-3" width="50">
-                   {{Auth::user()->name}} </a>
-                    <ul class="dropdown-menu">
-                   <li><a class="dropdown-item" href="{{route('candidate.dashboard')}}"><i class="fas fa-tachometer-alt fa-fw"></i>  Dashboard</a></li>
-                   <li><a class="dropdown-item" href="{{route('candidate.profile.index')}}"><i class="fas fa-user fa-fw"></i> Profile</a></li>
-                   <li><a class="dropdown-item" href="{{route('candidate.resume.index')}}"><i class="fas fa-file fa-fw"></i> My Resume</a></li>
-                   <li><a class="dropdown-item" href="{{route('candidate.applied_jobs')}}"><i class="fas fa-star-o fa-fw"></i> Applied Jobs</a></li>
-                   <li><a class="dropdown-item" href="#"><i class="fas fa-tag fa-fw fa-fw"></i> Packages</a></li>
-                   <li><a class="dropdown-item" href="{{route('candidate.shortlist_jobs')}}"><i class="fas fa-chart-bar fa-fw"></i> Shortlist Jobs</a></li>
-                   <li><a class="dropdown-item" href="#"><i class="fas fa-user-secret fa-fw"></i> Following Employers</a></li>
-                   <li><a class="dropdown-item" href="{{route('candidate.alert_job')}}"><i class="fas fa-bell-o fa-fw"></i> Alerts Jobs</a></li>
-                   <li><a class="dropdown-item" href="#"><i class="fas fa-comments-o fa-fw"></i> Messages</a></li>
-                   <li><a class="dropdown-item" href="{{route('candidate.change_password')}}"><i class="fas fa-unlock-alt fa-fw"></i> Change Password</a></li>
-                   <li><a class="dropdown-item" href="{{route('logout')}}"><i class="fas fa-sign-out fa-fw"></i> Logout</a></li>
-                   <li><a class="dropdown-item" href="{{route('candidate.delete_profile')}}"><i class="fas fa-trash fa-fw"></i> Delete Profile</a></li>
-                    
-                    
-                    </ul>
-                </li>
-                @elseif(Auth::user()->role == "employer")    
-                <li class="nav-item dropdown">
-                  <a class="nav-link  dropdown-toggle text-dark" href="#" data-bs-toggle="dropdown">
-                     <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-1.webp" alt="avatar"
-                  class="img-fluid rounded-circle me-3" width="50">
-                   {{Auth::user()->name}} </a>
-                    <ul class="dropdown-menu">
+<div  class="d-md-flex justify-content-center">
+  <nav class="navbar navbar-expand-lg navbar-dark " id="headerNav">
 
-                    <li><a class="dropdown-item" href="{{route('candidate.dashboard')}}"><i class="fas fa-tachometer-alt fa-fw"></i>  Dashboard</a></li>
-                    <li><a class="dropdown-item" href="{{route('employer.profile.index')}}"><i class="fas fa-user fa-fw"></i> Profile</a></li>
-                    <li><a class="dropdown-item" href="{{route('logout')}}"><i class="fas fa-sign-out fa-fw"></i> Logout</a></li>
+    
 
-                    </ul>
-                </li>
-                @endif
-            @else
-            <li>
-            <a href="{{route('register')}}" class="btn btn-warning p-3  fw-bold"> Login/Register </a>
-           </li>
+      <a class="navbar-brand d-block" href="#">
+        <img src="images/logo.png" height="50" />
+       </a>
 
-            @endif
-            
-        @endif
+      <button class="navbar-toggler text-dark " type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon bg-dark"></span>
+      </button>
+      <!-- <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+    Button with data-bs-target
+  </button> -->
+  
+      <div class=" collapse navbar-collapse" id="navbarNavDropdown">
 
-        
-        
-     
-      </ul>
-    </div>
-  </div>
-</nav>
+       
+
+        <ul class="navbar-nav px-3 ">
+          
+          <li class="nav-item">
+            <a class="nav-link text-dark  active text-decoration-none text-reset fw-bold" aria-current="page" href="{{route('home')}}"> <small> Home </small> </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark fw-bold " aria-current="page" href="{{route('candidates')}}"> <small> Find Resume </small> </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark  fw-bold" aria-current="page" href="{{route('jobs')}}"> <small>  Job Search </small></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark fw-bold" aria-current="page" href="{{route('job_by_category')}}"> <small>Jobs By Category </small> </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark fw-bold" aria-current="page" href="{{route('job_by_location')}}">  <small> Jobs By Location</small> </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark fw-bold" aria-current="page" href="{{route('contact')}}"> <small> Contact </small> </a>
+          </li>
+       
+  
+          @if(Route::has('login'))
+              @auth 
+                  @if(Auth::user()->role == "candidate")
+                  <li class="nav-item dropdown">
+                    <a class="nav-link  dropdown-toggle text-dark" href="#" data-bs-toggle="dropdown">
+                       <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-1.webp" alt="avatar"
+                    class="img-fluid rounded-circle me-3" width="50">
+                     {{Auth::user()->name}} </a>
+                      <ul class="dropdown-menu">
+                     <li><a class="dropdown-item" href="{{route('candidate.dashboard')}}"><i class="fas fa-tachometer-alt fa-fw"></i>  Dashboard</a></li>
+                     <li><a class="dropdown-item" href="{{route('candidate.profile.index')}}"><i class="fas fa-user fa-fw"></i> Profile</a></li>
+                     <li><a class="dropdown-item" href="{{route('candidate.resume.index')}}"><i class="fas fa-file fa-fw"></i> My Resume</a></li>
+                     <li><a class="dropdown-item" href="{{route('candidate.applied_jobs')}}"><i class="fas fa-star-o fa-fw"></i> Applied Jobs</a></li>
+                     <li><a class="dropdown-item" href="#"><i class="fas fa-tag fa-fw fa-fw"></i> Packages</a></li>
+                     <li><a class="dropdown-item" href="{{route('candidate.shortlist_jobs')}}"><i class="fas fa-chart-bar fa-fw"></i> Shortlist Jobs</a></li>
+                     <li><a class="dropdown-item" href="#"><i class="fas fa-user-secret fa-fw"></i> Following Employers</a></li>
+                     <li><a class="dropdown-item" href="{{route('candidate.alert_job')}}"><i class="fas fa-bell-o fa-fw"></i> Alerts Jobs</a></li>
+                     <li><a class="dropdown-item" href="#"><i class="fas fa-comments-o fa-fw"></i> Messages</a></li>
+                     <li><a class="dropdown-item" href="{{route('candidate.change_password')}}"><i class="fas fa-unlock-alt fa-fw"></i> Change Password</a></li>
+                     <li><a class="dropdown-item" href="{{route('logout')}}"><i class="fas fa-sign-out fa-fw"></i> Logout</a></li>
+                     <li><a class="dropdown-item" href="{{route('candidate.delete_profile')}}"><i class="fas fa-trash fa-fw"></i> Delete Profile</a></li>
+                      
+                      
+                      </ul>
+                  </li>
+                  @elseif(Auth::user()->role == "employer")    
+                  <li class="nav-item dropdown">
+                    <a class="nav-link  dropdown-toggle text-dark" href="#" data-bs-toggle="dropdown">
+                       <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-1.webp" alt="avatar"
+                    class="img-fluid rounded-circle me-3" width="50">
+                     {{Auth::user()->name}} </a>
+                      <ul class="dropdown-menu">
+  
+                      <li><a class="dropdown-item" href="{{route('candidate.dashboard')}}"><i class="fas fa-tachometer-alt fa-fw"></i>  Dashboard</a></li>
+                      <li><a class="dropdown-item" href="{{route('employer.profile.index')}}"><i class="fas fa-user fa-fw"></i> Profile</a></li>
+                      <li><a class="dropdown-item" href="{{route('logout')}}"><i class="fas fa-sign-out fa-fw"></i> Logout</a></li>
+  
+                      </ul>
+                  </li>
+                  @endif
+              @else
+              <li>
+              <a href="{{route('register')}}" class="btn btn-warning p-3 ms-4  fw-bold"> Login/Register </a>
+             </li>
+  
+              @endif
+              
+          @endif
+  
+          
+          
+       
+        </ul>
+      </div>
+   
+    </nav>
+   </div>
+  </div> 
+  
 
 <div class="d-block d-lg-none text-center px-5 border border-warning  py-3 m-2">
   <a href="{{route('login_register')}}" class="btn btn-warning px-5 py-3  fw-bold"> Login/Register </a>
@@ -226,11 +241,15 @@
         <div class="col-12 col-lg-3 text-start">
 
             <h5 class="text-uppercase">Important Links</h5>
+                
+              <p><a href="{{route('home')}}" class="text-muted  text-decoration-none"> Home </a></p>
+              <p><a href="{{route('candidates')}}" class="text-muted  text-decoration-none"> Find Resumes </a></p>
+              <p><a href="{{route('jobs')}}" class="text-muted  text-decoration-none"> Job Search </a></p>
+              <p><a href="{{route('contact')}}" class="text-muted  text-decoration-none"> Contact Us </a></p>
+              <p><a href="{{route('about_us')}}" class="text-muted  text-decoration-none"> About Us </a></p>
+              <p><a href="{{route('career_with_jabsbloc')}}" class="text-muted  text-decoration-none"> Career With Jobsbloc </a></p>
+              <p><a href="{{route('terms_conditions')}}" class="text-muted  text-decoration-none"> TERMS & CONDITIONS </a></p>
 
-            
-                @for($i=1;$i<=10;$i++)
-                   <p><a href="#" class="text-muted  text-decoration-none"> Home </a></p>
-                @endfor  
           
         </div>
         <div class="col-12 col-lg-3 text-start">
@@ -238,9 +257,12 @@
             <h5 class="text-uppercase">JOBSBLOC</h5>
 
             
-                @for($i=1;$i<=10;$i++)
+         
                    <p><a href="#" class="text-muted  text-decoration-none"> Stuck in Personal or Professional life? </a></p>
-                @endfor  
+                   <p><a href="{{route('privacy_policy')}}" class="text-muted  text-decoration-none"> Privacy Policy </a></p>
+                   <p><a href="#" class="text-muted  text-decoration-none"> Stuck in Personal or Professional life? </a></p>
+                   <p><a href="#" class="text-muted  text-decoration-none"> Stuck in Personal or Professional life? </a></p>
+                
           
         </div>
        

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Auth;
+namespace App\Http\Controllers\admin\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
@@ -20,11 +20,7 @@ class LoginController extends Controller
                     "email" => "required|email",
                     "password"=> "required",
                    
-                ]
-
-                
-            
-        );
+                ]);
             $credentials['is_active'] = 1; 
             $credentials['role'] = "admin"; 
    

@@ -11,11 +11,12 @@
             <h2 class="text-center text-uppercase text-info fw-bold my-5">EMPOWERING PEOPLE</h2>
     
             <div>
-                <h2 class="display-6 fw-bold my-4">Search Jobs In Your Preferred Locations</h2>
+               
     
                 <form class="row  text-center px-4">
+                    <h2 class="fw-bold text-start">Search Jobs In Your Preferred Locations</h2>
                     <div class="col-12 col-lg-4 mb-3 ">                       
-                        <input type="text"  class="form-control border-warning py-4 px-5" id="staticEmail2" placeholder="Job Title or Keyword">
+                        <input type="text"  class="form-control border-warning py-4 px-4" id="staticEmail2" placeholder="Job Title or Keyword">
                     </div>
                     <div class="col-12 col-lg-4 mb-3">
                     <select class="form-select border-warning py-4 px-5" aria-label="Default select example">
@@ -29,7 +30,7 @@
                     </select>                        
                     </div>
                     <div class=" d-grid  col-lg-2 text-start mb-3">
-                        <button type="submit" class="btn btn-warning rounded-pill py-4 btn-large  btn-block  fw-bold px-5"> Find Job </button>
+                        <button type="submit" class="btn btn-warning rounded-pill  btn-block  fw-bold "> Find Job </button>
                     </div>
            
               </form>  

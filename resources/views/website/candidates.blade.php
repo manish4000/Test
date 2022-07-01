@@ -135,7 +135,7 @@
              </div>
             </div>  -->
 
-            <div class="container p-5">
+            <div class="container px-5">
 
                 <p class="fs-5">Showing 1 – 6 of 825 results</p>
 
@@ -145,36 +145,39 @@
 
             <div class="row g-4">
 
-            @for($i=1;$i<=10;$i++)
+            @foreach ( $candidates as $candidate)
+               
+            <div class="col-12 col-lg-6 ">
+                  <div class="product pt-5 shadow">
 
-                                <div class="col-12 col-lg-6 border">
-                                <div class="product py-4">
+                        <div class="text-center"> <img src="https://jobsbloc.com/wp-content/themes/careerup/images/placeholder.png" height="120px" > </div>
+                        <div class="about text-center">
+                           <h5>{{$candidate->name}}</h5>
+                           <span>4t5rtre</span> 
+                        <div class="d-flex justify-content-between px-5 bg-light py-3">
+                           <span class="text-danger ">Location</span>
+                           <span class="text-muted">{{$candidate->location}}</span>
+                        </div>    
+                        <div class="d-flex justify-content-between px-5 bg-light py-3">
+                           <span class="text-danger ">Sector</span>
+                           <span >
+                              <a href="#" class="text-decoration-none text-muted"" > Accounting / Finance,</a>
+                              <a href="#" class="text-decoration-none text-muted""> Automobile,</a>
+                           </span>
+                        </div>    
+                        </div>
+                        <div class=" d-grid mx-4 my-2 ">
+                           <button type="submit" class="btn btn-outline-warning rounded btn-large  btn-block py-3 px-4 mb-3"> View Profile </button>
+                        </div>
+                  </div>
+              </div>
+            @endforeach($i=1;$i<=6;$i++)
 
-                                    <div class="text-center"> <img src="https://jobsbloc.com/wp-content/themes/careerup/images/placeholder.png" width="200"> </div>
-                                    <div class="about text-center">
-                                        <h5>Name</h5>
-                                        <span>4t5rtre</span> 
-                                    <div class="d-flex justify-content-between px-4 bg-light py-3">
-                                        <span class="text-danger ">Location</span>
-                                        <span class="text-muted">Brazil</span>
-                                    </div>    
-                                    <div class="d-flex justify-content-between px-4 bg-light py-3">
-                                        <span class="text-danger ">Sector</span>
-                                        <span >
-                                            <a href="#" class="text-decoration-none text-muted"" > Accounting / Finance,</a>
-                                            <a href="#" class="text-decoration-none text-muted""> Automobile,</a>
-                                        </span>
-                                    </div>    
-                                    </div>
-                                    <div class=" d-grid mx-4 my-3 ">
-                                        <button type="submit" class="btn btn-warning rounded btn-large  text-white btn-block py-3 fw-bold px-5"> View Profile </button>
-                                    </div>
-                                </div>
-                                </div>
 
-             @endfor
+           
 
             </div>
+          
             </div>
         </div>
 

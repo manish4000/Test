@@ -23,12 +23,12 @@ Route::group(['namespace' => 'App\Http\Controllers\website'],function(){
     Route::get('/jobs/{id}','JobsController@jobDetails')->name('job_details');
     Route::post('apply-job','JobsController@applyJob')->name('job.apply');
 
+    Route::get('/candidates', 'CandidatesController@index')->name('candidates');
+
 });
 
 
-Route::get('/candidates', function () {
-    return view('website.candidates');
-})->name('candidates');
+
 
 
 Route::get('/job-by-location', function () {
