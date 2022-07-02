@@ -22,8 +22,9 @@ Route::group(['namespace' => 'App\Http\Controllers\website'],function(){
     Route::get('/jobs', 'JobsController@index')->name('jobs');
     Route::get('/jobs/{id}','JobsController@jobDetails')->name('job_details');
     Route::post('apply-job','JobsController@applyJob')->name('job.apply');
-
     Route::get('/candidates', 'CandidatesController@index')->name('candidates');
+    Route::get('/candidate/details/', 'CandidatesController@candidateDetails')->name('candidates.details');
+
 
 });
 
@@ -108,6 +109,9 @@ Route::get('/employer/profile/', function () {
 
 Route::get('/employer/shortlist-candidates/', function () {
     return view('website.employer.shortlist_candidates');
+});
+Route::get('/employer/messages/', function () {
+    return view('website.employer.messages');
 });
 
 

@@ -148,33 +148,36 @@
             @foreach ( $candidates as $candidate)
                
             <div class="col-12 col-lg-6 ">
-                  <div class="product pt-5 shadow">
+                  <div class="product pt-5 shadow fade-in">
 
                         <div class="text-center"> <img src="https://jobsbloc.com/wp-content/themes/careerup/images/placeholder.png" height="120px" > </div>
                         <div class="about text-center">
-                           <h5>{{$candidate->name}}</h5>
+                           <h6 class="text-uppercase fw-bold">{{$candidate->name}}</h6>
                            <span>4t5rtre</span> 
-                        <div class="d-flex justify-content-between px-5 bg-light py-3">
+                           @isset($candidate->location)
+                           <div class="d-flex justify-content-between px-5 bg-light py-3">
                            <span class="text-danger ">Location</span>
-                           <span class="text-muted">{{$candidate->location}}</span>
-                        </div>    
-                        <div class="d-flex justify-content-between px-5 bg-light py-3">
-                           <span class="text-danger ">Sector</span>
-                           <span >
-                              <a href="#" class="text-decoration-none text-muted"" > Accounting / Finance,</a>
-                              <a href="#" class="text-decoration-none text-muted""> Automobile,</a>
-                           </span>
-                        </div>    
+                           
+                           <span class="text-muted"> <i class="fa-solid text-danger fa-location-dot"></i> {{$candidate->location}}</span>
+                           </div>  
+                           @endisset
+                              
+                           @isset($candidate->job_category)
+                           <div class="d-flex justify-content-between px-5  py-3">
+                              <span class="text-danger ">Sector</span>
+                              <span >
+                                 <a href="#" class="text-decoration-none text-muted"" > {{$candidate->job_category}}</a>
+                              </span>
+                           </div>   
+                        @endisset
                         </div>
                         <div class=" d-grid mx-4 my-2 ">
-                           <button type="submit" class="btn btn-outline-warning rounded btn-large  btn-block py-3 px-4 mb-3"> View Profile </button>
+                          <a href="{{route('candidates.details',['name' => $candidate->name,'id' => $candidate->id])}}"> <button type="submit" class="btn btn-outline-warning rounded btn-large  btn-block py-3 px-4 mb-3"> View Profile </button></a>
                         </div>
                   </div>
               </div>
-            @endforeach($i=1;$i<=6;$i++)
+            @endforeach()
 
-
-           
 
             </div>
           
