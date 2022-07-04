@@ -150,7 +150,7 @@
             <div class="col-12 col-lg-6 ">
                   <div class="product pt-5 shadow fade-in">
 
-                        <div class="text-center"> <img src="https://jobsbloc.com/wp-content/themes/careerup/images/placeholder.png" height="120px" > </div>
+                        <div class="text-center"> <img src="{{CANDIDATE_FEATURE_IMAGE_URL}}{{$candidate->featured_image}}" height="120px" > </div>
                         <div class="about text-center">
                            <h6 class="text-uppercase fw-bold">{{$candidate->name}}</h6>
                            <span>4t5rtre</span> 

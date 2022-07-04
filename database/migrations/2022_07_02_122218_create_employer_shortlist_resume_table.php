@@ -16,10 +16,10 @@ class CreateEmployerShortlistResumeTable extends Migration
         Schema::create('employer_shortlist_resume', function (Blueprint $table) {
         
             $table->id();
-            $table->bigInteger('user_id')->length(20)->unsigned();
+            $table->bigInteger('employer_id')->length(20)->unsigned();
             $table->bigInteger('candidate_id')->length(20)->unsigned();
             $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('employer_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('candidate_id')->references('id')->on('users')->onDelete('cascade');
            
         });

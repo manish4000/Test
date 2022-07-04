@@ -21,10 +21,12 @@ Route::group(['namespace' => 'App\Http\Controllers\website'],function(){
     Route::get('/job-by-category','JobByCategoryController@index' )->name('job_by_category');
     Route::get('/jobs', 'JobsController@index')->name('jobs');
     Route::get('/jobs/{id}','JobsController@jobDetails')->name('job_details');
+    Route::get('jobs/shortlist','JobsController@shortlistJob')->name('shortlist_job');
     Route::post('apply-job','JobsController@applyJob')->name('job.apply');
     Route::get('/candidates', 'CandidatesController@index')->name('candidates');
     Route::get('/candidate/details/', 'CandidatesController@candidateDetails')->name('candidates.details');
 
+    Route::get('candidate/shortlist','CandidatesController@shortlistCandidate')->name('shortlist_candidate');
 
 });
 

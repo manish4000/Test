@@ -59,12 +59,33 @@
 
                                 </div>
                                 <div class="col-12 col-md-3 ">
+                                    @if (session()->has('log_in_as_candidate'))
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                      {{ session('log_in_as_candidate') }}
+                                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>   
+                                    @endif
+
+                                    @if (session()->has('shortlist_job_added'))
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                      {{ session('shortlist_job_added') }}
+                                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>   
+                                    @endif
+                                    @if (session()->has('shortlist_job_remove'))
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                      {{ session('shortlist_job_remove') }}
+                                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>   
+                                    @endif
+
+
 
                                     {{-- <button type="submit" class="btn btn-warning   py-3  text-white px-5 mb-3">  Apply Now  <i class="fa-solid fa-arrow-right ms-3"></i></button>
                                     <button type="submit" class="btn btn-secondary   py-3  text-white px-5">   <i class="fa-regular fa-star"></i> ShortList  </button> --}}
                                     <div class="d-grid gap-3 col-12  mx-auto">
                                         <button class="btn btn-warning   py-3  text-white px-5 " data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button">Apply Now  <i class="fa-solid fa-arrow-right ms-2"></i> </button>
-                                        <button class="btn btn-warning   py-3  text-white px-5 disabled" type="button"> <i class="fa-regular fa-star me-2 "></i>  ShortList </button>
+                                        <a href="{{route('shortlist_job',['job_id' => $job_data->id])}}" class="btn btn-warning   py-3  text-white px-5 " type="button"> <i class="fa-regular fa-star me-2 "></i>  ShortList </a>
                             
                                           </button>
                                     </div>

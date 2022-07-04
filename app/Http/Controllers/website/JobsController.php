@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Website;
 
 use App\Http\Controllers\Controller;
+use App\Models\CandidateShortlistJobModel;
 use App\Models\Job\JobCategoryModel;
 use App\Models\Job\JobCategoryRelationModel;
 use App\Models\Job\JobTypeModel;
@@ -51,6 +52,8 @@ class JobsController extends Controller
                             ->whereIn('job_categories_relation.job_category_id',$job_categories_ids)->distinct()->get();
 
 
+                        }else{
+                            $related_jobs = [];
                         }                          
                          
 
@@ -108,13 +111,49 @@ class JobsController extends Controller
                 ]);
              }
 
+        }        
+
+    }
 
 
+    public function shortlistJob(Request $request){
 
+        
+        if(Auth::user()->role != "candidate"){
 
+            session()->flash('log_in_as_candidate', 'Please Log in As an Candidate');
+
+            return redirect()->back();
+            
+        }else{
+
+                $candidate_shortlist_job_model = new CandidateShortlistJobModel();
+
+                $check =  $candidate_shortlist_job_model->where('candidate_id',Auth::user()->id)->where('job_id',$request->job_id)->first();
+
+                  if($check == null){
+
+                    $candidate_shortlist_job_model->job_id = $request->job_id;
+                    $candidate_shortlist_job_model->candidate_id = Auth::user()->id;
+                    $candidate_shortlist_job_model->save();
+
+                    if($candidate_shortlist_job_model->id){
+                        session()->flash('shortlist_job_added', 'Job has been added to the shortlist successfully');
+                        
+                        return redirect()->back();
+                    }
+
+                  } else{
+
+                   
+                    if($check->delete()){
+                        session()->flash('shortlist_job_remove', 'Job has been Remove the shortlist successfully');
+                        return redirect()->back();
+                    }
+
+                  } 
 
         }
-         
 
-}
+    }
 }

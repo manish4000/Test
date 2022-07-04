@@ -33,13 +33,31 @@
 
                                     </div>
                                     <div class="col-12 col-md-3 ">
+                                      @if (session()->has('log_in_as_employer'))
+                                      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        {{ session('log_in_as_employer') }}
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                      </div>   
+                                      @endif
 
+                                      @if (session()->has('shortlist_added'))
+                                      <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                        {{ session('shortlist_added') }}
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                      </div>   
+                                      @endif
+                                      @if (session()->has('shortlist_remove'))
+                                      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        {{ session('shortlist_remove') }}
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                      </div>   
+                                      @endif
                                         {{-- <button type="submit" class="btn btn-warning   py-3  text-white px-5 mb-3">  Apply Now  <i class="fa-solid fa-arrow-right ms-3"></i></button>
                                         <button type="submit" class="btn btn-secondary   py-3  text-white px-5">   <i class="fa-regular fa-star"></i> ShortList  </button> --}}
                                         <div class="d-grid gap-3 col-12  mx-auto">
 
-                                            <button class="btn btn-secondary   py-3  text-white px-5 disabled" type="button"> <i class="fa-regular fa-star me-2 "></i>  ShortList </button>
-                                            <button class="btn btn-warning   py-3  text-white px-5 disabled" type="button"> <i class="fa-regular fa-star me-2 "></i>  Download CV </button>
+                                            <a href="{{route('shortlist_candidate',['candidate_id' => $resume->id])}}" class="btn btn-secondary   py-3  text-white px-5"> <i class="fa-regular fa-star me-2 "></i>  ShortList </a>
+                                           <a href="{{CANDIDATE_CV_URL.$resume->cv}}"  class="btn btn-warning   py-3  text-white px-5" download>   Download CV  </a>
                                 
                                             </button>
                                         </div>
@@ -145,7 +163,37 @@
                           </div>
                           {{-- this end is for experice --}}
                           <div class="tab-pane" id="portfolios">
-                            <h1>Portfolios</h1>
+                            <h5 class="my-3">Portfolios</h5>
+
+                            <?php 
+
+                                if(isset($resume->portfolio_photos)){
+                                  
+                                  $portfolio_photos = explode(',',$resume->portfolio_photos);
+
+                                }else {
+                                  $portfolio_photos = [];
+                                }
+                            
+                            ?> 
+                            
+                            <div class="row row-cols-1 row-cols-md-2 g-4">
+
+                              @foreach ($portfolio_photos as $key =>  $photo)
+                              <div class="col">
+                                <div class="card">
+                                  <img src="{{CANDIDATE_PORTFOLIO_IMAGE_URL}}{{$photo}}" class="card-img-top img-thumbnail" alt="Hollywood Sign on The Hill"/>
+                                  <div class="card-body">
+                                    
+                                  </div>
+                                </div>
+                              </div>
+                                
+                              @endforeach
+                              
+                            </div>
+
+
                          
                           </div>
                              {{-- this  is for skills  --}}
@@ -199,6 +247,7 @@
                     </div>
                     {{-- contact form --}}
                     <div class="col-12 col-lg-4 my-4">
+                        <p class="text-uppercase fw-bold font-monospace">Contact {{$resume->name}} </p>
                         <form class="mt-4 border px-4 py-5 bg-light">
                             <!-- Email input -->
                             <div class="form-outline mb-3">
@@ -220,6 +269,8 @@
                           
                             <!-- Submit button -->
                             <button type="button" class="btn btn-block btn-outline-warning">Send Now</button>
+
+                            <p class="text-center p-3"><i class="fa-regular fa-hand-point-right" style="font-size: 20px"></i> <a href="" class="text-decoration-none text-danger"  data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button"> send Private message</a></p>
                           </form>
                     </div>
                 </div>
@@ -229,12 +280,107 @@
         
         
         
-        
-        
-       
-         
     
-    </div> 
+        </div> 
+          <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">Send Message to "{{$resume->name}}"</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+            
+                <form action="#" method="POST" id="" >
+
+                    @csrf
+                    <div class="mb-3">
+                        <input type="hidden" name="" id="" value="">
+                        <input type="text" class="form-control p-3" id="exampleFormControlInput1" placeholder="Subject" name="name">
+                    </div>
+                     
+                      <div class="mb-3">
+                        <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Message" name="message" rows="4"></textarea>
+                        <span class="text-danger error-text message_error "></span>
+                      </div>
+                     
+
+                      <div class="mb-3">
+                        <input class="form-control btn btn-warning p-3 text-white" type="submit" id="formFile" value="send message">
+                      </div>
+                      
+                </form>
+            </div>
+       
+          </div>
+      </div>
+   
+      
+    </div>
+        {{-- end modal box --}}
+
+        <script>
+            
+          $(document).ready( function(){
+                
+                $("#apply_job").on('submit',function(e){
+          
+                    e.preventDefault();
+          
+                    $.ajax({
+          
+                           url:$(this).attr('action'),
+                       
+                           method:$(this).attr('method'),
+                           data:new FormData(this),
+                           processData:false,
+                           dataType:'json',
+                           contentType:false,
+                           beforeSend:function(){
+                                $(document).find('span.error-text').text('')
+                           },
+                           success:function(data){
+          
+                                if(data.status == 401){
+                                    $.each(data.error,function(prefix,val){
+                                        $('span.'+prefix+'_error').text(val[0]);
+                                    });
+          
+                                }else if(data.status == 500){
+          
+                                  Swal.fire(
+                                              'Oops...',
+                                               data.message,
+                                              'error'
+                                      );
+                                }else if(data.status == 200){
+          
+                                  console.log(data);
+          
+                                  $('#apply_job')[0].reset();
+          
+                                  Swal.fire(
+                                                  'Good job!',
+                                                  data.message,
+                                                  'success'
+                                      ); 
+          
+                                window.location = "" 
+                                      
+                                }
+          
+                           } 
+          
+                    });
+          
+                });
+            });
+          
+          
+              </script>    
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
