@@ -41,7 +41,7 @@
         <div class="card">
           <div class="card-header card-header-primary">
             <h4 class="card-title "> Inquery </h4>
-            <p class="card-category"> inquery data</p>
+            <p class="card-category"> Inquery Data</p>
           </div>
           <div class="card-body">
             <div class="table-responsive">
