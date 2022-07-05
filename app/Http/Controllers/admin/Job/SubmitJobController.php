@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Str;
 
 class SubmitJobController extends Controller
 {
@@ -43,7 +44,7 @@ class SubmitJobController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [   
-            'title' => 'required|string',
+            'title' => 'required|string|unique:jobs,title',
             'job_type_id' => 'required|numeric',
             'job_category_id' => 'required|array',
             'description' => 'required',
@@ -80,6 +81,7 @@ class SubmitJobController extends Controller
                         }
 
                             $job_model->title =       ucwords( $request->input('title') );
+                            $job_model->slug    =      Str::slug( $request->input('title') );
                             $job_model->job_type_id =          $request->input('job_type_id');
                             $job_model->is_active =          $request->input('is_active');
                             $job_model->description =          $request->input('description');

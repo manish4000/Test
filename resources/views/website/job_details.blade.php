@@ -44,6 +44,7 @@
                                         </div>
                                         <div class="col-6 my-auto">
                                             <div>
+                                                
                                                 <p class="fw-bold">{{$job_data->job_type}} </p>
                                                 <span class="fs-4">{{$job_data->title}} </span>  <span> @if($job_data->is_feature == 1)  <i title="Feature" class="fa fa-star ms-2" style="color:#ffc107;"></i>  @endif  </span> 
                                                 <p> Posted {{$job_data->created_at->diffForHumans()}}  </p>
@@ -85,9 +86,9 @@
                                     <button type="submit" class="btn btn-secondary   py-3  text-white px-5">   <i class="fa-regular fa-star"></i> ShortList  </button> --}}
                                     <div class="d-grid gap-3 col-12  mx-auto">
                                         <button class="btn btn-warning   py-3  text-white px-5 " data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button">Apply Now  <i class="fa-solid fa-arrow-right ms-2"></i> </button>
-                                        <a href="{{route('shortlist_job',['job_id' => $job_data->id])}}" class="btn btn-warning   py-3  text-white px-5 " type="button"> <i class="fa-regular fa-star me-2 "></i>  ShortList </a>
-                            
-                                          </button>
+                                        {{-- <a href="" class="btn btn-warning   py-3  text-white px-5 " type="button"> <i class="fa-regular fa-star me-2 "></i>  ShortList </a> --}}
+
+                                        <button type="button" class="shortlist_job btn btn-warning   py-3  text-white px-5 "  value="{{$job_data->id}}" >Shortlist</button>
                                     </div>
 
                                 </div>
@@ -282,6 +283,56 @@ $(document).ready( function(){
 
       });
   });
+
+
+
+   
+        $(document).on('click','.shortlist_job',function(e){
+
+        e.preventDefault();
+
+        let shortlist_job = $(this).val();
+
+        console.log(shortlist_job);
+
+        $.ajax({
+
+        type:"GET",
+
+        url:  "{{APP_PATH}}" + "jobs/shortlist/"+shortlist_job,
+
+
+            success:function(response){
+
+
+                console.log(response);
+
+                if(response.status == 401){
+                    
+                    Swal.fire(      
+                                            'Opps...',
+                                            response.message,
+                                            'error'
+                                            
+                        );
+                }else if(response.status == 200){
+
+                    
+                    Swal.fire(      
+                                            'Good Job',
+                                            response.message,
+                                            'success'
+                                            
+                        );
+
+                }
+                
+            }
+
+        });
+
+        });
+
 
 
     </script>

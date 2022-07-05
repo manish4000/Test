@@ -168,7 +168,7 @@
                                                 </div>
                                                    <div class="col-9 my-auto">
 
-                                                   <a href="{{route('job_details',$jobs->id)}}" class="text-decoration-none text-reset ms-3"> {{$jobs->title}} </a>    <span> @if($jobs->is_feature == 1)  <i class="fa fa-star ms-2" style="color:#ffc107;"></i>  @endif  </span>       
+                                                   <a href="{{route('job_details',[ 'title' =>  $jobs->slug, 'id' => $jobs->id])}}" class="text-decoration-none text-reset ms-3"> {{$jobs->title}} </a>    <span> @if($jobs->is_feature == 1)  <i class="fa fa-star ms-2" style="color:#ffc107;"></i>  @endif  </span>       
 
                                                 </div>
                                           </div>           

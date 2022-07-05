@@ -5,11 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CandidateShortlistJobModel extends Model
+class CareerWithJobsblocModel extends Model
 {
     use HasFactory;
-
-    protected $table = "candidate_shortlist_job";
+    protected $table = "career_with_jobsbloc";
     protected $primaryKey ="id";
-
 }

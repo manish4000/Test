@@ -10,7 +10,7 @@
             <div>
                 <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#" class="text-decoration-none text-reset">Home</a></li>
+                    <li class="breadcrumb-item"><a href="/" class="text-decoration-none text-reset">Home</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Career with jobsbloc</li>
                 </ol>
                 </nav>
@@ -31,9 +31,6 @@
 
                 
                     <div class="row">
-
-                      
-
                         <!--Grid column-->
                         <div class="col-md-8 text-center py-2">
                                  <div class="accordion" id="accordionExample mb-3">
@@ -54,9 +51,6 @@
                                             </div>
                                             </div>
                                         </div>
-
-                                       
-                                   
                                 
                                  </div>
                                
@@ -68,7 +62,7 @@
 
                           <!--Grid column-->
                           <div class="col-md-4 mb-md-0 mb-5 p-3 border">
-                        <form id="contact_us_create" name="contact-form" action="" method="POST" class="p-3">
+                        <form id="career_with_jobsbloc" name="contact-form" action="{{route('store_career_with_jabsbloc')}}" method="POST" class="p-3">
                                 @csrf
                                 <!--Grid row-->
                                 <div class="row">
@@ -104,8 +98,8 @@
                                     <div class="col-md-12">
                                         <div class="md-form mb-0">
                                         <label for="" class="form-label ">Apply For</label>
-                                            <input type="text" id="subject" name="subject" class="form-control p-1">
-                                            <span class="text-danger error-text subject_error "></span>
+                                            <input type="text"  name="apply_for" class="form-control p-1">
+                                            <span class="text-danger error-text apply_for_error "></span>
                                             
                                         </div>
                                     </div>
@@ -116,8 +110,8 @@
                                     <div class="col-md-12">
                                         <div class="md-form mb-0">
                                         <label for="" class="form-label ">Phone No</label>
-                                            <input type="text" id="subject" name="subject" class="form-control p-1">
-                                            <span class="text-danger error-text subject_error "></span>
+                                            <input type="text" id="subject" name="phone" class="form-control p-1">
+                                            <span class="text-danger error-text phone_error "></span>
                                             
                                         </div>
                                     </div>
@@ -146,8 +140,8 @@
 
                                         <div class="md-form">
                                         <label for="" class="form-label ">Cv/Resume</label>
-                                           <input type="file" name="cv">
-                                            <span class="text-danger error-text message_error "></span>
+                                           <input type="file" name="resume">
+                                            <span class="text-danger error-text resume_error "></span>
                                         </div>
 
                                     </div>
@@ -159,7 +153,7 @@
                                     <div class="col-md-12 pt-3">
 
                                         <div class="md-form text-center">
-                                        <input type="submit" id="subject" name="subject" class="btn btn-outline-warning " >
+                                        <input type="submit" class="btn btn-outline-warning " >
                                     
                                         </div>
 
@@ -188,6 +182,67 @@
 
   </div>
 
+
+
+  <script>
+            
+    $(document).ready( function(){
+          
+          $("#career_with_jobsbloc").on('submit',function(e){
+    
+              e.preventDefault();
+    
+              $.ajax({
+    
+                     url:$(this).attr('action'),
+                 
+                     method:$(this).attr('method'),
+                     data:new FormData(this),
+                     processData:false,
+                     dataType:'json',
+                     contentType:false,
+                     beforeSend:function(){
+                          $(document).find('span.error-text').text('')
+                     },
+                     success:function(data){
+    
+                          if(data.status == 401){
+                              $.each(data.error,function(prefix,val){
+                                  $('span.'+prefix+'_error').text(val[0]);
+                              });
+    
+                          }else if(data.status == 500){
+    
+                            Swal.fire(
+                                        'Oops...',
+                                         data.message,
+                                        'error'
+                                );
+                          }else if(data.status == 200){
+    
+                      
+    
+                            $('#career_with_jobsbloc')[0].reset();
+    
+                            Swal.fire(
+                                            'Good job!',
+                                            data.message,
+                                            'success'
+                                ); 
+    
+                          window.location = "" 
+                                
+                          }
+    
+                     } 
+    
+              });
+    
+          });
+      });
+    
+    
+        </script>    
 
 
 

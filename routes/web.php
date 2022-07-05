@@ -21,12 +21,23 @@ Route::group(['namespace' => 'App\Http\Controllers\website'],function(){
     Route::get('/job-by-category','JobByCategoryController@index' )->name('job_by_category');
     Route::get('/jobs', 'JobsController@index')->name('jobs');
     Route::get('/jobs/{id}','JobsController@jobDetails')->name('job_details');
-    Route::get('jobs/shortlist','JobsController@shortlistJob')->name('shortlist_job');
+    Route::get('/jobs/shortlist/{job_id}','JobsController@shortlistJob')->name('shortlist_job');
+
+    Route::get('/job/locations','JobsLocationController@index')->name('job_by_location');
     Route::post('apply-job','JobsController@applyJob')->name('job.apply');
     Route::get('/candidates', 'CandidatesController@index')->name('candidates');
     Route::get('/candidate/details/', 'CandidatesController@candidateDetails')->name('candidates.details');
 
     Route::get('candidate/shortlist','CandidatesController@shortlistCandidate')->name('shortlist_candidate');
+
+    Route::post('contact-us','ContactUsController@store')->name('contact_us');
+
+    Route::get('/career-with-jobsbloc','CareerWithJobsblocController@index')->name('career_with_jabsbloc');
+
+    Route::post('/career-with-jobsbloc/store','CareerWithJobsblocController@store')->name('store_career_with_jabsbloc');
+    Route::get('/coaches', function () {
+        return view('website.coaches');
+    })->name('coaches');
 
 });
 
@@ -34,17 +45,15 @@ Route::group(['namespace' => 'App\Http\Controllers\website'],function(){
 
 
 
-Route::get('/job-by-location', function () {
-    return view('website.jobs_by_location');
-})->name('job_by_location');
+// Route::get('/job-by-location', function () {
+//     return view('website.jobs_by_location');
+// })->name('job_by_location');
 
 Route::get('/contact-us', function () {
     return view('website.contact_us');
 })->name('contact');
 
-Route::get('/career-with-jobsbloc', function () {
-    return view('website.career_with_jobsbloc');
-})->name('career_with_jabsbloc');
+
 
 Route::get('/login-register', function () {
     return view('website.login_register');
@@ -180,10 +189,28 @@ Route::group(['prefix' => 'admin','middleware'=> ['guest','preventBackHistory','
                 Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
                 Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
             });
+
+
+            // this is for contact us inquery 
+            Route::group(['prefix' => 'contact-us','as'=>'contact_us.' ,'namespace' => 'App\Http\Controllers\Admin\user'],function(){   
+
+                Route::get('/','ContactUsController@index')->name('index');
+                Route::delete('/delete/{id}','ContactUsController@destroy')->name('delete');
+                Route::get('/view/{id}','ContactUsController@view')->name('view');
+                                   
+            });
+
+
             
+        // Route::group(['prefix' => 'inquery','as'=>'inquery.'],function(){
+
+        //     Route::get('/','InqueryController@index')->name('index');
+         
+  
+        // });
+
 
             Route::group(['prefix' => 'users','as'=>'users.' ,'namespace' => 'App\Http\Controllers\Admin\user'],function(){   
-
                 Route::get('/','UserController@index')->name('index');
                       
             });

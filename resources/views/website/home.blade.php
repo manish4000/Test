@@ -14,7 +14,7 @@
                
     
                 <form class="row  text-center px-4">
-                    <h2 class="fw-bold text-start">Search Jobs In Your Preferred Locations</h2>
+                    <h2 class="fw-bold text-start mb-2">Search Jobs In Your Preferred Locations</h2>
                     <div class="col-12 col-lg-4 mb-3 ">                       
                         <input type="text"  class="form-control border-warning py-4 px-4" id="staticEmail2" placeholder="Job Title or Keyword">
                     </div>
@@ -35,14 +35,13 @@
            
               </form>  
     
-                    <div class="my-3">
-                        <span>Trending Keywords:</span>
-    
-                        <a href="#" class="text-decoration-none text-muted"> Full Time Jobs ,</a>
-                        <a href="#" class="text-decoration-none text-muted">  Part Time Jobs ,</a>
-                        <a href="#" class="text-decoration-none text-muted"> Freelancer Jobs ,</a>
-                        <a href="#" class="text-decoration-none text-muted"> FullTime Jobs ,</a>
-                        <a href="#" class="text-decoration-none text-muted"> FullTime Jobs ,</a>
+                    <div class="my-3 px-4">
+                        <span> <small> Trending Keywords:</small> </span>
+                        
+                        @foreach ( $job_types as $job_type)
+                        <a href="#" class="text-decoration-none text-muted"> <small> {{ $job_type->title}} , </small></a>                            
+                        @endforeach
+                        
                         
                     </div>
     

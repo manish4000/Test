@@ -98,6 +98,9 @@
           <li class="nav-item">
             <a class="nav-link text-dark fw-bold" aria-current="page" href="{{route('contact')}}"> <small> Contact </small> </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark fw-bold" aria-current="page" href="{{route('career_with_jabsbloc')}}"> <small>  Career with jobsbloc </small> </a>
+          </li>
        
   
           @if(Route::has('login'))
@@ -259,7 +262,7 @@
 
             
          
-                   <p><a href="#" class="text-muted  text-decoration-none"> Stuck in Personal or Professional life? </a></p>
+                   <p><a href="{{route('coaches')}}" class="text-muted  text-decoration-none"> coaches  </a></p>
                    <p><a href="{{route('privacy_policy')}}" class="text-muted  text-decoration-none"> Privacy Policy </a></p>
                    <p><a href="#" class="text-muted  text-decoration-none"> Stuck in Personal or Professional life? </a></p>
                    <p><a href="#" class="text-muted  text-decoration-none"> Stuck in Personal or Professional life? </a></p>

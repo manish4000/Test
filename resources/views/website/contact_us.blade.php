@@ -34,7 +34,7 @@
 
                         <!--Grid column-->
                         <div class="col-md-8 mb-md-0 mb-5 p-3 border">
-                        <form id="contact_us_create" name="contact-form" action="" method="POST" class="p-3">
+                        <form id="contact_us_create" name="contact-form" action="{{route('contact_us')}}" method="POST" class="p-3">
                                 @csrf
                                 <!--Grid row-->
                                 <div class="row">
@@ -148,6 +148,65 @@
 
 
 
+  <script>
+            
+    $(document).ready( function(){
+          
+          $("#contact_us_create").on('submit',function(e){
+    
+              e.preventDefault();
+    
+              $.ajax({
+    
+                     url:$(this).attr('action'),
+                 
+                     method:$(this).attr('method'),
+                     data:new FormData(this),
+                     processData:false,
+                     dataType:'json',
+                     contentType:false,
+                     beforeSend:function(){
+                          $(document).find('span.error-text').text('')
+                     },
+                     success:function(data){
+    
+                          if(data.status == 401){
+                              $.each(data.error,function(prefix,val){
+                                  $('span.'+prefix+'_error').text(val[0]);
+                              });
+    
+                          }else if(data.status == 500){
+    
+                            Swal.fire(
+                                        'Oops...',
+                                         data.message,
+                                        'error'
+                                );
+                          }else if(data.status == 200){
+    
+                      
+    
+                            $('#contact_us_create')[0].reset();
+    
+                            Swal.fire(
+                                            'Good job!',
+                                            data.message,
+                                            'success'
+                                ); 
+    
+                          window.location = "" 
+                                
+                          }
+    
+                     } 
+    
+              });
+    
+          });
+      });
+    
+    
+        </script>    
 
 
 
