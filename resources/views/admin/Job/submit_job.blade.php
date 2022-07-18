@@ -231,7 +231,7 @@
                     <div class="form-group">
                     
                     <label class="mb-4" for=""></label>
-                    <textarea name="description"  class="form-control mt-3" id="editor1" cols="30" rows="5">Description</textarea>
+                    <textarea name="description"  class="form-control mt-3" id="editor1" cols="30" rows="5" placeholder="Description"></textarea>
                     <span class="text-danger error-text  description_error "></span>
                     </div>
 
@@ -350,7 +350,7 @@
                  
                   <div class="form-group">
                     <label class="mb-2" for="title">Title</label>
-                    <input type="text" name="id" id="edit_id">
+                    <input type="hidden" name="id" id="edit_id">
                     <input type="text" class="form-control" id="edit_title" value="" name="title" required>
                     <span class="text-danger error-text  title_error "></span>
                   </div>
@@ -371,7 +371,7 @@
 
                   <div class="form-group">
                   <label class="mb-2" for="">Job Category </label>
-                  <select name="job_category_id[]" id="category-select" class="form-control " multiple required> 
+                  <select name="job_category_id[]" id="edit_job_category_id"  class="form-control"  multiple="multiple" required> 
 
                       @foreach ($job_categories as $type)
                       
@@ -386,7 +386,7 @@
                   <div class="form-group">
                   
                   <label class="mb-4" for=""></label>
-                  <textarea name="description"  class="form-control mt-3" id="edit_description" cols="30" rows="5"></textarea>
+                  <textarea name="description"  class="form-control mt-3"  id="edit_description" cols="30" rows="5"></textarea>
 
                   <span class="text-danger error-text  description_error "></span>
                   </div>
@@ -561,6 +561,7 @@
                   $('#edit_title').val(response.job_data.title);
                   $('#edit_feature_image').attr('src', "{{APP_PATH}}"+"{{JOB_FEATURE_IMAGE_URL}}"+response.job_data.feature_image);;
                   $('#edit_job_type_id').val(response.job_data.job_type_id);
+                  $('#edit_job_category_id').val(response.job_data.job_category_id);
                   $('#edit_description').val(response.job_data.description);
                   $('#edit_application_deadline_date').val(response.job_data.application_deadline_date);
                   $('#edit_min_salary').val(response.job_data.min_salary);
@@ -742,12 +743,22 @@
   $(document).ready(function() {
     $('#category-select').select2();
 });
+  $(document).ready(function() {
+    $('#edit_job_category_id').select2();
+});
 </script>
 
 <script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
 <script>
     ClassicEditor
         .create( document.querySelector( '#editor1' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
+<script>
+    ClassicEditor
+        .create( document.querySelector( '.edit_description' ) )
         .catch( error => {
             console.error( error );
         } );

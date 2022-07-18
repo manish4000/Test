@@ -58,6 +58,8 @@
                   <th>
                    Phone
                   </th>                 
+                  <th>Status</th>
+                  <th>Created At</th>
                   <th>
                     Action
                   </th>
@@ -76,11 +78,20 @@
               
                         <td>{{$data->email}}</td>
                         <td>{{$data->phone}}</td>
-                 
+                        <td>{{$data->created_at}}</td>
+                        @if($data->is_active =='1')
+                        
+                        <td>  <span class="badge badge-success">Active</span> </td>
+                        
+                        @else
+                        <td><span class="badge badge-danger">Inactive</span></td>
+                        
+                        @endif  
                                   
                         <td  style="width: 220px;">
-                            {{-- <a href="{{route('admin.job.job_type.status',$data->id)}}" class="btn btn-warning btn-sm" >Status</a>
-                            <button type="button" data-toggle="modal" data-target="#edit_testimonial" class="edit_testimonial   btn btn-primary btn-sm"  value="{{$data->id}}" >Edit</button> --}}
+                             <a href="{{route('admin.users.status',['id'=> $data->id])}}" class="btn btn-warning btn-sm" >Status</a>
+                             <a href="{{route('admin.users.profile',['id'=> $data->id])}}" class="btn btn-info btn-sm" >View Profile</a>
+                           {{-- <button type="button" data-toggle="modal" data-target="#edit_testimonial" class="edit_testimonial   btn btn-primary btn-sm"  value="{{$data->id}}" >Edit</button> --}}
                             <button type="button" data-toggle="modal" data-target="#delete_testimonial" class="delete_testimonial   btn btn-danger btn-sm disabled" value="{{$data->id}}" >Delete</button>
                          </td>
                         
@@ -103,20 +114,7 @@
 </div>
 
 
-
-
 <!-- Button trigger modal -->
-
-
-
-
-
-
-
-
-
-
-
 
 <!-- Modal -->
 <div class="modal fade bd-example-modal-lg" id="add_testimonial" tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true">

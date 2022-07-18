@@ -2,6 +2,7 @@
 
 namespace App\Models\Job;
 
+use App\Models\JobModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 

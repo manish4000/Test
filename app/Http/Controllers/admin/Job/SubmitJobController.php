@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Job;
+namespace App\Http\Controllers\admin\Job;
 
 use App\Http\Controllers\Controller;
 use App\Models\Job\JobCategoryModel;
@@ -17,8 +17,9 @@ use Illuminate\Support\Str;
 
 class SubmitJobController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
 
+        
 
         $job_list  = JobModel::select('job.*','job_types.title as job_type_id','locations.title as location_id','salary_types.title as salary_type_id')
                                 ->leftJoin('job_types','job.job_type_id','=','job_types.id')
@@ -44,7 +45,7 @@ class SubmitJobController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [   
-            'title' => 'required|string|unique:jobs,title',
+            'title' => 'required|string|unique:job,title',
             'job_type_id' => 'required|numeric',
             'job_category_id' => 'required|array',
             'description' => 'required',
@@ -135,14 +136,6 @@ class SubmitJobController extends Controller
                                  $response = true;
                                }
 
-
-                                // foreach($request->job_category_id as $category){
-
-                                //     $job_category_relation_model->job_id = $job_model->id;
-                                //     $job_category_relation_model->job_category_id = $category;                                    
-                                //         $job_category_relation_model->save();
-                                // }
-
                                
                             }
 
@@ -207,7 +200,11 @@ class SubmitJobController extends Controller
         //                                 ->leftJoin('job_types','job.job_type_id','=','job_types.id')
         //                                 ->leftJoin('locations','job.location_id','=','locations.id')
         //                                 ->leftJoin('salary_types','job.salary_type_id','=','salary_types.id')->find($id);
+
+
           $job_data = JobModel::find($id);
+          $job_data->job_category_id  =  array_column(JobCategoryRelationModel::select('job_category_id')->where('job_id',$id)->get()->toArray(), 'job_category_id'); 
+      
 
            if($job_data){
             return response()->json(['status' => 200,'job_data' => $job_data]);

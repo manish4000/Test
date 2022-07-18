@@ -89,7 +89,7 @@
             <div class="col-6 col-md-3">
 
                 <div class="p-2 ">
-                  <i class="fa-brands fa-searchengin fa-4x  bg-warning p-4" aria-hidden="true" style="border-radius: 35px 55px 35px 55px; "></i>
+                  <i class="fa-brands fa-searchengin fa-4x  text-white bg-warning p-4" aria-hidden="true" style="border-radius: 35px 55px 35px 55px; "></i>
                   <p class="fw-bold mt-3">Advertise With Us</p>
                 
                 </div>
@@ -99,7 +99,7 @@
 
                 <div class="p-2 ">
                    
-                  <i class="fa fa-4x fa-user-o bg-warning p-4" aria-hidden="true" style="border-radius: 35px 55px 35px 55px; "></i>
+                  <i class="fa fa-4x fa-user-o bg-warning p-4 text-white" aria-hidden="true" style="border-radius: 35px 55px 35px 55px; "></i>
                   <p class="fw-bold mt-3">Stuck In Life</p>
                 </div>
             
@@ -107,7 +107,7 @@
             <div class="col-6 col-md-3">
 
                 <div class="p-2 ">
-                  <i class="fa-4x fa-solid fa-wallet bg-warning p-4" aria-hidden="true" style="border-radius: 35px 55px 35px 55px; "></i>
+                  <i class="fa-4x fa-solid fa-wallet bg-warning p-4 text-white" aria-hidden="true" style="border-radius: 35px 55px 35px 55px; "></i>
                   <p class="fw-bold mt-3">Wallet</p>
                 </div>
             
@@ -116,7 +116,7 @@
 
                 <div class="p-2 ">
                    
-                  <i class="fa-regular fa-file-lines fa-4x  bg-warning p-4" aria-hidden="true" style="border-radius: 35px 55px 35px 55px; "></i>
+                  <i class="fa-regular fa-file-lines fa-4x  bg-warning p-4 text-white" aria-hidden="true" style="border-radius: 35px 55px 35px 55px; "></i>
                   <p class="fw-bold mt-3">Post Job</p>
                 </div>
             

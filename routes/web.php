@@ -212,6 +212,8 @@ Route::group(['prefix' => 'admin','middleware'=> ['guest','preventBackHistory','
 
             Route::group(['prefix' => 'users','as'=>'users.' ,'namespace' => 'App\Http\Controllers\Admin\user'],function(){   
                 Route::get('/','UserController@index')->name('index');
+                Route::get('/status/','UserController@changeStatus')->name('status');
+                Route::get('/profile/','UserController@profile')->name('profile');
                       
             });
 
@@ -337,7 +339,6 @@ Route::group(['prefix' => 'admin','middleware'=> ['guest','preventBackHistory','
               
                       });
                      
-          
                   });
 
                   Route::group(['prefix' => 'location','as'=>'location.', "namespace" => "App\Http\Controllers\Admin"],function(){

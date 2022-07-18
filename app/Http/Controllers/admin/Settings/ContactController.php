@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Settings;
+namespace App\Http\Controllers\admin\Settings;
 
 use App\Http\Controllers\Controller;
 use App\Models\ContactModel;

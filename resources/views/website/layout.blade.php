@@ -31,7 +31,7 @@
 
     <link rel="stylesheet" type="text/css" href="assets/css/owl.carousel.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/chosen.min.css">
-    <link rel="stylesheet" href="mdb/css/mdb.min.css">
+
     {{-- <link rel="stylesheet" type="text/css" href="assets/css/style.css"> --}}
 
 
@@ -295,7 +295,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     {{-- this is for crousel  --}}
  
-  <script src="mdb/js/mdb.min.js"></script>
+  
 {{-- 
 	<script src="assets/js/chosen.jquery.min.js"></script> --}}
 	<script src="assets/js/owl.carousel.min.js"></script>
