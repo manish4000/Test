@@ -13,8 +13,51 @@
     <ol class="breadcrumb bg-white d-flex justify-content-start  ">
       <li><a href="{{URL::to('admin/dashboard')}}" class="text-decoration-none text-reset" ><i class="fa fa-dashboard"></i> Dashboard</a> <i class="fa-solid fa-caret-right"></i></li>
        
-      <li><a href="#" class="text-decoration-none text-reset ms-1">Employer </a></li>
-    </ol>
+      <li><a href="#" class="text-decoration-none text-reset ms-1">Employers</a></li>
+    </ol> 
+
+    {{-- search box--}}
+
+    <div class="bg-white ">
+     
+      <form action="{{route('admin.users.index')}}" method="GET" >
+        <div class="form-row p-3">
+          <div class="col">
+            <input type="hidden" name="role" value="{{$user_role}}">
+            <label for="exampleInputEmail1">Select Category</label>
+            <select class="form-control" data-style="btn btn-link" id="category-select" name="category">
+              <option></option>
+              @foreach ($categories as $category )
+               <option value="{{$category->id}}"> {{$category->title}}</option>
+             @endforeach  
+            </select>
+          </div>
+          <div class="col">
+            <label for="exampleInputEmail1">Select Location</label>
+            <select class="form-control p-3" id="location-select" name="location">
+              <option></option>
+             @foreach ($locations as $location )
+               <option value="{{$location->id}}"> {{$location->title}}</option>
+             @endforeach             
+            </select>
+          </div>
+
+          <div class="col">
+            <label for="exampleInputEmail1">Select Status</label>
+            <select class="form-control p-3" id="status-select" name="status" >
+              <option></option>
+             <option value="1">Active</option>
+             <option value="0">In Active</option>
+            </select>
+          </div>
+          <div class="col my-auto mx-auto">
+            <input type="submit" value="Search" class="btn btn-primary" >
+            </div>
+        </div>
+      </form>
+
+    </div>
+    {{-- search box--}}
 
     @if (\Session::has('status_update'))
    
@@ -50,24 +93,13 @@
               <table class="table">
                 <thead class=" text-primary">
                   <th>ID </th>
-                  <th>User Name</th>
-                  <th>
-                   Name
-                  </th>
-                  <th>Application for </th>
-                  <th>
-                   Email
-                  </th>
-                  <th>
-                   Phone
-                  </th>
-                  <th>
-                   Message
-                  </th>
-                  
-                  <th>
-                    Action
-                  </th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Phone</th>
+                  <th> Location </th>
+                  <th>Created At</th>
+                  <th>status</th>
+                  <th>Action</th>
                 </thead>
                 @if (isset( $user_data))
   
@@ -78,16 +110,23 @@
                       @foreach ($user_data as $data)
                     <tr>
                         <td>{{ $data->id }}</td>
-                        <td>{{ $data->user_name}}</td>    
                         <td>{{$data->name}}</td>
-                        <td>{{$data->application_for}}</td>
                         <td>{{$data->email}}</td>
                         <td>{{$data->phone}}</td>
-                        <td>{{$data->message}}</td>
+                        <td>{{$data->location}}</td>
+                        <td>{{$data->created_at}}</td>
+                        @if($data->is_active =='1')
+                        
+                        <td>  <span class="badge badge-success">Active</span> </td>
+                        
+                        @else
+                        <td><span class="badge badge-danger">Inactive</span></td>
+                        
+                        @endif  
                                   
                         <td  style="width: 220px;">
-                            {{-- <a href="{{route('admin.job.job_type.status',$data->id)}}" class="btn btn-warning btn-sm" >Status</a>
-                            <button type="button" data-toggle="modal" data-target="#edit_testimonial" class="edit_testimonial   btn btn-primary btn-sm"  value="{{$data->id}}" >Edit</button> --}}
+                          <a href="{{route('admin.users.status',['id'=> $data->id])}}" class="btn btn-warning btn-sm" >Status</a>
+                          <a href="{{route('admin.users.profile',['id'=> $data->id])}}" class="btn btn-info btn-sm" >View Profile</a>
                             <button type="button" data-toggle="modal" data-target="#delete_testimonial" class="delete_testimonial   btn btn-danger btn-sm" value="{{$data->id}}" >Delete</button>
                          </td>
                         
@@ -316,6 +355,14 @@
 
 </script>
 
+<script>
+  $(document).ready(function() {
+    $('#category-select').select2();
+    $('#location-select').select2();
+    $('#status-select').select2();
+});
+
+</script>
 
 
 

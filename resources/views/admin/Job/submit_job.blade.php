@@ -37,7 +37,7 @@
 
 
 
-    <button type="button" class="btn btn-success mb-2" data-toggle="modal" data-target="#add_testimonial">Add New Job Type</button>
+    <button type="button" class="btn btn-success mb-2" data-toggle="modal" data-target="#add_testimonial">Add New Job </button>
     <div class="row">
       <div class="col-md-12">
         <div class="card">

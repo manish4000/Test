@@ -206,13 +206,19 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                             <?php
+                                                     $categories = DB::table('job_categories')->where('parent_id',null)->get();
+                                                 ?>   
+
                                             <div class="row mb-3">
                                                 <div class="col-md-12">
                                                 <select class="form-select" name="job_category_id" aria-label="Default select example">
                                                     <option selected>Select Category</option>
-                                                    <option value="1">One</option>
-                                                    <option value="2">Two</option>
-                                                    <option value="3">Three</option>
+                                                       @foreach ($categories as $catgory )
+
+                                                       <option value="{{$catgory->id}}"> {{$catgory->title}}</option>
+                                                         
+                                                       @endforeach                                              
                                                 </select>
                                                 <span class="text-danger error-text job_category_id_error "></span>
                                                 </div>
