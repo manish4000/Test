@@ -47,7 +47,7 @@ class UserController extends Controller
                 $user_data->where('candidate_details.location_id',$request->location);
 
             }if(!empty($request->status)){
-                $user_data->where('users.is_active',$request->status);
+                $user_data->where('is_active',$request->status);
             }
 
             $user_data = $user_data->where('role',$request->role)->paginate(10);
@@ -70,7 +70,7 @@ class UserController extends Controller
                 $user_data->where('employer_details.location_id',$request->location);
 
             }if(!empty($request->status)){
-                $user_data->where('users.is_active',$request->status);
+                $user_data->where('is_active',$request->status);
             }
 
             $user_data = $user_data->where('role',$request->role)->paginate(10);
